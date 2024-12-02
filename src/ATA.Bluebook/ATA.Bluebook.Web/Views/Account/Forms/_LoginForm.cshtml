@@ -7,32 +7,8 @@
 													{
 														item.AddCustomFormTextBox(m => m.Username);
 														item.AddCustomFormPassword(item => item.Password);
-															item.AddCustomFormHyperLink("/Account/ForgetPassword", "Forgotten password?");
+															item.AddCustomFormHyperLink("/Account/ForgetPassword", "Forgotten password?", "text-center");
 														item.AddCustomFormButton("Login", "100%", canSubmitForm: true);
 													}).FormData(Model))
 }
-
-<script>
-	let formInstance;
-
-	function onInitialized(e) {
-		formInstance = e.component;
-	}
-
-	function changePasswordMode(name) {
-		let editor = formInstance.getEditor(name);
-
-		if (!editor)
-			return;
-
-		editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
-
-		let iconElement = $("#hide-show-password-btn").find("i");
-
-		if (!iconElement)
-			return;
-
-		iconElement.toggleClass("dx-icon-eyeopen");
-		iconElement.toggleClass("dx-icon-eyeclose")
-	}
-</script>
+<script src="~/js/Account.js"></script>

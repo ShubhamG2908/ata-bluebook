@@ -50,9 +50,9 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
 										.ValidationMessagePosition(Position.Bottom)).CssClass("my-2");
 		}
 
-		public static void AddCustomFormHyperLink<TFormData>(this FormItemsFactory<TFormData> factory, string url, string text)
+		public static void AddCustomFormHyperLink<TFormData>(this FormItemsFactory<TFormData> factory, string url, string text, string CssClass = "")
 		{
-			factory.AddSimple().Template($"<a href=\"{url}\">{text}</a>").CssClass("text-center");
+			factory.AddSimple().Template($"<a href=\"{url}\">{text}</a>").CssClass(CssClass);
 		}
 
 		/// <summary>
