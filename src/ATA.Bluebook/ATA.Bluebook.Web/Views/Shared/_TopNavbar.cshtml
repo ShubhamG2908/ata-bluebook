@@ -1,17 +1,62 @@
-﻿<nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
+﻿@using ATA.Bluebook.Web.Common.HtmlExtensions;
+<nav class="navbar navbar-expand-md">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">ATA_Bluebook_Web</a>
-
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+        <a class="navbar-brand" href="/">ATA Bluebook Web</a>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <div></div>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a asp-controller="Jobs" class="nav-link @Html.IsActive("Jobs")">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Clients" class="nav-link @Html.IsActive("Clients")">Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Tallies" class="nav-link @Html.IsActive("Tallies")">Tallies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="PoAndInvoices" class="nav-link @Html.IsActive("PoAndInvoices")">PO & Invoices</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Reports" class="nav-link @Html.IsActive("Reports")">Reports</a>
+                    </li>
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="UserManagement">User Management</a></li>
+                            <li><a class="dropdown-item" asp-controller="UserRoleManagement">User Role Management</a></li>
+                            <li><a class="dropdown-item" asp-controller="ClientManagement">Client Management</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="moreMenu">
+                            Settings
+                        </a>
+                        <div class="collapse" id="moreMenu">
+                            <ul class="list-unstyled">
+                                <li><a class="nav-link ps-3 @Html.IsActive("UserManagement")" asp-controller="UserManagement">User Management</a></li>
+                                <li><a class="nav-link ps-3 @Html.IsActive("UserRoleManagement")" asp-controller="UserRoleManagement">User Role Management</a></li>
+                                <li><a class="nav-link ps-3 @Html.IsActive("ClientManagement")" asp-controller="ClientManagement">Client Management</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a asp-controller="Account" asp-action="Logout" class="btn btn-primary">Logout</a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>

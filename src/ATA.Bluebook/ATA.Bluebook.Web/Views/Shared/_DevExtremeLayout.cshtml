@@ -1,3 +1,4 @@
+@inject IHttpContextAccessor Accessor
 <!DOCTYPE html>
 
 <html>
@@ -33,6 +34,7 @@
     @*<script src="~/js/devextreme/dx-diagram.js"></script>*@
 
     <script src="~/js/devextreme/jquery.js"></script>
+    <script src="~/js//devextreme/popper.js"></script>
     <script src="~/js/devextreme/bootstrap.js"></script>
 
     @* Uncomment to use Globalize for localization *@
@@ -61,8 +63,10 @@
 </head>
 
 <body>
-
-    @* <partial name="_TopNavbar"></partial> *@
+    @if (Accessor.HttpContext.Session.GetString("UserName") != null)
+    {
+        <partial name="_TopNavbar"></partial>
+    }
 
     <main class="container">
         @RenderBody()

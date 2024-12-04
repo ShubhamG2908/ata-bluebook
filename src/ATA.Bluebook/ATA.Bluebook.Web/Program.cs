@@ -2,6 +2,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+builder.Services.AddSession(session =>
+{
+	session.IdleTimeout = TimeSpan.FromMinutes(30);
+	session.Cookie.HttpOnly = true;
+	session.Cookie.IsEssential = true;
+});
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -17,6 +24,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 
