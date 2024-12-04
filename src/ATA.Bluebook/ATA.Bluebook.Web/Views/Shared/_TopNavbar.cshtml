@@ -1,5 +1,4 @@
-﻿@using ATA.Bluebook.Web.Common.HtmlExtensions;
-<nav class="navbar navbar-expand-md">
+﻿<nav class="navbar navbar-expand-md">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -15,28 +14,28 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a asp-controller="Jobs" class="nav-link @Html.IsActive("Jobs")">Jobs</a>
+                        <a asp-controller="Jobs" class="nav-link @Html.GetActiveRouteClassName("Jobs")">Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Clients" class="nav-link @Html.IsActive("Clients")">Clients</a>
+                        <a asp-controller="Clients" class="nav-link @Html.GetActiveRouteClassName("Clients")">Clients</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Tallies" class="nav-link @Html.IsActive("Tallies")">Tallies</a>
+                        <a asp-controller="Tallies" class="nav-link @Html.GetActiveRouteClassName("Tallies")">Tallies</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="PoAndInvoices" class="nav-link @Html.IsActive("PoAndInvoices")">PO & Invoices</a>
+                        <a asp-controller="PoAndInvoices" class="nav-link @Html.GetActiveRouteClassName("PoAndInvoices")">PO & Invoices</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Reports" class="nav-link @Html.IsActive("Reports")">Reports</a>
+                        <a asp-controller="Reports" class="nav-link @Html.GetActiveRouteClassName("Reports")">Reports</a>
                     </li>
                     <li class="nav-item dropdown d-none d-md-block">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Settings
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" asp-controller="UserManagement">User Management</a></li>
-                            <li><a class="dropdown-item" asp-controller="UserRoleManagement">User Role Management</a></li>
-                            <li><a class="dropdown-item" asp-controller="ClientManagement">Client Management</a></li>
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("UserManagement")" asp-controller="UserManagement">User Management</a></li>
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("UserRoleManagement")" asp-controller="UserRoleManagement">User Role Management</a></li>
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("ClientManagement")" asp-controller="ClientManagement">Client Management</a></li>
                         </ul>
                     </li>
 
@@ -46,9 +45,9 @@
                         </a>
                         <div class="collapse" id="moreMenu">
                             <ul class="list-unstyled">
-                                <li><a class="nav-link ps-3 @Html.IsActive("UserManagement")" asp-controller="UserManagement">User Management</a></li>
-                                <li><a class="nav-link ps-3 @Html.IsActive("UserRoleManagement")" asp-controller="UserRoleManagement">User Role Management</a></li>
-                                <li><a class="nav-link ps-3 @Html.IsActive("ClientManagement")" asp-controller="ClientManagement">Client Management</a></li>
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("UserManagement")" asp-controller="UserManagement">User Management</a></li>
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("UserRoleManagement")" asp-controller="UserRoleManagement">User Role Management</a></li>
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("ClientManagement")" asp-controller="ClientManagement">Client Management</a></li>
                             </ul>
                         </div>
                     </li>
