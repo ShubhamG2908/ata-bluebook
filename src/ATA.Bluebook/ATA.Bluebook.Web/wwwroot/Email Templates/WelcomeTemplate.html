@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to @Model.AppName</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #0072c6;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #0072c6;
+            color: #ffffff;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            color: #333333;
+        }
+
+        .content p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button {
+            background-color: #0072c6; 
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #005a9e; 
+        }
+
+        a {
+            color: #0072c6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <!-- Header Section -->
+        <div class="header">
+            Welcome to @Model.AppName
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <p>Hi @Model.Username,</p>
+
+            <p>
+                We’re excited to have you on board! Thank you for signing up for <strong>@Model.AppName.</strong> 
+            </p>
+
+            <p>
+                To get started, click the button below to log in and explore:
+            </p>
+
+            <div class="button-container">
+                <a href="@Model.LoginUrl" class="button">Get Started</a>
+            </div>
+
+            <p>
+                If the button above doesn’t work, you can log in using the following link:
+            </p>
+            <p>
+                <a href="@Model.LoginUrl">@Model.LoginUrl</a>
+            </p>
+
+            <p>
+                If you have any questions or need assistance, feel free to reach out to us at <a
+                    href="mailto:@Model.SupportEmail">@Model.SupportEmail</a>. We’re here to help!
+            </p>
+
+            <p>Happy exploring!</p>
+            <p>The @Model.AppName Team</p>
+        </div>
+    </div>
+</body>
+
+</html>
