@@ -47,6 +47,14 @@
         .button:hover {
             background-color: #005a9e; 
         }
+        .footer {
+            padding: 15px;
+            font-size: 12px;
+            color: #555555;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -79,6 +87,11 @@
 
             <p>Thanks,</p>
             <p>@Model.AppName team.</p>
+
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            If you did not expect this invitation, please ignore this email or contact us at <a href="mailto:@Model.SupportEmail">@Model.SupportEmail</a>.
         </div>
     </div>
 </body>
