@@ -1,0 +1,48 @@
+﻿@(
+Html
+    .DevExtreme()
+    .Form<LoginModelRecord>()
+    .OnInitialized("userFormInitialized")
+    .ID("UserForm")
+    .Items(items =>
+    {
+        items.AddCustomFormTextBox(model => model.Username);
+
+        items
+            .AddSimple()
+            .Template(@<text>
+                <div class="d-flex justify-content-end gap-3">
+                    @(Html
+                        .DevExtreme()
+                        .Button()
+                        .Text("Previous")
+                        .OnClick("handlePrevious")
+                    )
+                    @(Html
+                        .DevExtreme()
+                        .Button()
+                        .Text("Next")
+                        .OnClick("handleFirstStep")
+                    )
+                </div>
+            </text>);
+    })
+)
+<script>
+    var userForm;
+    
+    function userFormInitialized(e) {
+        userForm = e.component;
+    }
+
+    function handleFirstStep(e) {
+        const validationStatus = userForm.validate();
+        if (validationStatus.isValid) {
+            stepper.next();
+        }
+    }
+
+    function handlePrevious() {
+        stepper.previous();
+    }
+</script>
