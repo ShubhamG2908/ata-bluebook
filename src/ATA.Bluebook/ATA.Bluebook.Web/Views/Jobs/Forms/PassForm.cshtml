@@ -1,0 +1,48 @@
+﻿@(Html
+    .DevExtreme()
+    .Form<LoginModelRecord>()
+    .OnInitialized("passFormInitialized")
+    .ID("PassForm")
+    .Items(items =>
+    {
+        items.AddCustomFormTextBox(model => model.Password);
+
+        items
+            .AddSimple()
+            .Template(@<text>
+                <div class="d-flex justify-content-end gap-3">
+                    @(Html
+                        .DevExtreme()
+                        .Button()
+                        .Text("Previous")
+                        .OnClick("handlePrevious")
+                    )
+                    @(Html
+                        .DevExtreme()
+                        .Button()
+                        .Text("Next")
+                        .OnClick("handleSecondStep")
+                    )
+                    
+                </div>
+            </text>);
+    })
+)
+<script>
+    var passForm;
+
+    function passFormInitialized(e) {
+        passForm = e.component;
+    }
+
+    function handleSecondStep(e) {
+        const validationStatus = passForm.validate();
+        if (validationStatus.isValid) {
+            stepper.next();
+        }
+    }
+
+    function handlePrevious() {
+        stepper.previous();
+    }
+</script>

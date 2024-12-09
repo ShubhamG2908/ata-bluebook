@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ATA.Bluebook.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ATA.Bluebook.Web.Controllers
 {
@@ -6,7 +7,25 @@ namespace ATA.Bluebook.Web.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new StepperPageModel
+            {
+                StepperId = "MyStepperForm",
+                Steps = [
+                    new StepperModel {
+                        Label = "Email",
+                        FormName = "Forms/UserForm",
+                    },
+                    new StepperModel {
+                        Label = "Password",
+                        FormName = "Forms/PassForm",
+                    },
+                    new StepperModel {
+                        Label = "Done",
+                        FormName = "Forms/FormSubmitted"
+                    }
+                ]
+            };
+            return View(model);
         }
     }
 }
