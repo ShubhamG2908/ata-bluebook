@@ -1,3 +1,5 @@
-﻿<div>
-    Jobs page is working
+﻿@model StepperPageModel
+
+<div>
+    @(await Html.PartialAsync("StepperForm", Model))
 </div>

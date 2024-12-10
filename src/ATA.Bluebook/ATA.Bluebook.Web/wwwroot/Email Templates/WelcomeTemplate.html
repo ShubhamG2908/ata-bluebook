@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited - @Model.AppName</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border: 1px solid #0072c6;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #0072c6; 
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            
+        }
+        .content p {
+            margin: 0 0 15px;
+            line-height: 1.5;
+        }
+        .highlight {
+            color: #0072c6;
+            font-weight: bold;
+        }
+        .button-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .button {
+            background-color: #0072c6;
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #005a9e; 
+        }
+        .footer {
+            padding: 15px;
+            font-size: 12px;
+            color: #555555;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            Welcome to @Model.AppName!
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <p>Hi <span class="highlight">@Model.Username</span>,</p>
+
+            <p>
+                You've been invited to join <strong>@Model.AppName</strong>!<br>
+                
+            </p>
+
+            <p>
+                To activate your account, click the button below and set your password to get started:
+            </p>
+
+            <div class="button-container">
+                <a href="@Model.SetPasswordUrl" class="button">Set Your Password</a>
+            </div>
+
+            <p>
+                If the button doesn’t work, copy and paste this link into your browser:<br>
+                <a href="@Model.SetPasswordUrl">@Model.SetPasswordUrl</a>
+            </p>
+
+            <p>
+                Need help? Contact us at <a href="mailto:@Model.SupportEmail">@Model.SupportEmail</a>.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            If you did not expect this invitation, please ignore this email or contact us at <a href="mailto:@Model.SupportEmail">@Model.SupportEmail</a>.
+        </div>
+    </div>
+</body>
+</html>
