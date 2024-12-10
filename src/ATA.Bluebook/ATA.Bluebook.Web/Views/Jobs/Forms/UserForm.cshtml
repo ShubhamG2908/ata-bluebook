@@ -1,33 +1,24 @@
-﻿@(
-Html
+﻿@{
+    var model = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Next",
+        PreviousBtnClickHandler = "handlePrevious",
+        NextBtnClickHandler = "handleFirstStep"
+    };
+}
+
+@(Html
     .DevExtreme()
     .Form<LoginModelRecord>()
     .OnInitialized("userFormInitialized")
     .ID("UserForm")
     .Items(items =>
     {
-        items.AddCustomFormTextBox(model => model.Username);
-
-        items
-            .AddSimple()
-            .Template(@<text>
-                <div class="d-flex justify-content-end gap-3">
-                    @(Html
-                        .DevExtreme()
-                        .Button()
-                        .Text("Previous")
-                        .OnClick("handlePrevious")
-                    )
-                    @(Html
-                        .DevExtreme()
-                        .Button()
-                        .Text("Next")
-                        .OnClick("handleFirstStep")
-                    )
-                </div>
-            </text>);
+        items.AddCustomFormTextBox(model => model.Username);  
     })
 )
+@(await Html.PartialAsync("_StepperButtons", model))
 <script>
     var userForm;
     

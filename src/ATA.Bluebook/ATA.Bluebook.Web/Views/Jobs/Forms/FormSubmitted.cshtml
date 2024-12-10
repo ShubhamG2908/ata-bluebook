@@ -1,18 +1,15 @@
-﻿<div>Form completed</div>
-<div class="d-flex justify-content-center gap-3">
-    @(Html
-        .DevExtreme()
-        .Button()
-        .Text("Previous")
-        .OnClick("handlePrevious")
-        )
-    @(Html
-        .DevExtreme()
-        .Button()
-        .Text("Done")
-        .OnClick("handleDone")
-        )
-</div>
+﻿@{
+    var model = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Submit",
+        PreviousBtnClickHandler = "handlePrevious",
+        NextBtnClickHandler = "handleDone"
+    };
+}
+
+<div>Form completed</div>
+@(await Html.PartialAsync("_StepperButtons", model))
 
 <script>
     function handlePrevious() {
