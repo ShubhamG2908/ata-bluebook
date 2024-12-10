@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm your email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #0072c6;
+        }
+        .header {
+            background-color: #0072c6; 
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content p {
+            margin: 0 0 15px;
+            line-height: 1.5;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .button {
+            background-color: #0072c6;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #005a9e; 
+        }
+        .footer {
+            padding: 15px;
+            font-size: 12px;
+            color: #555555;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+
+        <div class="header">
+            @Model.AppName
+        </div>
+
+        <div class="content">
+            <p>Dear @Model.Username,</p>
+
+            <p>
+                <strong>Thank you for signing up with @Model.AppName</strong><br>
+                To complete your registration, please confirm your email address by clicking the button below:
+            </p>
+
+            <div class="button-container">
+                <a href="@Model.Url" class="button">Confirm your email address</a>
+            </div>
+
+            <p>
+                If the button doesn't work, you can copy and paste the following link into your browser:<br>
+                <a href="@Model.Url">[Insert confirmation link here]</a>
+            </p>
+
+            <p>
+                This step ensures we can communicate important updates with you and keep your account secure. If you did not sign up for @Model.AppName, please ignore this email or contact our support team at @Model.SupportEmail.
+            </p>
+
+            <p>Thanks,</p>
+            <p>@Model.AppName team.</p>
+
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            If you did not expect this invitation, please ignore this email or contact us at <a href="mailto:@Model.SupportEmail">@Model.SupportEmail</a>.
+        </div>
+    </div>
+</body>
+</html>
