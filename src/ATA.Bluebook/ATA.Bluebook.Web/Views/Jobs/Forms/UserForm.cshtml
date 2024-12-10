@@ -1,0 +1,39 @@
+﻿@{
+    var model = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Next",
+        PreviousBtnClickHandler = "handlePrevious",
+        NextBtnClickHandler = "handleFirstStep"
+    };
+}
+
+@(Html
+    .DevExtreme()
+    .Form<LoginModelRecord>()
+    .OnInitialized("userFormInitialized")
+    .ID("UserForm")
+    .Items(items =>
+    {
+        items.AddCustomFormTextBox(model => model.Username);  
+    })
+)
+@(await Html.PartialAsync("_StepperButtons", model))
+<script>
+    var userForm;
+    
+    function userFormInitialized(e) {
+        userForm = e.component;
+    }
+
+    function handleFirstStep(e) {
+        const validationStatus = userForm.validate();
+        if (validationStatus.isValid) {
+            stepper.next();
+        }
+    }
+
+    function handlePrevious() {
+        stepper.previous();
+    }
+</script>

@@ -1,0 +1,39 @@
+﻿@{
+    var model = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Next",
+        PreviousBtnClickHandler = "handlePrevious",
+        NextBtnClickHandler = "handleSecondStep"
+    };
+}
+
+@(Html
+    .DevExtreme()
+    .Form<LoginModelRecord>()
+    .OnInitialized("passFormInitialized")
+    .ID("PassForm")
+    .Items(items =>
+    {
+        items.AddCustomFormTextBox(model => model.Password);
+    })
+)
+@(await Html.PartialAsync("_StepperButtons", model))
+<script>
+    var passForm;
+
+    function passFormInitialized(e) {
+        passForm = e.component;
+    }
+
+    function handleSecondStep(e) {
+        const validationStatus = passForm.validate();
+        if (validationStatus.isValid) {
+            stepper.next();
+        }
+    }
+
+    function handlePrevious() {
+        stepper.previous();
+    }
+</script>
