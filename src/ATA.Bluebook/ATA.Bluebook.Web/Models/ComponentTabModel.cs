@@ -32,4 +32,10 @@ namespace ATA.Bluebook.Web.Models
         [Display(Name = "Birth Date")]
         public DateTime? Birthdate { get; set; } = null;
     }
+
+    public class TextBoxModel
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+    }
 }

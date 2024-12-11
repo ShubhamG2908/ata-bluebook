@@ -31,6 +31,9 @@ namespace ATA.Bluebook.Web.Controllers
             {
                 case 0:
                 case 1:
+                    {
+                        return PartialView("Editors/_TextboxComponent", new TextBoxModel());
+                    }
                 case 2:
                     {
                         SelectionBoxModel selectionBoxModel = new SelectionBoxModel()
@@ -46,7 +49,7 @@ namespace ATA.Bluebook.Web.Controllers
                 default:
                     break;
             }
-            return PartialView("_selectboxComponent");
+            return PartialView("Editors/_TextboxComponent");
         }
 
         [HttpGet]
