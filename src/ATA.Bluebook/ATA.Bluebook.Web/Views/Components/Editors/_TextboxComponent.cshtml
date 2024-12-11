@@ -1,0 +1,15 @@
+﻿@model TextBoxModel
+
+<h2>Date Box</h2>
+
+<div class="mt-3">
+	@(Html.DevExtreme()
+		.Form<TextBoxModel>()
+		.Items(item =>
+		{
+			item.AddCustomFormTextBox(m => m.Name);
+			item.AddCustomFormTextArea(m => m.Description);
+		}).FormData(Model)
+		)
+</div>
+<script src="~/js/Component.js"></script>

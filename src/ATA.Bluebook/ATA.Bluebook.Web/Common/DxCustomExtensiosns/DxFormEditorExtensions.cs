@@ -110,5 +110,14 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                             .ValidationMessagePosition(Position.Bottom));
         }
 
+        public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string cssClass = "")
+        {
+
+            factory.AddSimpleFor(expression)
+                .Editor(e => e.TextArea()
+                                        .ValidationMessageMode(ValidationMessageMode.Always)
+                                        .ValidationMessagePosition(Position.Bottom)).CssClass(cssClass);
+        }
+
     }
 }
