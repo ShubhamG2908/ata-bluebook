@@ -1,0 +1,26 @@
+﻿@model List<ComponentTabModel>
+
+<div>
+	<div class="row">
+		<div class="col-2">
+			@(Html.DevExtreme().Tabs()
+						.ID("component-tabs")
+						.OnInitialized("onTabsInitialized")
+						.Orientation(Orientation.Vertical)
+						.Width("100%")
+						.SelectionMode(NavSelectionMode.Single)
+						.DataSource(Model)
+						.SelectedIndex(0)
+						.OnSelectionChanged("selectionChanged")
+						)
+		</div>
+		<div class="col-10">
+			<div class="container">
+				<div id="component-partial-container">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="~/js/Component.js"></script>

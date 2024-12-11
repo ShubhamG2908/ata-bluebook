@@ -1,0 +1,15 @@
+﻿@model DateBoxModel
+
+<h2>Date Box</h2>
+
+<div class="mt-3">
+	@(Html.DevExtreme()
+		.Form<DateBoxModel>()
+		.OnInitialized("onInitialized")
+		.Items(item =>
+		{
+			item.AddCustomFormDateBox(m => m.Birthdate);
+		}).FormData(Model)
+		)
+</div>
+<script src="~/js/Component.js"></script>

@@ -1,0 +1,15 @@
+﻿@model SelectionBoxModel
+
+<h2>Selection Box</h2>
+
+<div class="mt-3">
+	@(Html.DevExtreme()
+		.Form<SelectionBoxModel>()
+		.OnInitialized("onInitialized")
+		.Items(item =>
+		{
+			item.AddCustomFormSelectBox(m => m.GenderId, "Components", "GetGenederSelectionData", "Id", "Name", "GenderSelectionChanged", DataSourceLoadMode.Raw);
+		}).FormData(Model)
+		)
+</div>
+<script src="~/js/Component.js"></script>
