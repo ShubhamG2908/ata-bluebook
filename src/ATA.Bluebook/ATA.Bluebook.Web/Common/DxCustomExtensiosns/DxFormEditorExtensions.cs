@@ -82,7 +82,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                     });
         }
 
-        public static void AddCustomFormSelectBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string controller, string action, string keyField, string displayField, string valueChangeCallBack, DataSourceLoadMode loadMode = DataSourceLoadMode.Raw)
+        public static void AddCustomFormSelectBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string controller, string action, string keyField, string displayField, string valueChangeCallBack, DataSourceLoadMode loadMode = DataSourceLoadMode.Raw, bool searchEnable = true)
         {
             factory.AddSimpleFor(expression)
                 .Editor(e => e.SelectBox()
@@ -97,6 +97,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                 .OnValueChanged(valueChangeCallBack)
                                 .ValidationMessageMode(ValidationMessageMode.Always)
                                 .ValidationMessagePosition(Position.Bottom)
+                                .SearchEnabled(searchEnable)
                 );
         }
 
