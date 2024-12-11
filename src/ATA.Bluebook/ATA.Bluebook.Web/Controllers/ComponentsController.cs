@@ -19,6 +19,7 @@ namespace ATA.Bluebook.Web.Controllers
             {
                 new ComponentTabModel(1, "Textbox"),
                 new ComponentTabModel(2, "Selectbox"),
+                new ComponentTabModel(3, "Datebox"),
             };
 
             return componentTabs;
@@ -37,6 +38,10 @@ namespace ATA.Bluebook.Web.Controllers
                             GenderId = 1
                         };
                         return PartialView("Editors/_selectboxComponent", selectionBoxModel);
+                    }
+                case 3:
+                    {
+                        return PartialView("Editors/_DateboxComponent", new DateBoxModel());
                     }
                 default:
                     break;

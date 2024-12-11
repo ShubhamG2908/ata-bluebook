@@ -101,5 +101,14 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                 );
         }
 
+        public static void AddCustomFormDateBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
+        {
+            factory.AddSimpleFor(expression)
+                .Editor(e => e.DateBox()
+                            .Height(40)
+                            .ValidationMessageMode(ValidationMessageMode.Always)
+                            .ValidationMessagePosition(Position.Bottom));
+        }
+
     }
 }

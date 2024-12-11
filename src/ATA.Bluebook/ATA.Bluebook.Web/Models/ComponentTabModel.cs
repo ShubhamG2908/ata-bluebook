@@ -26,4 +26,10 @@ namespace ATA.Bluebook.Web.Models
         [Display(Name = "Gender")]
         public int GenderId { get; set; }
     }
+
+    public class DateBoxModel
+    {
+        [Display(Name = "Birth Date")]
+        public DateTime? Birthdate { get; set; } = null;
+    }
 }
