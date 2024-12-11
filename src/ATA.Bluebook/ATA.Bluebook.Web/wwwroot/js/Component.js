@@ -20,7 +20,6 @@ function loadPartialView(_id) {
             id: _id
         },
         success: function (res) {
-            console.log(res);
             $("#component-partial-container").empty().append(res);
         },
         error: function (res) {
@@ -30,9 +29,7 @@ function loadPartialView(_id) {
 }
 
 function onInitialized(e) {
-    console.log("Init");
 }
 
 function GenderSelectionChanged(e) {
-    console.log(e);
 }
