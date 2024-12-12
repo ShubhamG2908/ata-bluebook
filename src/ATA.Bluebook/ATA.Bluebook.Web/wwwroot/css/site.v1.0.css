@@ -26,3 +26,8 @@
         padding-left: 5px;
     }
 }
+
+.dx-invalid-message > .dx-overlay-content {
+    background-color: transparent !important;
+    color: #d13438 !important;
+}
