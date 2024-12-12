@@ -2,10 +2,18 @@
 
 namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns.Configs
 {
+    /// <summary>
+    /// Base class for all common controls
+    /// </summary>
     public abstract class BaseControlConfig
     {
-        public string CssClass = "my-2";
-        public int Height = 40;
+        /// <summary>
+        /// Used to add css class.
+        /// </summary>
+        public string CssClass = string.Empty;
+        /// <summary>
+        /// Set disable property
+        /// </summary>
         public bool Disabled = false;
     }
 }
