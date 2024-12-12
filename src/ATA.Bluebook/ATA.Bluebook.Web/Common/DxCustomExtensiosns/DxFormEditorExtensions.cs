@@ -1,4 +1,5 @@
-﻿using ATA.Bluebook.Web.Models;
+﻿using ATA.Bluebook.Web.Common.DxCustomExtensiosns.Configs;
+using ATA.Bluebook.Web.Models;
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Factories;
@@ -99,6 +100,27 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                 .ValidationMessagePosition(Position.Bottom)
                                 .SearchEnabled(searchEnable)
                 );
+        }
+        public static void AddCustomFormTagBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, TagControlConfig config)
+        {
+            factory.AddSimpleFor(expression)
+                .Editor(e => e.TagBox()
+                                .ValueExpr(config.KeyField)
+                                .DataSource(d => d.Mvc()
+                                                .Controller(config.DbSourceController)
+                                                .LoadAction(config.DBSourceAction)
+                                                .LoadMode(config.LoadMode)
+                                                .Key(config.KeyField))
+                                .Height(config.Height)
+                                .DisplayExpr(config.DisplayField)
+                                .OnValueChanged(config.ValueChangeCallBack)
+                                .ValidationMessageMode(ValidationMessageMode.Always)
+                                .ValidationMessagePosition(Position.Bottom)
+                                .SearchEnabled(config.SeachEnabled)
+                                .ShowSelectionControls(true)
+                                .MaxDisplayedTags(config.MaxDisplayTags)
+                                .Disabled(config.Disabled)
+                ).CssClass(config.CssClass);
         }
 
         public static void AddCustomFormDateBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
