@@ -119,13 +119,22 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                         .ValidationMessagePosition(Position.Bottom)).CssClass(cssClass);
         }
 
-        public static void AddCustomFormSwitch<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, bool disabled = false)
+        public static void AddCustomFormSwitch<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string cssClass = "", bool disabled = false)
         {
             factory.AddSimpleFor(expression)
                     .Editor(e => e.Switch()
                                     .Disabled(disabled)
                                     .ValidationMessageMode(ValidationMessageMode.Always)
-                                    .ValidationMessagePosition(Position.Bottom));
+                                    .ValidationMessagePosition(Position.Bottom)).CssClass(cssClass);
+        }
+
+        public static void AddCustomFormCheckbox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string cssClass = "", bool disabled = false)
+        {
+            factory.AddSimpleFor(expression)
+                    .Editor(e => e.CheckBox()
+                                    .Disabled(disabled)
+                                    .ValidationMessageMode(ValidationMessageMode.Always)
+                                    .ValidationMessagePosition(Position.Bottom)).CssClass(cssClass);
         }
 
     }
