@@ -111,7 +111,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                                 .LoadAction(config.DBSourceAction)
                                                 .LoadMode(config.LoadMode)
                                                 .Key(config.KeyField))
-                                .Height(config.Height)
+                                .Height(40)
                                 .DisplayExpr(config.DisplayField)
                                 .OnValueChanged(config.ValueChangeCallBack)
                                 .ValidationMessageMode(ValidationMessageMode.Always)
@@ -120,7 +120,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                 .ShowSelectionControls(true)
                                 .MaxDisplayedTags(config.MaxDisplayTags)
                                 .Disabled(config.Disabled)
-                ).CssClass(config.CssClass);
+                ).CssClass($"my-2 {config.CssClass}");
         }
 
         public static void AddCustomFormDateBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
