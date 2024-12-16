@@ -1,4 +1,5 @@
 ﻿using ATA.Bluebook.Web.Common.Constants;
+using ATA.Bluebook.Web.Models.User;
 using System.ComponentModel.DataAnnotations;
 
 namespace ATA.Bluebook.Web.Models
@@ -19,11 +20,11 @@ namespace ATA.Bluebook.Web.Models
     public class UserAccountDetailVM
     {
         public UserAccountDetailFormVM? form { get; set; }
-        public int UserType { get; set; }
+        public UserType UserType { get; set; }
 
         public UserAccountDetailVM() { }
 
-        public UserAccountDetailVM(int userType)
+        public UserAccountDetailVM(UserType userType)
         {
             UserType = userType;
         }
@@ -34,4 +35,6 @@ namespace ATA.Bluebook.Web.Models
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
     }
+
+   
 }

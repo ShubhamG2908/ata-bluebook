@@ -22,7 +22,7 @@
             for (int i = 0; i < Model.Steps.Count; i++)
             {
                 <div class="content" role="tabpanel" id="step-l-@(i + 1)" aria-labelledby="@(string.Concat(Model.StepperId, "trigger", i + 1))">
-                    <partial name="@(Model.Steps[i].FormName)"></partial>
+                    <partial name="@(Model.Steps[i].FormName)" model="Model.PageModel"></partial>
                 </div>
             }
         }

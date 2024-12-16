@@ -1,0 +1,22 @@
+﻿@{
+    var model = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Next",
+        PreviousBtnClickHandler = "handlePrevious",
+        NextBtnClickHandler = "handleNext"
+    };
+}
+<div>
+    User type selection will be here
+    @(await Html.PartialAsync("_StepperButtons", model))
+</div>
+<script>
+    function handlePrevious() {
+        stepper.previous();
+    }
+
+    function handleNext() {
+        stepper.next()
+    }
+</script>

@@ -1,0 +1,25 @@
+﻿@{
+    var stepperButton = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Done",
+        PreviousBtnClickHandler = "handlePrevious",
+        NextBtnClickHandler = "handleNext"
+    };
+}
+<div>
+    User Form submitted
+</div>
+<div>
+    @(await Html.PartialAsync("_StepperButtons", stepperButton))
+</div>
+
+<script>
+    function handlePrevious() {
+        stepper.previous();
+    }
+
+    function handleNext() {
+        stepper.next()
+    }
+</script>

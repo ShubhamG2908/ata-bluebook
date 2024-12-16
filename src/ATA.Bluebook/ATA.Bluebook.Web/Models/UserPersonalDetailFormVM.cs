@@ -26,16 +26,4 @@ namespace ATA.Bluebook.Web.Models
         bool IsActive
     );
 
-    public class UserPersonalDetailVM
-    {
-        public UserPersonalDetailFormVM? form { get; set; }
-        public int UserType { get; set; }
-
-        public UserPersonalDetailVM() { }
-
-        public UserPersonalDetailVM(int userType)
-        {
-            UserType = userType;
-        }
-    }
 }
