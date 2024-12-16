@@ -1,8 +1,8 @@
-﻿using ATA.Bluebook.Web.Models;
-using DevExtreme.AspNet.Data.ResponseModel;
+﻿using DevExtreme.AspNet.Data.ResponseModel;
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
+using ATA.Bluebook.Web.Models.User;
 
 namespace ATA.Bluebook.Web.Controllers
 {
