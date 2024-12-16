@@ -1,22 +1,45 @@
-﻿@{
-    var model = new StepperButtonModel
-    {
-        PreviousLabel = "Previous",
-        NextLabel = "Next",
-        PreviousBtnClickHandler = "handleUserTypePrevious",
-        NextBtnClickHandler = "handleUserTypeNext"
-    };
+﻿@model UserFormPageModel
+@{
+	var model = new StepperButtonModel
+			{
+				PreviousLabel = "Previous",
+				NextLabel = "Next",
+				PreviousBtnClickHandler = "handleUserTypePrevious",
+				NextBtnClickHandler = "handleUserTypeNext"
+			};
+
+	SelectionControlConfig selectionConfig = new()
+			{
+				DbSourceController = "Users",
+				DBSourceAction = "UserTypeList",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "UserTypeSelectionChanged"
+			};
 }
 <div>
-    User type selection will be here
-    @(await Html.PartialAsync("_StepperButtons", model))
+	@(
+		Html.DevExtreme()
+		.Form<UserTypeDetailForm>()
+		.ColCount(2)
+		.FormData(Model.UserTypeForm)
+		.Items(item =>
+		{
+			item.AddCustomFormSelectBox(x => x.UserType, selectionConfig);
+		})
+	)
+	@(await Html.PartialAsync("_StepperButtons", model))
 </div>
 <script>
-    function handleUserTypePrevious() {
-        stepper.previous();
-    }
+	function handleUserTypePrevious() {
+		stepper.previous();
+	}
 
-    function handleUserTypeNext() {
-        stepper.next()
-    }
+	function handleUserTypeNext() {
+		stepper.next();
+	}
+
+	function UserTypeSelectionChanged(e) {
+
+	}
 </script>

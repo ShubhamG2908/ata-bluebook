@@ -1,9 +1,9 @@
 ﻿@model StepperPageModel
 
 <div class="row mt-2">
-    <div class="col-2">
+    @* <div class="col-2">
         <partial name="_Sidebar"></partial>
-    </div>
+    </div> *@
     <div class="col">
         @(await Html.PartialAsync("_StepperForm", Model))
     </div>
