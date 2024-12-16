@@ -5,9 +5,9 @@ namespace ATA.Bluebook.Web.Models.User
 {
     public class UserFormPageModel
     {
-        public UserType UserType { get; set; }
         public UserPersonalDetailForm PersonalDetailForm { get; set; } = default!;
         public UserAccountDetailForm AccountDetailForm { get; set; } = default!;
+        public UserTypeDetailForm UserTypeForm { get; set; } = new UserTypeDetailForm();
     }
 
     public enum UserType
@@ -17,6 +17,18 @@ namespace ATA.Bluebook.Web.Models.User
     }
 
     public class ClientSelectionModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+    }
+
+    public class UserTypeDetailForm
+    {
+        [Required]
+        public UserType UserType { get; set; } = UserType.Client;
+    };
+
+    public class CommonUserFormSelectonModel
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

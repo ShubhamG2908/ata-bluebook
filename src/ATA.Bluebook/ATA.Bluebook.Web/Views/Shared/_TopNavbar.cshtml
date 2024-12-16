@@ -31,8 +31,31 @@
                     <li class="nav-item">
                         <a asp-controller="Reports" class="nav-link @Html.GetActiveRouteClassName("Reports")">Reports</a>
                     </li>
-                    <li class="nav-item">
+                    @* <li class="nav-item">
                         <a asp-controller="Settings" class="nav-link @Html.GetActiveRouteClassName("Settings")">Advance Settings</a>
+                    </li> *@
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Advance Settings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("Users")" asp-controller="Settings" asp-action="Users">Users</a></li>
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("ListName")" asp-controller="Settings" asp-action="ListName">List Name</a></li>
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("QuickCostDataEntry")" asp-controller="Settings" asp-action="QuickCostDataEntry">Quick Cost Data Entry</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#moreAdvMenu" role="button" aria-expanded="false" aria-controls="moreAdvMenu">
+                            Advance Settings
+                        </a>
+                        <div class="collapse" id="moreAdvMenu">
+                            <ul class="list-unstyled">
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("Users")" asp-controller="Settings" asp-action="Users">Users</a></li>
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("ListName")" asp-controller="Settings" asp-action="ListName">List Name</a></li>
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("QuickCostDataEntry")" asp-controller="Settings" asp-action="QuickCostDataEntry">Quick Cost Data Entry</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item dropdown d-none d-md-block">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

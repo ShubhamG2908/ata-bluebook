@@ -14,14 +14,14 @@
         {
             PreviousLabel = "Previous",
             NextLabel = "Next",
-            PreviousBtnClickHandler = "handlePrevious",
-            NextBtnClickHandler = "handleNext"
+            PreviousBtnClickHandler = "handleUserAccountStepPrevious",
+            NextBtnClickHandler = "handleUserAccountStepNext"
         };
     }
     @(
         Html.DevExtreme()
         .Form<UserAccountDetailForm>()
-        .OnInitialized("onInitialized")
+        .OnInitialized("onUserAccountDetailInitialized")
         .ColCount(2)
         .FormData(Model.AccountDetailForm)
         .Items(item =>
@@ -30,11 +30,11 @@
             item.AddCustomFormTextBox(x => x.UserName);
             item.AddCustomFormPassword(x => x.Password);
             item.AddCustomFormTextBox(x => x.FullName);
-            if (Model.UserType == UserType.Client)        // User Type = Client
+            if (Model.UserTypeForm.UserType == UserType.Client)        // User Type = Client
             {
                 item.AddCustomFormTextBox(x => x.ClientId);
             }
-            if (Model.UserType == UserType.Agency)        // User Type = Agency
+            if (Model.UserTypeForm.UserType == UserType.Agency)        // User Type = Agency
             {
                 item.AddCustomFormTextBox(x => x.AgencyId);
                 item.AddCustomFormTagBox(m => m.ClientList, tagConfig);
@@ -48,7 +48,7 @@
 <script>
     let formInstance;
 
-    function onInitialized(e) {
+    function onUserAccountDetailInitialized(e) {
         formInstance = e.component;
     }
 
@@ -72,11 +72,11 @@
 
     function ClientSelectionChanged(e) {
     }
-    function handlePrevious() {
+    function handleUserAccountStepPrevious() {
         stepper.previous();
     }
 
-    function handleNext() {
+    function handleUserAccountStepNext() {
         stepper.next()
     }
 </script>

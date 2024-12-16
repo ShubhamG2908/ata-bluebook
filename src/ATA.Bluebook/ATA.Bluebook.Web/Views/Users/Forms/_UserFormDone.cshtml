@@ -3,8 +3,8 @@
     {
         PreviousLabel = "Previous",
         NextLabel = "Done",
-        PreviousBtnClickHandler = "handlePrevious",
-        NextBtnClickHandler = "handleNext"
+        PreviousBtnClickHandler = "handleFormDoneStepPrevious",
+        NextBtnClickHandler = "handleFormDoneStepNext"
     };
 }
 <div>
@@ -15,11 +15,11 @@
 </div>
 
 <script>
-    function handlePrevious() {
+    function handleFormDoneStepPrevious() {
         stepper.previous();
     }
 
-    function handleNext() {
+    function handleFormDoneStepNext() {
         stepper.next()
     }
 </script>

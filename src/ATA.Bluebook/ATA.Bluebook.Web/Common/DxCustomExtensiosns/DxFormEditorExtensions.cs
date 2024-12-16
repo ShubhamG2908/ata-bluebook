@@ -83,24 +83,25 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                     });
         }
 
-        public static void AddCustomFormSelectBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string controller, string action, string keyField, string displayField, string valueChangeCallBack, DataSourceLoadMode loadMode = DataSourceLoadMode.Raw, bool searchEnable = true)
+        public static void AddCustomFormSelectBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, SelectionControlConfig config)
         {
             factory.AddSimpleFor(expression)
                 .Editor(e => e.SelectBox()
-                                .ValueExpr(keyField)
+                                .ValueExpr(config.KeyField)
                                 .DataSource(d => d.Mvc()
-                                                .Controller(controller)
-                                                .LoadAction(action)
-                                                .LoadMode(loadMode)
-                                                .Key(keyField))
+                                                .Controller(config.DbSourceController)
+                                                .LoadAction(config.DBSourceAction)
+                                                .LoadMode(config.LoadMode)
+                                                .Key(config.KeyField))
                                 .Height(40)
-                                .DisplayExpr(displayField)
-                                .OnValueChanged(valueChangeCallBack)
+                                .DisplayExpr(config.DisplayField)
+                                .OnValueChanged(config.ValueChangeCallBack)
                                 .ValidationMessageMode(ValidationMessageMode.Always)
                                 .ValidationMessagePosition(Position.Bottom)
-                                .SearchEnabled(searchEnable)
+                                .SearchEnabled(config.SeachEnabled)
                 );
         }
+
         public static void AddCustomFormTagBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, TagControlConfig config)
         {
             factory.AddSimpleFor(expression)
