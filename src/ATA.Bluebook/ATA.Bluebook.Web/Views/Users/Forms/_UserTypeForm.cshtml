@@ -3,8 +3,8 @@
     {
         PreviousLabel = "Previous",
         NextLabel = "Next",
-        PreviousBtnClickHandler = "handlePrevious",
-        NextBtnClickHandler = "handleNext"
+        PreviousBtnClickHandler = "handleUserTypePrevious",
+        NextBtnClickHandler = "handleUserTypeNext"
     };
 }
 <div>
@@ -12,11 +12,11 @@
     @(await Html.PartialAsync("_StepperButtons", model))
 </div>
 <script>
-    function handlePrevious() {
+    function handleUserTypePrevious() {
         stepper.previous();
     }
 
-    function handleNext() {
+    function handleUserTypeNext() {
         stepper.next()
     }
 </script>

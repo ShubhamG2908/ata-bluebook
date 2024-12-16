@@ -4,8 +4,8 @@
     {
         PreviousLabel = "Previous",
         NextLabel = "Next",
-        PreviousBtnClickHandler = "handlePrevious",
-        NextBtnClickHandler = "handleNext"
+		PreviousBtnClickHandler = "handlePersonalDetailStepPrevious",
+		NextBtnClickHandler = "handlePersonalDetailStepNext"
     };
 }
 <div>
@@ -40,15 +40,14 @@
 	function onPersonalDetailFormInitialized(e) {
 		personalDetailForm = e.component;
 	}
-    function handlePrevious() {
-        stepper.previous();
+	function handlePersonalDetailStepPrevious() {
+		stepper.previous();
     }
 
-    function handleNext() {
+    function handlePersonalDetailStepNext() {
 		const validationStatus = personalDetailForm.validate();
 		if(validationStatus.isValid) {
-
+			stepper.next()
 		}
-        stepper.next()
     }
 </script>
