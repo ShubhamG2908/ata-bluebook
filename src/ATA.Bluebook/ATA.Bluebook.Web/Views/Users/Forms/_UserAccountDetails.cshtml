@@ -1,82 +1,43 @@
 ﻿@model UserFormPageModel
 
 <div>
-    @{
-        TagControlConfig tagConfig = new()
-        {
-            DbSourceController = "Settings",
-            DBSourceAction = "GetClientList",
-            KeyField = "Id",
-            DisplayField = "Name",
-            ValueChangeCallBack = "ClientSelectionChanged"
-        };
-        var stepperButton = new StepperButtonModel
-        {
-            PreviousLabel = "Previous",
-            NextLabel = "Next",
-            PreviousBtnClickHandler = "handleUserAccountStepPrevious",
-            NextBtnClickHandler = "handleUserAccountStepNext"
-        };
-    }
-    @(
-        Html.DevExtreme()
-        .Form<UserAccountDetailForm>()
-        .OnInitialized("onUserAccountDetailInitialized")
-        .ColCount(2)
-        .FormData(Model.AccountDetailForm)
-        .Items(item =>
-        {
-            item.AddCustomFormTextBox(x => x.Email);
-            item.AddCustomFormTextBox(x => x.UserName);
-            item.AddCustomFormPassword(x => x.Password);
-            item.AddCustomFormTextBox(x => x.FullName);
-            if (Model.UserTypeForm.UserType == UserType.Client)        // User Type = Client
-            {
-                item.AddCustomFormTextBox(x => x.ClientId);
-            }
-            if (Model.UserTypeForm.UserType == UserType.Agency)        // User Type = Agency
-            {
-                item.AddCustomFormTextBox(x => x.AgencyId);
-                item.AddCustomFormTagBox(m => m.ClientList, tagConfig);
-            }
-        })
-        )
+	@{
+		TagControlConfig tagConfig = new()
+			{
+				DbSourceController = "Settings",
+				DBSourceAction = "GetClientList",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "ClientSelectionChanged"
+			};
+		var stepperButton = new StepperButtonModel
+			{
+				PreviousLabel = "Previous",
+				NextLabel = "Next",
+				PreviousBtnClickHandler = "handleUserAccountStepPrevious",
+				NextBtnClickHandler = "handleUserAccountStepNext"
+			};
+	}
+	@(
+		Html.DevExtreme()
+		.Form<UserAccountDetailForm>()
+		.OnInitialized("onUserAccountDetailInitialized")
+		.ColCount(2)
+		.FormData(Model.AccountDetailForm)
+		.Items(item =>
+		{
+			item.AddCustomFormTextBox(x => x.Email);
+			item.AddCustomFormTextBox(x => x.UserName);
+			item.AddCustomFormPassword(x => x.Password);
+			item.AddCustomFormTextBox(x => x.FullName);
+			item.AddCustomFormTextBox(x => x.ClientId);
+			item.AddCustomFormTextBox(x => x.AgencyId);
+			item.AddCustomFormTagBox(m => m.ClientList, tagConfig);
+		})
+		)
 </div>
 <div>
-    @(await Html.PartialAsync("_StepperButtons", stepperButton))
+	@(await Html.PartialAsync("_StepperButtons", stepperButton))
 </div>
 <script>
-    let formInstance;
-
-    function onUserAccountDetailInitialized(e) {
-        formInstance = e.component;
-    }
-
-    // Temperory put this code here. make centrolize this code after finalize all things.
-    function changePasswordMode(name, iconId) {
-        let editor = formInstance.getEditor(name);
-
-        if (!editor)
-            return;
-
-        editor.option('mode', editor.option('mode') === 'text' ? 'password' : 'text');
-
-        let iconElement = $(`#${iconId}`).find("i");
-
-        if (!iconElement)
-            return;
-
-        iconElement.toggleClass("dx-icon-eyeopen");
-        iconElement.toggleClass("dx-icon-eyeclose")
-    }
-
-    function ClientSelectionChanged(e) {
-    }
-    function handleUserAccountStepPrevious() {
-        stepper.previous();
-    }
-
-    function handleUserAccountStepNext() {
-        stepper.next()
-    }
 </script>

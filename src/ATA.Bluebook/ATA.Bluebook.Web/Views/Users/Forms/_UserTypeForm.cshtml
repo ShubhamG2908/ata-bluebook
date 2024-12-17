@@ -21,6 +21,7 @@
 	@(
 		Html.DevExtreme()
 		.Form<UserTypeDetailForm>()
+		.OnInitialized("onUserTypeFormInitialized")
 		.ColCount(2)
 		.FormData(Model.UserTypeForm)
 		.Items(item =>
@@ -30,16 +31,3 @@
 	)
 	@(await Html.PartialAsync("_StepperButtons", model))
 </div>
-<script>
-	function handleUserTypePrevious() {
-		stepper.previous();
-	}
-
-	function handleUserTypeNext() {
-		stepper.next();
-	}
-
-	function UserTypeSelectionChanged(e) {
-
-	}
-</script>

@@ -24,30 +24,12 @@
 				item.AddCustomFormTextBox(x => x.State);
 				item.AddCustomFormTextBox(x => x.Contact);
 				item.AddCustomFormTextBox(x => x.Email);
-				if(Model.UserTypeForm.UserType == UserType.Client) {		
-					item.AddCustomFormTextBox(x => x.ClosedCode);
-					item.AddCustomFormTextBox(x => x.CloseDays);
-					item.AddCustomFormTextBox(x => x.WhiteMailCode);
-				}
+				item.AddCustomFormTextBox(x => x.ClosedCode);
+				item.AddCustomFormTextBox(x => x.CloseDays);
+				item.AddCustomFormTextBox(x => x.WhiteMailCode);
 			})
 )
 </div>
 <div>
     @(await Html.PartialAsync("_StepperButtons", stepperButton))
 </div>
-<script>
-	let personalDetailForm
-	function onPersonalDetailFormInitialized(e) {
-		personalDetailForm = e.component;
-	}
-	function handlePersonalDetailStepPrevious() {
-		stepper.previous();
-    }
-
-    function handlePersonalDetailStepNext() {
-		const validationStatus = personalDetailForm.validate();
-		if(validationStatus.isValid) {
-			stepper.next()
-		}
-    }
-</script>

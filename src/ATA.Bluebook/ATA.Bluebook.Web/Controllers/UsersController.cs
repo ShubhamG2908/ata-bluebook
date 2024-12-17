@@ -31,6 +31,16 @@ namespace ATA.Bluebook.Web.Controllers
             return DataSourceLoader.Load(list, loadOptions);
         }
 
+        [HttpPost]
+        public JsonResult CreateUser(UserFormPageModel formPageModel)
+        {
+            Console.WriteLine(formPageModel);
+
+            // Create User Logic Here
+            
+            return Json(formPageModel);
+        }
+
         #region Private Methods
         private static StepperPageModel Stepper() =>
             new()

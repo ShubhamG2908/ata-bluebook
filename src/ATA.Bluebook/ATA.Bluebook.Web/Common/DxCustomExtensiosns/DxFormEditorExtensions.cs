@@ -133,13 +133,13 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                             .ValidationMessagePosition(Position.Bottom));
         }
 
-        public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string cssClass = "")
+        public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
         {
 
             factory.AddSimpleFor(expression)
                 .Editor(e => e.TextArea()
                                         .ValidationMessageMode(ValidationMessageMode.Always)
-                                        .ValidationMessagePosition(Position.Bottom)).CssClass(cssClass);
+                                        .ValidationMessagePosition(Position.Bottom)).CssClass("my-2");
         }
 
         public static void AddCustomFormSwitch<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string cssClass = "", bool disabled = false)

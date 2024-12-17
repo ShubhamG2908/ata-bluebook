@@ -13,13 +13,3 @@
 <div>
     @(await Html.PartialAsync("_StepperButtons", stepperButton))
 </div>
-
-<script>
-    function handleFormDoneStepPrevious() {
-        stepper.previous();
-    }
-
-    function handleFormDoneStepNext() {
-        stepper.next()
-    }
-</script>
