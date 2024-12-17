@@ -1,0 +1,78 @@
+﻿@model JobFormPageModel
+@{
+	var stepperButtonModel = new StepperButtonModel
+			{
+				PreviousLabel = "Previous",
+				NextLabel = "Next",
+				PreviousBtnClickHandler = "handleUserTypePrevious",
+				NextBtnClickHandler = "handleUserTypeNext",
+				DisplayPreviousButton = false
+			};
+}
+
+<div>
+	<div>
+		@(
+				Html.DevExtreme()
+				.Form<JobDetailsForm>()
+				.OnInitialized("onJobDetailsFormInitialized")
+				.FormData(Model.JobDetailsForm)
+				.Items(item =>
+				{
+					item.AddGroup()
+					.Caption("Job Details")
+					.ColCount(3)
+					.Items(groupItem =>
+					{
+						groupItem.AddCustomFormTextBox(m => m.JobId);
+						groupItem.AddCustomFormTextBox(m => m.JobName);
+						groupItem.AddCustomFormTextBox(m => m.JobType);
+					});
+					item.AddGroup()
+					.Caption("Projections")
+					.ColCount(3)
+					.Items(groupItem =>
+					{
+						groupItem.AddCustomFormDateBox(m => m.FirstMailDate);
+						groupItem.AddCustomFormDateBox(m => m.EndMailDate);
+						groupItem.AddCustomFormTextBox(m => m.EstimatedQty);
+						groupItem.AddCustomFormTextBox(m => m.EstIncPerPiece);
+						groupItem.AddCustomFormTextBox(m => m.EstCostPerPiece);
+					});
+					item.AddGroup()
+					.Caption("Information")
+					.ColCount(3)
+					.Items(groupItem =>
+					{
+						groupItem.AddCustomFormTextBox(m => m.Issue);
+						groupItem.AddCustomFormTextBox(m => m.Technique);
+						groupItem.AddCustomFormTextBox(m => m.Copywriter);
+						groupItem.AddCustomFormTextBox(m => m.Coordinator);
+						groupItem.AddCustomFormTextBox(m => m.PackageSize);
+						groupItem.AddCustomFormTextBox(m => m.Status);
+					});
+					item.AddGroup()
+					.Caption("Coding")
+					.ColCount(3)
+					.Items(groupItem =>
+					{
+						groupItem.AddCustomFormTextBox(m => m.PackageCode);
+						groupItem.AddCustomFormTextBox(m => m.Agency);
+						groupItem.AddCustomFormTextBox(m => m.CostComplete);
+						groupItem.AddCustomFormTextBox(m => m.CostEstimateOk);
+						groupItem.AddGroup().ColCount(2).Items(innerGroupItem =>
+						{
+						innerGroupItem.AddCustomFormCheckbox(m => m.DollarBills);
+						innerGroupItem.AddCustomFormCheckbox(m => m.NoInvoice);
+						});
+						groupItem.AddCustomFormTextBox(m => m.FundCode);
+					});
+					item.AddCustomFormTextArea(m => m.JobDetails);
+					item.AddCustomFormTextArea(m => m.Instructions);
+				})
+				)
+	</div>
+	<div>
+		@(await Html.PartialAsync("_StepperButtons", stepperButtonModel))
+	</div>
+</div>

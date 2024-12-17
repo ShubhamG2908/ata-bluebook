@@ -130,7 +130,8 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                 .Editor(e => e.DateBox()
                             .Height(40)
                             .ValidationMessageMode(ValidationMessageMode.Always)
-                            .ValidationMessagePosition(Position.Bottom));
+                            .ValidationMessagePosition(Position.Bottom))
+                            .CssClass("my-2");
         }
 
         public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
@@ -157,7 +158,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                     .Editor(e => e.CheckBox()
                                     .Disabled(disabled)
                                     .ValidationMessageMode(ValidationMessageMode.Always)
-                                    .ValidationMessagePosition(Position.Bottom)).CssClass(cssClass);
+                                    .ValidationMessagePosition(Position.Bottom)).CssClass($"my-2 {cssClass}");
         }
 
     }
