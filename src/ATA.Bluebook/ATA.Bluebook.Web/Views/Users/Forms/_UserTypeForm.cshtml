@@ -5,7 +5,8 @@
 				PreviousLabel = "Previous",
 				NextLabel = "Next",
 				PreviousBtnClickHandler = "handleUserTypePrevious",
-				NextBtnClickHandler = "handleUserTypeNext"
+				NextBtnClickHandler = "handleUserTypeNext",
+				DisplayPreviousButton = false
 			};
 
 	SelectionControlConfig selectionConfig = new()
@@ -18,16 +19,18 @@
 			};
 }
 <div>
+	<div class="m-auto w-50">
 	@(
 		Html.DevExtreme()
 		.Form<UserTypeDetailForm>()
 		.OnInitialized("onUserTypeFormInitialized")
-		.ColCount(2)
+		.ColCount(1)
 		.FormData(Model.UserTypeForm)
 		.Items(item =>
 		{
 			item.AddCustomFormSelectBox(x => x.UserType, selectionConfig);
 		})
 	)
+	</div>
 	@(await Html.PartialAsync("_StepperButtons", model))
 </div>

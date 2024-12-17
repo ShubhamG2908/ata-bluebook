@@ -48,7 +48,7 @@ namespace ATA.Bluebook.Web.Controllers
                 StepperId = "UserFormStepper",
                 Steps = [
                     new StepperModel {
-                        Label = "Select user type",
+                        Label = "Select User Type",
                         FormName = "Forms/_UserTypeForm",
                     },
                     new StepperModel {
@@ -60,7 +60,7 @@ namespace ATA.Bluebook.Web.Controllers
                         FormName = "Forms/_UserAccountDetails"
                     },
                     new StepperModel {
-                        Label = "Done",
+                        Label = "Submit",
                         FormName = "Forms/_UserFormDone"
                     }
                 ],

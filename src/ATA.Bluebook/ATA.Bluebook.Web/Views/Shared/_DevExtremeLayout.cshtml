@@ -22,7 +22,7 @@
 
     <link href="~/css/devextreme/bootstrap.css" rel="stylesheet" />
     <link href="~/css/devextreme/bs-stepper.min.css" rel="stylesheet" />
-    <link href="~/css/site.v1.0.css" rel="stylesheet" />
+    <link href="~/css/site.v1.1.css" rel="stylesheet" />
 
     @* Predefined themes: https://js.devexpress.com/DevExtreme/Guide/Themes_and_Styles/Predefined_Themes/ *@
     <link href="~/css/devextreme/dx.fluent.blue.light.css" rel="stylesheet" />
@@ -72,6 +72,12 @@
     <main>
         @RenderBody()
     </main>
+
+    <footer class="bg-body-tertiary text-center py-3 footer-container">
+        <div class="container">
+            <p class="mb-0">The Bluebook System vX.00.02 © Copyright @DateTime.Now.Year</p>
+        </div>
+    </footer>
 
 </body>
 </html>

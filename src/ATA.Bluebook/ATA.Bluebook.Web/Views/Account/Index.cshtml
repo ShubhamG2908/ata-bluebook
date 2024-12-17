@@ -1,13 +1,16 @@
 ﻿@model LoginModelRecord
 
-<div class="bg-body-tertiary">
-	<div class="justify-content-center login-page px-3">
-		<div class="col-12 col-xl-4 col-lg-6 col-md-9">
-			<div class="card shadow p-3 rounded login-card">
-				<img src="~/images/ATA Logo.jpg" class="card-img-top p-3" alt="">
-				<div class="card-body">
-					<partial name="Forms/_LoginForm"></partial>
+
+<div class="justify-content-center login-page px-3">
+	<div class="col-12 col-xl-4 col-lg-6 col-md-9">
+		<div class="card shadow bg-body-tertiary p-3 rounded login-card">
+			@* <img src="~/images/a_transparent.png" class="card-img-top p-3" alt=""> *@
+			<img src="~/images/a_logo.png" class="card-img-top p-3 mx-auto login-page-header-img" alt="">
+			<div class="card-body">
+				<div class="text-center">
+					<h3>Login</h3>
 				</div>
+				<partial name="Forms/_LoginForm"></partial>
 			</div>
 		</div>
 	</div>
