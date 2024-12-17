@@ -1,0 +1,17 @@
+﻿@{
+    var stepperButton = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Done",
+        PreviousBtnClickHandler = "handleFormDoneStepPrevious",
+        NextBtnClickHandler = "handleFormDoneStepNext"
+    };
+}
+<div>    
+    <h3>
+        Permissions Page will be here... 
+    </h3>
+</div>
+<div>
+    @(await Html.PartialAsync("_StepperButtons", stepperButton))
+</div>

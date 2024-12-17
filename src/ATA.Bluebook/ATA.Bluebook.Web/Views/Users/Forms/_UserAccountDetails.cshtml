@@ -1,0 +1,44 @@
+﻿@model UserFormPageModel
+
+<div>
+	@{
+		TagControlConfig tagConfig = new()
+			{
+				DbSourceController = "Settings",
+				DBSourceAction = "GetClientList",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "ClientSelectionChanged",
+				MaxDisplayTags = 5
+			};
+		var stepperButton = new StepperButtonModel
+			{
+				PreviousLabel = "Previous",
+				NextLabel = "Next",
+				PreviousBtnClickHandler = "handleUserAccountStepPrevious",
+				NextBtnClickHandler = "handleUserAccountStepNext"
+			};
+	}
+	@(
+		Html.DevExtreme()
+		.Form<UserAccountDetailForm>()
+		.OnInitialized("onUserAccountDetailInitialized")
+		.ColCount(2)
+		.FormData(Model.AccountDetailForm)
+		.Items(item =>
+		{
+			item.AddCustomFormTextBox(x => x.Email);
+			item.AddCustomFormTextBox(x => x.UserName);
+			item.AddCustomFormPassword(x => x.Password);
+			item.AddCustomFormTextBox(x => x.FullName);
+			item.AddCustomFormTextBox(x => x.ClientId);
+			item.AddCustomFormTextBox(x => x.AgencyId);
+			item.AddCustomFormTagBox(m => m.ClientList, tagConfig);
+		})
+		)
+</div>
+<div>
+	@(await Html.PartialAsync("_StepperButtons", stepperButton))
+</div>
+<script>
+</script>

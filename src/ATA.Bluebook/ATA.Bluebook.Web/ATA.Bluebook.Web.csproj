@@ -10,5 +10,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\Email Templates\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 </Project>
