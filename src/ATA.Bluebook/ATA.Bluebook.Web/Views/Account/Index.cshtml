@@ -1,13 +1,13 @@
 ﻿@model LoginModelRecord
 
-<div class="row justify-content-center login-page px-3">
-	<div class="col-12 col-xl-4 col-lg-6 col-md-9">
-		<div class="card shadow p-3 bg-body-tertiary rounded login-card">
-			<div class="card-body">
-				<div class="text-center">
-					<h3>Welcome to ATA Bluebook</h3>
+<div class="bg-body-tertiary">
+	<div class="justify-content-center login-page px-3">
+		<div class="col-12 col-xl-4 col-lg-6 col-md-9">
+			<div class="card shadow p-3 rounded login-card">
+				<img src="~/images/ATA Logo.jpg" class="card-img-top p-3" alt="">
+				<div class="card-body">
+					<partial name="Forms/_LoginForm"></partial>
 				</div>
-				<partial name="Forms/_LoginForm"></partial>
 			</div>
 		</div>
 	</div>
