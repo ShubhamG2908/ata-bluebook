@@ -1,0 +1,15 @@
+﻿@model StepperPageModel
+
+<div class="container">
+	<div class="row mt-4">
+		<div class="card shadow bg-body-tertiary rounded">
+			<div class="card-body">
+				<div class="col">
+					@(await Html.PartialAsync("_StepperForm", Model))
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="~/js/User.js"></script>

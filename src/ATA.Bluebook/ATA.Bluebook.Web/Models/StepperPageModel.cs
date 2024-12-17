@@ -4,6 +4,8 @@
     {
         public string StepperId { get; set; } = default!;
         public List<StepperModel> Steps { get; set; } = [];
+        public object PageModel { get; set; } = default!;
+
     }
 
     public class StepperModel

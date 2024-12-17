@@ -4,7 +4,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="/">ATA Bluebook Web</a>
+        <a class="navbar-brand" href="/">
+            <img src="~/images/a_logo.png" alt="Bootstrap" width="30" height="24">
+        </a>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -31,6 +33,32 @@
                     <li class="nav-item">
                         <a asp-controller="Reports" class="nav-link @Html.GetActiveRouteClassName("Reports")">Reports</a>
                     </li>
+                    @* <li class="nav-item">
+                        <a asp-controller="Settings" class="nav-link @Html.GetActiveRouteClassName("Settings")">Advance Settings</a>
+                    </li> *@
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Advance Settings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("Users")" asp-controller="Settings" asp-action="Users">Users</a></li>
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("ListName")" asp-controller="Settings" asp-action="ListName">List Name</a></li>
+                            <li><a class="dropdown-item @Html.GetActiveRouteClassName("QuickCostDataEntry")" asp-controller="Settings" asp-action="QuickCostDataEntry">Quick Cost Data Entry</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#moreAdvMenu" role="button" aria-expanded="false" aria-controls="moreAdvMenu">
+                            Advance Settings
+                        </a>
+                        <div class="collapse" id="moreAdvMenu">
+                            <ul class="list-unstyled">
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("Users")" asp-controller="Settings" asp-action="Users">Users</a></li>
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("ListName")" asp-controller="Settings" asp-action="ListName">List Name</a></li>
+                                <li><a class="nav-link ps-3 @Html.GetActiveRouteClassName("QuickCostDataEntry")" asp-controller="Settings" asp-action="QuickCostDataEntry">Quick Cost Data Entry</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item dropdown d-none d-md-block">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Settings
@@ -55,9 +83,16 @@
                         </div>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <a asp-controller="Account" asp-action="Logout" class="btn btn-primary">Logout</a>
+                <div class="flex-shrink-0 dropdown d-flex align-items-center">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small shadow profile-dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Log out</a></li>
+                    </ul>
                 </div>
+                
             </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
-﻿using ATA.Bluebook.Web.Models;
+﻿using ATA.Bluebook.Web.Common.DxCustomExtensiosns.Configs;
+using ATA.Bluebook.Web.Models;
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Factories;
@@ -82,23 +83,45 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                     });
         }
 
-        public static void AddCustomFormSelectBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string controller, string action, string keyField, string displayField, string valueChangeCallBack, DataSourceLoadMode loadMode = DataSourceLoadMode.Raw, bool searchEnable = true)
+        public static void AddCustomFormSelectBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, SelectionControlConfig config)
         {
             factory.AddSimpleFor(expression)
                 .Editor(e => e.SelectBox()
-                                .ValueExpr(keyField)
+                                .ValueExpr(config.KeyField)
                                 .DataSource(d => d.Mvc()
-                                                .Controller(controller)
-                                                .LoadAction(action)
-                                                .LoadMode(loadMode)
-                                                .Key(keyField))
+                                                .Controller(config.DbSourceController)
+                                                .LoadAction(config.DBSourceAction)
+                                                .LoadMode(config.LoadMode)
+                                                .Key(config.KeyField))
                                 .Height(40)
-                                .DisplayExpr(displayField)
-                                .OnValueChanged(valueChangeCallBack)
+                                .DisplayExpr(config.DisplayField)
+                                .OnValueChanged(config.ValueChangeCallBack)
                                 .ValidationMessageMode(ValidationMessageMode.Always)
                                 .ValidationMessagePosition(Position.Bottom)
-                                .SearchEnabled(searchEnable)
+                                .SearchEnabled(config.SeachEnabled)
                 );
+        }
+
+        public static void AddCustomFormTagBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, TagControlConfig config)
+        {
+            factory.AddSimpleFor(expression)
+                .Editor(e => e.TagBox()
+                                .ValueExpr(config.KeyField)
+                                .DataSource(d => d.Mvc()
+                                                .Controller(config.DbSourceController)
+                                                .LoadAction(config.DBSourceAction)
+                                                .LoadMode(config.LoadMode)
+                                                .Key(config.KeyField))
+                                .Height(40)
+                                .DisplayExpr(config.DisplayField)
+                                .OnValueChanged(config.ValueChangeCallBack)
+                                .ValidationMessageMode(ValidationMessageMode.Always)
+                                .ValidationMessagePosition(Position.Bottom)
+                                .SearchEnabled(config.SeachEnabled)
+                                .ShowSelectionControls(true)
+                                .MaxDisplayedTags(config.MaxDisplayTags)
+                                .Disabled(config.Disabled)
+                ).CssClass($"my-2 {config.CssClass}");
         }
 
         public static void AddCustomFormDateBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
@@ -110,13 +133,13 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                             .ValidationMessagePosition(Position.Bottom));
         }
 
-        public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string cssClass = "")
+        public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
         {
 
             factory.AddSimpleFor(expression)
                 .Editor(e => e.TextArea()
                                         .ValidationMessageMode(ValidationMessageMode.Always)
-                                        .ValidationMessagePosition(Position.Bottom)).CssClass(cssClass);
+                                        .ValidationMessagePosition(Position.Bottom)).CssClass("my-2");
         }
 
         public static void AddCustomFormSwitch<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, string cssClass = "", bool disabled = false)

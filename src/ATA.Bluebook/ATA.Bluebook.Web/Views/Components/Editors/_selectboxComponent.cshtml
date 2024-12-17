@@ -1,4 +1,14 @@
 ﻿@model SelectionBoxModel
+@{
+	SelectionControlConfig selectionConfig = new()
+			{
+				DbSourceController = "Components",
+				DBSourceAction = "GetGenederSelectionData",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "GenderSelectionChanged"
+			};
+}
 
 <h2>Selection Box</h2>
 
@@ -8,7 +18,7 @@
 		.OnInitialized("onInitialized")
 		.Items(item =>
 		{
-			item.AddCustomFormSelectBox(m => m.GenderId, "Components", "GetGenederSelectionData", "Id", "Name", "GenderSelectionChanged", DataSourceLoadMode.Raw);
+			item.AddCustomFormSelectBox(m => m.GenderId, selectionConfig);
 		}).FormData(Model)
 		)
 </div>
