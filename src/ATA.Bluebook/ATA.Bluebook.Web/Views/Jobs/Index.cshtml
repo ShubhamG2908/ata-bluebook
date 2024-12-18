@@ -1,5 +1,14 @@
-﻿@* @model StepperPageModel
-
-<div>
-    @(await Html.PartialAsync("_StepperForm", Model))
-</div> *@
+﻿<div class="row mt-2">
+    <div class="col">
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-primary me-3 d-flex align-items-center gap-2" asp-controller="Jobs" asp-action="Create">
+                Add Job <i class="dx-icon dx-icon-add"></i>
+            </a>
+        </div>
+        <div>
+            <h1>
+                The job listing grid will be here.
+            </h1>
+        </div>
+    </div>
+</div>
