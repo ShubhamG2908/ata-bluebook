@@ -1,13 +1,11 @@
 ﻿using ATA.Bluebook.Web.Models.DxConfigs;
-
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Builders.DataSources;
 using DevExtreme.AspNet.Mvc.Factories;
-
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
+namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
 {
     public static class DxDataGridExtensions
     {
@@ -27,14 +25,13 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                 builder.Editing(cfg =>
                 {
                     cfg.Mode(GridEditMode.Popup);
-                    cfg.AllowAdding(IsEditActionEnable(gridConfigs.GridEditingConfig.InsertActionName));
-                    cfg.AllowDeleting(IsEditActionEnable(gridConfigs.GridEditingConfig.DeleteActionName));
-                    cfg.AllowUpdating(IsEditActionEnable(gridConfigs.GridEditingConfig.UpdateActionName));
+                    cfg.AllowAdding(gridConfigs.GridEditingConfig.AllowCreateOperation);
+                    cfg.AllowDeleting(gridConfigs.GridEditingConfig.AllowDeleteOperation);
+                    cfg.AllowUpdating(gridConfigs.GridEditingConfig.AllowUpdateOperation);
                     cfg.UseIcons(true);
                     cfg.Popup(pcfg => pcfg.Title(gridConfigs.GridEditingConfig.PopupTitle));
                 });
             }
-
             return builder;
         }
 
@@ -71,19 +68,17 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                 .LoadAction(config.DataSourceConfig.LoadActionName)
                 .Key(config.DataSourceConfig.Key);
 
-            if (IsEditActionEnable(config.GridEditingConfig.UpdateActionName))
+            if (config.GridEditingConfig.AllowUpdateOperation)
                 builder.UpdateAction(config.GridEditingConfig.UpdateActionName);
 
-            if (IsEditActionEnable(config.GridEditingConfig.DeleteActionName))
+            if (config.GridEditingConfig.AllowDeleteOperation)
                 builder.UpdateAction(config.GridEditingConfig.DeleteActionName);
 
-            if (IsEditActionEnable(config.GridEditingConfig.InsertActionName))
+            if (config.GridEditingConfig.AllowCreateOperation)
                 builder.UpdateAction(config.GridEditingConfig.InsertActionName);
 
             return builder;
         }
-
-        private static bool IsEditActionEnable(string actionName) => string.IsNullOrWhiteSpace(actionName);
         #endregion
     }
 }

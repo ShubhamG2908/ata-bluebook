@@ -62,6 +62,10 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public string DeleteActionName { get; set; } = default!;
         public string InsertActionName { get; set; } = default!;
         public string PopupTitle { get; set; } = default!;
+
+        public bool AllowUpdateOperation => !string.IsNullOrWhiteSpace(UpdateActionName);
+        public bool AllowDeleteOperation => !string.IsNullOrWhiteSpace(DeleteActionName);
+        public bool AllowCreateOperation => !string.IsNullOrWhiteSpace(InsertActionName);
     }
 
     public class DxDataGridDataSourceConfig

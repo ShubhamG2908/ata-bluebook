@@ -1,8 +1,27 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
+
+	List<DxDataGridColumnConfig> columnConfigs = new() {
+		new(){ Field = "Username", DataType= GridColumnDataType.String},
+		new(){ Field = "Password", DataType= GridColumnDataType.String},
+		new(){ Field = "Email", DataType= GridColumnDataType.String},
+		new(){ Field = "UserType", DataType= GridColumnDataType.String}
+	};
+
+	DxDataGridConfig gridConfig = new()
+			{
+				Id = "dxc_users",
+				DataSourceConfig = new()
+				{
+					ControllerName = "DxUser",
+					LoadActionName = "Get",
+					Key = "Id"
+				},
+				DisplayRowFilters = true,
+				ShowGroupPanel = true,
+			};
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+	@(Html.AddCustomDxDataGrid<UserModel>(columnConfigs, gridConfig))
 </div>
