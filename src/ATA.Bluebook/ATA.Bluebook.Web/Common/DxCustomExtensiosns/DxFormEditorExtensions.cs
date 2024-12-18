@@ -86,7 +86,9 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
         public static void AddCustomFormSelectBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, SelectionControlConfig config)
         {
             factory.AddSimpleFor(expression)
-                .Editor(e => e.SelectBox()
+                .Editor(e =>
+                {
+                    var control = e.SelectBox()
                                 .ValueExpr(config.KeyField)
                                 .DataSource(d => d.Mvc()
                                                 .Controller(config.DbSourceController)
@@ -95,11 +97,16 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                                 .Key(config.KeyField))
                                 .Height(40)
                                 .DisplayExpr(config.DisplayField)
-                                .OnValueChanged(config.ValueChangeCallBack)
                                 .ValidationMessageMode(ValidationMessageMode.Always)
                                 .ValidationMessagePosition(Position.Bottom)
-                                .SearchEnabled(config.SeachEnabled)
-                ).CssClass($"my-2 {config.CssClass}");
+                                .SearchEnabled(config.SeachEnabled);
+                    if (!string.IsNullOrEmpty(config.ValueChangeCallBack))
+                    {
+                        control.OnValueChanged(config.ValueChangeCallBack);
+                    }
+
+                    return control;
+                }).CssClass($"my-2 {config.CssClass}");
         }
 
         public static void AddCustomFormTagBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, TagControlConfig config)
@@ -134,11 +141,12 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                             .CssClass("my-2");
         }
 
-        public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression)
+        public static void AddCustomFormTextArea<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, TextareaControlConfig config)
         {
 
             factory.AddSimpleFor(expression)
                 .Editor(e => e.TextArea()
+                                        .MinHeight(config.MinHeight)
                                         .ValidationMessageMode(ValidationMessageMode.Always)
                                         .ValidationMessagePosition(Position.Bottom)).CssClass("my-2");
         }

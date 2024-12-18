@@ -8,7 +8,7 @@
 		.Items(item =>
 		{
 			item.AddCustomFormTextBox(m => m.Name);
-			item.AddCustomFormTextArea(m => m.Description);
+			item.AddCustomFormTextArea(m => m.Description, new TextareaControlConfig());
 		}).FormData(Model)
 		)
 </div>

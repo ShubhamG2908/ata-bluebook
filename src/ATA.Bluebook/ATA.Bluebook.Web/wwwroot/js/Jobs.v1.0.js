@@ -17,12 +17,6 @@ function handleJobDetailsNext() {
     }
 }
 
-function onJobTypeChanged(e) { }
-function onPackageSizeChanged(e) { }
-function onIssueSelectionChanged(e) { }
-function onCopywriterSelectionChanged(e) { }
-function onCoordinatorSelectionChanged(e) { }
-
 // ------------------------------------------------------------------------------------
 // Job Events Form 
 function handleJobEventPrevious() {

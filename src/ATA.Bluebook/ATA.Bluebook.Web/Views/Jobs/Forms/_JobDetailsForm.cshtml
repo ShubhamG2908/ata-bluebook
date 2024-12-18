@@ -14,8 +14,7 @@
 				DbSourceController = "Jobs",
 				DBSourceAction = "GetJobTypes",
 				KeyField = "Id",
-				DisplayField = "Name",
-				ValueChangeCallBack = "onJobTypeChanged"
+				DisplayField = "Name"
 			};
 
 	SelectionControlConfig PackageSizeConfig = new SelectionControlConfig()
@@ -23,8 +22,7 @@
 				DbSourceController = "Jobs",
 				DBSourceAction = "GetPackageSizes",
 				KeyField = "Id",
-				DisplayField = "Name",
-				ValueChangeCallBack = "onPackageSizeChanged"
+				DisplayField = "Name"
 			};
 
 	SelectionControlConfig IssueSelectionConfig = new SelectionControlConfig()
@@ -32,8 +30,7 @@
 				DbSourceController = "Jobs",
 				DBSourceAction = "GetIssues",
 				KeyField = "Id",
-				DisplayField = "Name",
-				ValueChangeCallBack = "onIssueSelectionChanged"
+				DisplayField = "Name"
 			};
 
 	SelectionControlConfig CopyWriterSelectionConfig = new SelectionControlConfig()
@@ -41,8 +38,7 @@
 				DbSourceController = "Jobs",
 				DBSourceAction = "GetCopywriter",
 				KeyField = "Id",
-				DisplayField = "Name",
-				ValueChangeCallBack = "onCopywriterSelectionChanged"
+				DisplayField = "Name"
 			};
 
 	SelectionControlConfig CoordinatorSelectionConfig = new SelectionControlConfig()
@@ -50,8 +46,7 @@
 				DbSourceController = "Jobs",
 				DBSourceAction = "GetCoordinator",
 				KeyField = "Id",
-				DisplayField = "Name",
-				ValueChangeCallBack = "onCoordinatorSelectionChanged"
+				DisplayField = "Name"
 			};
 }
 
@@ -112,8 +107,8 @@
 					});
 						groupItem.AddCustomFormTextBox(m => m.FundCode);
 					});
-					item.AddCustomFormTextArea(m => m.JobDetails);
-					item.AddCustomFormTextArea(m => m.Instructions);
+					item.AddCustomFormTextArea(m => m.JobDetails, new TextareaControlConfig());
+					item.AddCustomFormTextArea(m => m.Instructions, new TextareaControlConfig());
 				})
 				)
 	</div>
