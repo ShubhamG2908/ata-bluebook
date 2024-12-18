@@ -53,3 +53,7 @@
 .main-body-margin-bottom { 
     margin-bottom: 70px;
 }
+
+input[type="password"]::-ms-reveal {
+    display: none !important;
+}
