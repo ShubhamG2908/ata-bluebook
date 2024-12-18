@@ -5,6 +5,7 @@ namespace ATA.Bluebook.Web.Common.Constants
 {
     public class JobsConstants
     {
+        // All data is temporary now. We wil get data from database after finalize
         public static readonly List<CommonUserFormSelectonModel> JobTypes = new List<CommonUserFormSelectonModel>
         {
             new CommonUserFormSelectonModel { Id = 1, Name = "Monthly Giving" },
