@@ -8,6 +8,51 @@
 				NextBtnClickHandler = "handleJobDetailsNext",
 				DisplayPreviousButton = false
 			};
+
+	SelectionControlConfig JobTypeConfig = new SelectionControlConfig()
+			{
+				DbSourceController = "Jobs",
+				DBSourceAction = "GetJobTypes",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "onJobTypeChanged"
+			};
+
+	SelectionControlConfig PackageSizeConfig = new SelectionControlConfig()
+			{
+				DbSourceController = "Jobs",
+				DBSourceAction = "GetPackageSizes",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "onPackageSizeChanged"
+			};
+
+	SelectionControlConfig IssueSelectionConfig = new SelectionControlConfig()
+			{
+				DbSourceController = "Jobs",
+				DBSourceAction = "GetIssues",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "onIssueSelectionChanged"
+			};
+
+	SelectionControlConfig CopyWriterSelectionConfig = new SelectionControlConfig()
+			{
+				DbSourceController = "Jobs",
+				DBSourceAction = "GetCopywriter",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "onCopywriterSelectionChanged"
+			};
+
+	SelectionControlConfig CoordinatorSelectionConfig = new SelectionControlConfig()
+			{
+				DbSourceController = "Jobs",
+				DBSourceAction = "GetCoordinator",
+				KeyField = "Id",
+				DisplayField = "Name",
+				ValueChangeCallBack = "onCoordinatorSelectionChanged"
+			};
 }
 
 <div>
@@ -26,7 +71,7 @@
 					{
 						groupItem.AddCustomFormTextBox(m => m.JobId);
 						groupItem.AddCustomFormTextBox(m => m.JobName);
-						groupItem.AddCustomFormTextBox(m => m.JobType);
+						groupItem.AddCustomFormSelectBox(m => m.JobType, JobTypeConfig);
 					});
 					item.AddGroup()
 					.Caption("Projections")
@@ -44,11 +89,11 @@
 					.ColCount(3)
 					.Items(groupItem =>
 					{
-						groupItem.AddCustomFormTextBox(m => m.Issue);
+						groupItem.AddCustomFormSelectBox(m => m.Issue, IssueSelectionConfig);
 						groupItem.AddCustomFormTextBox(m => m.Technique);
-						groupItem.AddCustomFormTextBox(m => m.Copywriter);
-						groupItem.AddCustomFormTextBox(m => m.Coordinator);
-						groupItem.AddCustomFormTextBox(m => m.PackageSize);
+						groupItem.AddCustomFormSelectBox(m => m.Copywriter, CopyWriterSelectionConfig);
+						groupItem.AddCustomFormSelectBox(m => m.Coordinator, CoordinatorSelectionConfig);
+						groupItem.AddCustomFormSelectBox(m => m.PackageSize, PackageSizeConfig);
 						groupItem.AddCustomFormTextBox(m => m.Status);
 					});
 					item.AddGroup()
@@ -61,10 +106,10 @@
 						groupItem.AddCustomFormTextBox(m => m.CostComplete);
 						groupItem.AddCustomFormTextBox(m => m.CostEstimateOk);
 						groupItem.AddGroup().ColCount(2).Items(innerGroupItem =>
-						{
+					{
 						innerGroupItem.AddCustomFormCheckbox(m => m.DollarBills);
 						innerGroupItem.AddCustomFormCheckbox(m => m.NoInvoice);
-						});
+					});
 						groupItem.AddCustomFormTextBox(m => m.FundCode);
 					});
 					item.AddCustomFormTextArea(m => m.JobDetails);

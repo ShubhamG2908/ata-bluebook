@@ -61,6 +61,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 1520;
 }
 
 .active .bs-stepper-circle {
@@ -86,4 +87,8 @@
 
 input[type="password"]::-ms-reveal {
     display: none !important;
+}
+
+.main-header-navbar {
+    z-index: 1520;
 }

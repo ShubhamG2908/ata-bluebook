@@ -99,7 +99,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                 .ValidationMessageMode(ValidationMessageMode.Always)
                                 .ValidationMessagePosition(Position.Bottom)
                                 .SearchEnabled(config.SeachEnabled)
-                );
+                ).CssClass($"my-2 {config.CssClass}");
         }
 
         public static void AddCustomFormTagBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, TagControlConfig config)
