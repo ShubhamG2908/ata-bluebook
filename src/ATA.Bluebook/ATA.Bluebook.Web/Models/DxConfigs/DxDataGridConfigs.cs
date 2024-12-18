@@ -1,4 +1,5 @@
 ﻿using DevExtreme.AspNet.Mvc;
+using DevExtreme.AspNet.Mvc.Builders;
 
 namespace ATA.Bluebook.Web.Models.DxConfigs
 {
@@ -38,7 +39,7 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public int? ColumnHidingPriority { get; set; }
     }
 
-    public class DxDataGridConfig
+    public class DxDataGridConfig<T>
     {
         public DxDataGridConfig()
         {
@@ -52,16 +53,19 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public bool AllowColumnReordering { get; set; } = true;
         public bool AllowColumnHiding { get; set; }
         public bool ShowGroupPanel { get; set; } = false;
-        public DxDataGridEditingConfig GridEditingConfig { get; set; }
+        public DxDataGridEditingConfig<T> GridEditingConfig { get; set; }
     }
 
-    public class DxDataGridEditingConfig
+    public class DxDataGridEditingConfig<T>
     {
         public bool EnableGridEdit { get; set; } = false;
         public string UpdateActionName { get; set; } = default!;
         public string DeleteActionName { get; set; } = default!;
         public string InsertActionName { get; set; } = default!;
         public string PopupTitle { get; set; } = default!;
+        public double? PopupWidth { get; set; }
+        public double? PopupHeight { get; set; }
+        public string? ContentTemplateName { get; set; }
 
         public bool AllowUpdateOperation => !string.IsNullOrWhiteSpace(UpdateActionName);
         public bool AllowDeleteOperation => !string.IsNullOrWhiteSpace(DeleteActionName);
