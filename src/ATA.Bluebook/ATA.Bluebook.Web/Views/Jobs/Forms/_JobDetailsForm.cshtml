@@ -62,8 +62,8 @@
 						groupItem.AddCustomFormTextBox(m => m.CostEstimateOk);
 						groupItem.AddGroup().ColCount(2).Items(innerGroupItem =>
 						{
-						innerGroupItem.AddCustomFormSwitch(m => m.DollarBills);
-						innerGroupItem.AddCustomFormSwitch(m => m.NoInvoice);
+						innerGroupItem.AddCustomFormCheckbox(m => m.DollarBills);
+						innerGroupItem.AddCustomFormCheckbox(m => m.NoInvoice);
 						});
 						groupItem.AddCustomFormTextBox(m => m.FundCode);
 					});

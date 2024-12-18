@@ -1,11 +1,11 @@
-﻿<nav class="navbar navbar-expand-md">
+﻿<nav class="navbar navbar-expand-md border-bottom sticky-top bg-white">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="/">
-            <img src="~/images/a_logo.png" alt="Bootstrap" width="30" height="24">
+        <a class="navbar-brand" href="/Home">
+            <img src="~/images/a_logo.png" alt="Bootstrap" width="40" height="32">
         </a>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -14,9 +14,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a asp-controller="Jobs" class="nav-link @Html.GetActiveRouteClassName("Jobs")">Jobs</a>
+                        <a asp-controller="Jobs" asp-action="Index" class="nav-link @Html.GetActiveRouteClassName("Jobs")">Jobs</a>
                     </li>
                     <li class="nav-item">
                         <a asp-controller="Clients" class="nav-link @Html.GetActiveRouteClassName("Clients")">Clients</a>
@@ -84,8 +84,11 @@
                     </li>
                 </ul>
                 <div class="flex-shrink-0 dropdown d-flex align-items-center">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        @* <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"> *@
+                        <div class="nav-profile-avtar">
+                            JP
+                        </div>
                     </a>
                     <ul class="dropdown-menu text-small shadow profile-dropdown-menu">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
