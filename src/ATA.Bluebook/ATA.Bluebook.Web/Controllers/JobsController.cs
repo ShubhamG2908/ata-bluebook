@@ -1,6 +1,11 @@
 ﻿using ATA.Bluebook.Web.Models;
 using ATA.Bluebook.Web.Models.Jobs;
+using ATA.Bluebook.Web.Models.User;
+using DevExtreme.AspNet.Data.ResponseModel;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
+using ATA.Bluebook.Web.Common.Constants;
 
 namespace ATA.Bluebook.Web.Controllers
 {
@@ -52,5 +57,31 @@ namespace ATA.Bluebook.Web.Controllers
             };
             return View(model);
         }
+
+        public LoadResult GetJobTypes(DataSourceLoadOptions loadOptions)
+        {
+            return DataSourceLoader.Load(JobsConstants.JobTypes, loadOptions);
+        }
+
+        public LoadResult GetPackageSizes(DataSourceLoadOptions loadOptions)
+        {
+            return DataSourceLoader.Load(JobsConstants.PackageSizes, loadOptions);
+        }
+
+        public LoadResult GetIssues(DataSourceLoadOptions loadOptions)
+        {
+            return DataSourceLoader.Load(JobsConstants.JobIssues, loadOptions);
+        }
+
+        public LoadResult GetCopywriter(DataSourceLoadOptions loadOptions)
+        {
+            return DataSourceLoader.Load(JobsConstants.Copywriters, loadOptions);
+        }
+
+        public LoadResult GetCoordinator(DataSourceLoadOptions loadOptions)
+        {
+            return DataSourceLoader.Load(JobsConstants.Coordinators, loadOptions);
+        }
+
     }
 }
