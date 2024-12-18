@@ -1,0 +1,21 @@
+﻿@model JobFormPageModel
+@{
+	var stepperButtonModel = new StepperButtonModel
+			{
+				PreviousLabel = "Previous",
+				NextLabel = "Submit",
+				PreviousBtnClickHandler = "handleJobFilesPrevious",
+				NextBtnClickHandler = "handleJobFilesNext",
+			};
+}
+
+<div>
+	<div>
+		<h1>
+			Job Files Form Here ...
+		</h1>
+	</div>
+	<div>
+		@(await Html.PartialAsync("_StepperButtons", stepperButtonModel))
+	</div>
+</div>

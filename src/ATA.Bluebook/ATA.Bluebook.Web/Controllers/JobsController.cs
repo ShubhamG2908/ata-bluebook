@@ -41,11 +41,11 @@ namespace ATA.Bluebook.Web.Controllers
                     },
                     new StepperModel {
                         Label = "Job Events",
-                        FormName = "Forms/PassForm",
+                        FormName = "Forms/_JobEventsForm",
                     },
                     new StepperModel {
                         Label = "Job Files",
-                        FormName = "Forms/FormSubmitted"
+                        FormName = "Forms/_JobFilesForm"
                     }
                 ],
                 PageModel = new JobFormPageModel()
