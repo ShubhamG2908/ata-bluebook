@@ -1,17 +1,25 @@
-﻿<div class="row mt-2">
-    @* <div class="col-2">
-        <partial name="_Sidebar"></partial>
-    </div> *@
-    <div class="col">
-        <div class="d-flex justify-content-end">
-            <a class="btn btn-primary me-3 d-flex align-items-center gap-2" asp-controller="Users" asp-action="New">
-                Add User <i class="dx-icon dx-icon-add"></i>
-            </a>
-        </div>
-        <div>
-            <h1>
-                The user listing grid will be here.
-            </h1>
-        </div>
-    </div>
+﻿@{
+	List<BreadCrumbModel> breadCrumbModel = new() {
+		new BreadCrumbModel("Users").SetActive()
+	};
+}
+
+<div class="container">
+	<div class="mt-3 px-2">
+		@(await Html.PartialAsync("_BreadCrumb", breadCrumbModel))
+	</div>
+	<div class="mt-3 main-body-margin-bottom">
+		<div class="card shadow bg-body-tertiary rounded">
+			<div class="card-body">
+				<div class="d-flex justify-content-end">
+					@(Html.DevExtreme().AddCustomButton(buttonText: "Add User", clickHandler: "() => {window.location.href = '" + @Url.Action("New", "Users") + "'}", icon: "plus", rtlEnable: true))
+				</div>
+				<div>
+					<h4>
+						The user listing grid will be here.
+					</h4>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

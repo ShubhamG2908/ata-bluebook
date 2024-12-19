@@ -1,0 +1,19 @@
+﻿@model List<BreadCrumbModel>
+
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+	<ol class="breadcrumb my-0">
+		@foreach (var item in Model)
+		{
+			@if (item.IsActive)
+			{
+				<li class="breadcrumb-item active" aria-current="page">@item.MenuItemText</li>
+			}
+			else
+			{
+				<li class="breadcrumb-item">
+					<a asp-controller="@item.ControllerName" asp-action="@item.ActionName" asp-all-route-data="@item.UrlParams" class="text-decoration-none text-dark">@item.MenuItemText</a>
+				</li>
+			}
+		}
+	</ol>
+</nav>
