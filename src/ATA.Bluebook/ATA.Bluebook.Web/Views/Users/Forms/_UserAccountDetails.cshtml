@@ -38,7 +38,8 @@
 		)
 </div>
 <div>
-	@(await Html.PartialAsync("_StepperButtons", stepperButton))
+	@if (!Model.IsEditMode)
+	{
+		@(await Html.PartialAsync("_StepperButtons", stepperButton))
+	}
 </div>
-<script>
-</script>

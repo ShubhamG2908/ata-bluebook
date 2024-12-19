@@ -1,0 +1,76 @@
+﻿@model UserFormPageModel
+
+@{
+	var stepperButtonModel = new StepperButtonModel
+			{
+				PreviousLabel = "Cancel",
+				NextLabel = "Submit",
+				PreviousBtnClickHandler = "handleUserEditCancel",
+				NextBtnClickHandler = "handleUserEdit",
+			};
+
+	List<BreadCrumbModel> breadCrumbModel = new() {
+		new BreadCrumbModel("Users", "Users", "Index"),
+		new BreadCrumbModel("Edit User").SetActive(),
+					};
+
+	TabsConfig tabsConfig = new TabsConfig()
+			{
+				ControlId = "UserTabs",
+				JSDataSourceName = "userEditTabs",
+				JSSelectedItem = "userEditTabs[0]",
+				InitializeCallBack = "onUserTabsInitialized",
+				SelectionChangedCallBack = "userEditSelectionChanged"
+			};
+
+	MultiViewConfig multiViewConfig = new MultiViewConfig()
+			{
+				ControlId = "userMultiview",
+				JSDataSourceName = "userEditTabs",
+				JSSelectedItem = "userEditTabs[0]",
+				InitializeCallBack = "onUserMultiviewInitialized",
+				SelectionChangedCallBack = "userEditSelectionChanged",
+				ItemTemplate = "user-multiview-template"
+			};
+}
+
+<div class="container">
+	<div class="mt-3 px-2">
+		@(await Html.PartialAsync("_BreadCrumb", breadCrumbModel))
+	</div>
+	<div class="main-body-margin-bottom">
+		<div class="mt-3">
+			<div class="card shadow bg-body-tertiary rounded">
+				<div class="card-body">
+					<div class="mx-3">
+						<div class="tabs-container-auto">
+							@(Html.DevExtreme().AddCustomTabs(tabsConfig))
+						</div>
+						<div class="multiview-container mt-3">
+							@(Html.DevExtreme().AddCustomMultiView(multiViewConfig))
+						</div>
+						<div>
+							@(await Html.PartialAsync("_StepperButtons", stepperButtonModel))
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="~/js/User.v1.0.js"></script>
+
+
+@using (Html.DevExtreme().NamedTemplate("user-multiview-template"))
+{
+	<div>
+		<% if(partialViewName == "_UserAccountDetails") { %>
+			@await Html.PartialAsync("Forms/_UserAccountDetails", Model)
+		<% } else if(partialViewName == "_UserFormDone") { %>
+			@await Html.PartialAsync("Forms/_UserFormDone", Model)
+		<% } else { %>
+			@await Html.PartialAsync("Forms/_UserPersonalDetails", Model)
+		<% }%>
+	</div>
+}
