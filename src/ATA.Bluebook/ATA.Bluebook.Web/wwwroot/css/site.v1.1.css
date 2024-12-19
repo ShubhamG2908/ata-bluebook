@@ -9,12 +9,13 @@
     -ms-flex-pack: center;
     justify-content: center;
 }
-.nav-item .active {
+
+.main-header-navbar .nav-item .active {
     /*border-bottom: 2px solid #0d6efd;*/
     color: white !important;
 }
 
-    .nav-item .active:hover, .nav-item .active:focus {
+    .main-header-navbar .nav-item .active:hover, .main-header-navbar .nav-item .active:focus {
         /*border-bottom: 2px solid #0d6efd;*/
         color: white !important;
     }
@@ -91,4 +92,8 @@ input[type="password"]::-ms-reveal {
 
 .main-header-navbar {
     z-index: 1520;
+}
+
+.tabs-container-auto .dx-tabs-wrapper {
+    width: auto !important;
 }

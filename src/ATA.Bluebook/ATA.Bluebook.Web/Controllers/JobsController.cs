@@ -13,50 +13,25 @@ namespace ATA.Bluebook.Web.Controllers
     {
         public IActionResult Index()
         {
-            var model = new StepperPageModel
-            {
-                StepperId = "MyStepperForm",
-                Steps = [
-                    new StepperModel {
-                        Label = "Email",
-                        FormName = "Forms/UserForm",
-                    },
-                    new StepperModel {
-                        Label = "Password",
-                        FormName = "Forms/PassForm",
-                    },
-                    new StepperModel {
-                        Label = "Done",
-                        FormName = "Forms/FormSubmitted"
-                    }
-                ]
-            };
-            return View(model);
+            return View();
         }
 
         public IActionResult Create()
         {
-            var model = new StepperPageModel
-            {
-                StepperId = "JobFormsStepper",
-                Steps = [
-                    new StepperModel {
-                        Label = "Job Details",
-                        FormName = "Forms/_JobDetailsForm",
-                    },
-                    new StepperModel {
-                        Label = "Job Events",
-                        FormName = "Forms/_JobEventsForm",
-                    },
-                    new StepperModel {
-                        Label = "Job Files",
-                        FormName = "Forms/_JobFilesForm"
-                    }
-                ],
-                PageModel = new JobFormPageModel()
-            };
-            return View(model);
+            return View(GetStepper(new JobFormPageModel()));
         }
+
+        public IActionResult Edit()
+        {
+            var pageModel = new JobFormPageModel();
+            pageModel.IsEditMode = true;
+
+            pageModel.JobDetailsForm = new JobDetailsForm();
+            pageModel.JobDetailsForm.JobName = "Job 1";
+
+            return View(pageModel);
+        }
+
 
         public LoadResult GetJobTypes(DataSourceLoadOptions loadOptions)
         {
@@ -82,6 +57,29 @@ namespace ATA.Bluebook.Web.Controllers
         {
             return DataSourceLoader.Load(JobsConstants.Coordinators, loadOptions);
         }
+
+        #region Private Methods
+        private StepperPageModel GetStepper(JobFormPageModel model) =>
+            new()
+            {
+                StepperId = "JobFormsStepper",
+                Steps = [
+                    new StepperModel {
+                        Label = "Job Details",
+                        FormName = "Forms/_JobDetailsForm",
+                    },
+                    new StepperModel {
+                        Label = "Job Events",
+                        FormName = "Forms/_JobEventsForm",
+                    },
+                    new StepperModel {
+                        Label = "Job Files",
+                        FormName = "Forms/_JobFilesForm"
+                    }
+                ],
+                PageModel = model
+            };
+        #endregion
 
     }
 }

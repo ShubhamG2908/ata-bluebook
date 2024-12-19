@@ -51,12 +51,12 @@
 }
 
 <div>
-	<div>
+	<div class="mt-3">
 		@(
 				Html.DevExtreme()
 				.Form<JobDetailsForm>()
 				.OnInitialized("onJobDetailsFormInitialized")
-				.FormData(Model.JobDetailsForm)
+				.FormData(Model.JobDetailsForm)	
 				.Items(item =>
 				{
 					item.AddGroup()
@@ -113,6 +113,8 @@
 				)
 	</div>
 	<div>
-		@(await Html.PartialAsync("_StepperButtons", stepperButtonModel))
+		@if(!Model.IsEditMode) {
+			@(await Html.PartialAsync("_StepperButtons", stepperButtonModel))
+		}
 	</div>
 </div>
