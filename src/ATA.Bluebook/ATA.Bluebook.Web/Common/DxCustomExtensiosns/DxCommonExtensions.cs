@@ -43,7 +43,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                     .SelectedItem(new JS(config.JSSelectedItem))
                                     .Loop(config.Loop).SwipeEnabled(config.SwipeEnabled)
                                     .AnimationEnabled(config.AnimationEnabled)
-                                    .ItemTemplate(new TemplateName("job-multiview-template"));
+                                    .ItemTemplate(new TemplateName(config.ItemTemplate));
 
             if (!string.IsNullOrEmpty(config.InitializeCallBack))
             {
