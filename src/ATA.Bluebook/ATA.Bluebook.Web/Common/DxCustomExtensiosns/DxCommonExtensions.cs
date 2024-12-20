@@ -7,10 +7,11 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
 {
     public static class DxCommonExtensions
     {
-        public static ButtonBuilder AddCustomButton<TModel>(this WidgetFactory<TModel> factory, string buttonText = "Click", ButtonType buttonType = ButtonType.Default, string? clickHandler = null, string? icon = null, bool rtlEnable = false)
+        public static ButtonBuilder AddCustomButton<TModel>(this WidgetFactory<TModel> factory, string buttonText = "Click", ButtonType buttonType = ButtonType.Default, string? clickHandler = null, string? icon = null, bool showIconRight = false)
         {
             return factory
-                .Button().RtlEnabled(rtlEnable)
+                .Button()
+                .RtlEnabled(showIconRight)
                 .Text(buttonText)
                 .Type(buttonType)
                 .OnClick(clickHandler)
@@ -41,9 +42,10 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
                                     .ID(config.ControlId)
                                     .DataSource(new JS(config.JSDataSourceName))
                                     .SelectedItem(new JS(config.JSSelectedItem))
-                                    .Loop(config.Loop).SwipeEnabled(config.SwipeEnabled)
-                                    .AnimationEnabled(config.AnimationEnabled)
-                                    .ItemTemplate(new TemplateName(config.ItemTemplate));
+                                    .Loop(config.Loop)
+                                    .SwipeEnabled(false)
+                                    .AnimationEnabled(true)
+                                    .ItemTemplate(new TemplateName(config.ItemTemplateName));
 
             if (!string.IsNullOrEmpty(config.InitializeCallBack))
             {

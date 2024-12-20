@@ -12,7 +12,7 @@
 		<div class="card shadow bg-body-tertiary rounded">
 			<div class="card-body">
 				<div class="d-flex justify-content-end">
-					@(Html.DevExtreme().AddCustomButton(buttonText: "Add Job", clickHandler: "() => {window.location.href = '" + @Url.Action("Create", "Jobs") + "'}", icon: "plus", rtlEnable: true))
+					@(Html.DevExtreme().AddCustomButton(buttonText: "Add Job", clickHandler: "() => {window.location.href = '" + @Url.Action("Create", "Jobs") + "'}", icon: "plus", showIconRight: true))
 				</div>
 				<div>
 					<h4>

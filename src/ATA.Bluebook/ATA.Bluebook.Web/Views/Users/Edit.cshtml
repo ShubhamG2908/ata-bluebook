@@ -10,7 +10,7 @@
 			};
 
 	List<BreadCrumbModel> breadCrumbModel = new() {
-		new BreadCrumbModel("Users", "Users", "Index"),
+		new BreadCrumbModel("Users", "Settings", "Users"),
 		new BreadCrumbModel("Edit User").SetActive(),
 					};
 
@@ -31,7 +31,7 @@
 				InitializeCallBack = "onUserMultiviewInitialized",
 				SelectionChangedCallBack = "userEditSelectionChanged",
 				ContentReadyCallBack = "onUserMultiviewContentReady",
-				ItemTemplate = "user-multiview-template"
+				ItemTemplateName = "user-multiview-template"
 			};
 }
 
