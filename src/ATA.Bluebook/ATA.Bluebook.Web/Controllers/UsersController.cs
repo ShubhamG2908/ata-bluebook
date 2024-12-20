@@ -1,4 +1,5 @@
-﻿using ATA.Bluebook.Web.Models;
+﻿using ATA.Bluebook.Web.Common.Helpers;
+using ATA.Bluebook.Web.Models;
 using ATA.Bluebook.Web.Models.Jobs;
 using ATA.Bluebook.Web.Models.User;
 using DevExtreme.AspNet.Data;
@@ -47,6 +48,12 @@ namespace ATA.Bluebook.Web.Controllers
             var pageModel = new UserFormPageModel();
             pageModel.IsEditMode = true;
             return View(pageModel);
+        }
+
+        [HttpGet]
+        public IActionResult GetUsersData(DataSourceLoadOptions loadOptions)
+        {
+            return Ok(DummyDataHelper.GetDummyUsresData());
         }
 
         #region Private Methods

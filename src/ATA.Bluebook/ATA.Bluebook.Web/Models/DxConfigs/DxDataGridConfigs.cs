@@ -37,6 +37,18 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         /// Will hide the Column if the value is assigned in the any view.
         /// </summary>
         public int? ColumnHidingPriority { get; set; }
+
+        public List<DxDataGridActionColumnConfig> DataGridActionColumnConfigs { get; set; } = new();
+
+        public HorizontalAlignment Alignment { get; set; } = HorizontalAlignment.Left;
+    }
+
+    public class DxDataGridActionColumnConfig
+    {
+        public string ButtonName { get; set; } = string.Empty;
+        public string ButtonIcon { get; set; } = string.Empty;
+        public string ClickEventCallBack { get; set; } = string.Empty;
+
     }
 
     public class DxDataGridConfig

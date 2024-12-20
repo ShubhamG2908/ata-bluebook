@@ -2,6 +2,42 @@
 	List<BreadCrumbModel> breadCrumbModel = new() {
 		new BreadCrumbModel("Users").SetActive()
 	};
+
+	ViewData["Title"] = "Users";
+
+	List<DxDataGridActionColumnConfig> actionColumnConfigs = new() {
+		new() {ButtonName = "Edit", ButtonIcon = "edit", ClickEventCallBack = "onUserEditClick(columnData);"},
+		new() {ButtonName = "Delete", ButtonIcon = "trash", ClickEventCallBack = "onUserDeleteClick(columnData);"}
+	};
+
+	List<DxDataGridColumnConfig> columnConfigs = new() {
+		new(){ Field = "Id", DataType= GridColumnDataType.String, Caption="Action", DataGridActionColumnConfigs = actionColumnConfigs },
+		new(){ Field = "Name", DataType= GridColumnDataType.String},
+		new(){ Field = "UserTypeName", DataType= GridColumnDataType.String, Caption="User Type"},
+		new(){ Field = "Email", DataType= GridColumnDataType.String},
+		new(){ Field = "Contact", DataType= GridColumnDataType.String},
+		new(){ Field = "Username", DataType= GridColumnDataType.String},
+		new(){ Field = "Address", DataType= GridColumnDataType.String},
+		new(){ Field = "City", DataType= GridColumnDataType.String},
+		new(){ Field = "Zip", DataType= GridColumnDataType.String},
+		new(){ Field = "State", DataType= GridColumnDataType.String},
+		new(){ Field = "ClosedCode", DataType= GridColumnDataType.String},
+		new(){ Field = "CloseDays", DataType= GridColumnDataType.String},
+		new(){ Field = "WhiteMailCode", DataType= GridColumnDataType.String},
+	};
+
+	DxDataGridConfig gridConfig = new()
+			{
+				Id = "dxc_users",
+				DataSourceConfig = new()
+				{
+					ControllerName = "Users",
+					LoadActionName = "GetUsersData",
+					Key = "Id"
+				},
+				DisplayRowFilters = true,
+				ShowGroupPanel = true
+			};
 }
 
 <div class="container">
@@ -12,14 +48,14 @@
 		<div class="card shadow bg-body-tertiary rounded">
 			<div class="card-body">
 				<div class="d-flex justify-content-end">
-					@(Html.DevExtreme().AddCustomButton(buttonText: "Add User", clickHandler: "() => {window.location.href = '" + @Url.Action("New", "Users") + "'}", icon: "plus", showIconRight: true))
+					@(Html.DevExtreme().AddCustomButton(buttonText: "Add User", clickHandler: "onUserAddClick", icon: "plus", showIconRight: true))
 				</div>
 				<div>
-					<h4>
-						The user listing grid will be here.
-					</h4>
+					@(Html.AddCustomDxDataGrid<UsersModel>(columnConfigs, gridConfig))
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script src="~/js/User.v1.0.js"></script>

@@ -192,7 +192,7 @@ const userEditTabs = [
 ];
 
 function handleUserEditCancel() {
-    window.location.href = "/Users/Index";
+    window.location.href = "/Settings/Users";
 }
 
 function handleUserEdit() {
@@ -213,4 +213,16 @@ function handleUserEdit() {
         }
     }
 
+}
+
+function onUserEditClick(columnData) {
+    window.location.href = "/Users/Edit/" + columnData.row.key
+}
+
+function onUserDeleteClick(columnData) {
+    window.location.href = "/Users/Edit/" + columnData.row.key
+}
+
+function onUserAddClick(e) {
+    window.location.href = "/Users/New";
 }

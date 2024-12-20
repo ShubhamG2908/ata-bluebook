@@ -1,4 +1,5 @@
-﻿using ATA.Bluebook.Web.Models.DxConfigs;
+﻿using System;
+using ATA.Bluebook.Web.Models.DxConfigs;
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Builders.DataSources;
@@ -13,6 +14,10 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
         {
             DataGridBuilder<T> builder = htmlHelper.DevExtreme()
                                                                              .DataGrid<T>()
+                                                                             .Width("100%")
+                                                                             .ColumnAutoWidth(true)
+                                                                             .ColumnChooser(c => c.Enabled(true))
+                                                                             .ShowBorders(true).RowAlternationEnabled(true)
                                                                              .Columns(cfg => cfg.SetupColumns<T>(columnConfigs))
                                                                              .GroupPanel(cfg => cfg.SetupGroupPanel(gridConfigs.ShowGroupPanel))
                                                                              .FilterRow(cfg => cfg.Visible(true))
@@ -51,7 +56,7 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
                     });
                 });
             }
-                                                                            
+
             return builder;
         }
 
@@ -61,18 +66,49 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
             builder.Visible(true);
             builder.DisplayMode(GridPagerDisplayMode.Compact);
             builder.ShowPageSizeSelector(true);
-            builder.AllowedPageSizes(new JS("[10, 25, 50, 100]"));
+            builder.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
             builder.ShowInfo(true);
             builder.ShowNavigationButtons(true);
         };
 
         private static void SetupColumns<T>(this CollectionFactory<DataGridColumnBuilder<T>> builder, List<DxDataGridColumnConfig> columnConfigs)
         {
-            columnConfigs.ForEach(column => builder.Add()
-                                                                               .DataType(column.DataType)
-                                                                               .DataField(column.Field)
-                                                                               .Format(column.Format)
-                                                                               .Caption(column.Caption));
+            columnConfigs.ForEach(column =>
+            {
+                if (column.DataGridActionColumnConfigs.Count() > 0)
+                {
+                    builder.Add()
+                            .DataField(column.Field)
+                            .Caption(column.Caption)
+                            .Alignment(column.Alignment)
+                            .Type(GridCommandColumnType.Buttons)
+                            .AllowGrouping(false)
+                            .Buttons(b =>
+                            {
+                                column.DataGridActionColumnConfigs.ForEach(actionConfig =>
+                                {
+                                    var button = b.Add();
+                                    if (!string.IsNullOrEmpty(actionConfig.ButtonIcon))
+                                    {
+                                        button.Icon(actionConfig.ButtonIcon);
+                                    }
+                                    if (!string.IsNullOrEmpty(actionConfig.ButtonName))
+                                    {
+                                        button.Text(actionConfig.ButtonName);
+                                    }
+                                    button.OnClick($@"function (columnData) {{ {actionConfig.ClickEventCallBack} }}");
+                                });
+                            });
+                }
+                else
+                {
+                    builder.Add()
+                                .DataType(column.DataType)
+                                .DataField(column.Field)
+                                .Format(column.Format)
+                                .Caption(column.Caption);
+                }
+            });
         }
 
         private static void SetupGroupPanel(this DataGridGroupPanelBuilder builder, bool showGroupPanel)
