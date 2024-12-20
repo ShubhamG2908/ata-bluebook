@@ -22,7 +22,7 @@
 
     <link href="~/css/devextreme/bootstrap.css" rel="stylesheet" />
     <link href="~/css/devextreme/bs-stepper.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/site.v1.1.css" rel="stylesheet" />
 
     @* Predefined themes: https://js.devexpress.com/DevExtreme/Guide/Themes_and_Styles/Predefined_Themes/ *@
     <link href="~/css/devextreme/dx.fluent.blue.light.css" rel="stylesheet" />
@@ -61,6 +61,9 @@
 
     <script src="~/js/devextreme/aspnet/dx.aspnet.mvc.js"></script>
     <script src="~/js/devextreme/aspnet/dx.aspnet.data.js"></script>
+
+    @* Custm Script imports *@
+    <script src="~/js/site.js"></script>
 </head>
 
 <body>
@@ -69,9 +72,15 @@
         <partial name="_TopNavbar"></partial>
     }
 
-    <main class="container">
+    <main>
         @RenderBody()
     </main>
+
+    <footer class="bg-body-tertiary text-center py-3 footer-container">
+        <div class="container">
+            <p class="mb-0">The Bluebook System vX.00.02 &copy; Copyright @DateTime.Now.Year</p>
+        </div>
+    </footer>
 
 </body>
 </html>

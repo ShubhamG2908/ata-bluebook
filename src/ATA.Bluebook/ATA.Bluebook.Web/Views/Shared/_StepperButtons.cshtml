@@ -1,9 +1,15 @@
 ﻿@model StepperButtonModel
 <div class="d-flex justify-content-end gap-3">
-    @(Html.DevExtreme()
-        .AddCustomButton(buttonText: Model.PreviousLabel, clickHandler: Model.PreviousBtnClickHandler)
-    )
-    @(Html.DevExtreme()
-        .AddCustomButton(buttonText: Model.NextLabel, clickHandler: Model.NextBtnClickHandler)
-    )
+	@if (Model.DisplayPreviousButton)
+	{
+		@(Html.DevExtreme()
+			.AddCustomButton(buttonText: Model.PreviousLabel, clickHandler: Model.PreviousBtnClickHandler, buttonType: ButtonType.Normal)
+			)
+	}
+	@if (Model.DisplayNextButton)
+	{
+		@(Html.DevExtreme()
+			.AddCustomButton(buttonText: Model.NextLabel, clickHandler: Model.NextBtnClickHandler)
+			)
+	}
 </div>

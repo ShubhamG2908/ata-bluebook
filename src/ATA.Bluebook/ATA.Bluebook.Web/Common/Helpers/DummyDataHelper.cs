@@ -17,6 +17,7 @@
 
     public class UserModel
     {
+        public UserModel() { }
         public UserModel(int id, string username, string password, string email, string userType)
         {
             Id = id;

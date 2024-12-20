@@ -1,4 +1,5 @@
 ﻿using ATA.Bluebook.Web.Models;
+using ATA.Bluebook.Web.Models.Jobs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ATA.Bluebook.Web.Controllers
@@ -24,6 +25,30 @@ namespace ATA.Bluebook.Web.Controllers
                         FormName = "Forms/FormSubmitted"
                     }
                 ]
+            };
+            return View(model);
+        }
+
+        public IActionResult Create()
+        {
+            var model = new StepperPageModel
+            {
+                StepperId = "JobFormsStepper",
+                Steps = [
+                    new StepperModel {
+                        Label = "Job Details",
+                        FormName = "Forms/_JobDetailsForm",
+                    },
+                    new StepperModel {
+                        Label = "Job Events",
+                        FormName = "Forms/_JobEventsForm",
+                    },
+                    new StepperModel {
+                        Label = "Job Files",
+                        FormName = "Forms/_JobFilesForm"
+                    }
+                ],
+                PageModel = new JobFormPageModel()
             };
             return View(model);
         }

@@ -39,7 +39,7 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public int? ColumnHidingPriority { get; set; }
     }
 
-    public class DxDataGridConfig<T>
+    public class DxDataGridConfig
     {
         public DxDataGridConfig()
         {
@@ -53,10 +53,10 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public bool AllowColumnReordering { get; set; } = true;
         public bool AllowColumnHiding { get; set; }
         public bool ShowGroupPanel { get; set; } = false;
-        public DxDataGridEditingConfig<T> GridEditingConfig { get; set; }
+        public DxDataGridEditingConfig GridEditingConfig { get; set; }
     }
 
-    public class DxDataGridEditingConfig<T>
+    public class DxDataGridEditingConfig
     {
         public bool EnableGridEdit { get; set; } = false;
         public string UpdateActionName { get; set; } = default!;

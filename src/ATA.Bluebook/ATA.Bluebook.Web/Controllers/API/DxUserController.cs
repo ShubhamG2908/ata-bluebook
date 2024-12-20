@@ -1,14 +1,11 @@
 ﻿using ATA.Bluebook.Web.Common.Helpers;
-
 using DevExtreme.AspNet.Mvc;
-
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-
-using Newtonsoft.Json;
 
 namespace ATA.Bluebook.Web.Controllers.API
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class DxUserController : Controller
     {
         [HttpGet]
@@ -18,7 +15,7 @@ namespace ATA.Bluebook.Web.Controllers.API
         }
 
         [HttpPost]
-        public IActionResult Create([FromForm] string values)
+        public IActionResult Post([FromForm] string value)
         {
             return Ok();
         }

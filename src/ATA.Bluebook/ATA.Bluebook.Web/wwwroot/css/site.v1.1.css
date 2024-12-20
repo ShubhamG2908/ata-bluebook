@@ -5,7 +5,7 @@
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 56px);
     -ms-flex-pack: center;
     justify-content: center;
 }
@@ -25,4 +25,35 @@
     .nav-link {
         padding-left: 5px;
     }
+}
+
+.dx-invalid-message > .dx-overlay-content {
+    background-color: transparent !important;
+    color: #d13438 !important;
+}
+
+.login-page-header-img {
+    width: 150px;
+}
+
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.active .bs-stepper-circle {
+    background-color: #0f6cbd !important;
+}
+
+.profile-dropdown-menu {
+    left: -110px !important;
+}
+
+.main-body-margin-bottom { 
+    margin-bottom: 70px;
+}
+
+input[type="password"]::-ms-reveal {
+    display: none !important;
 }

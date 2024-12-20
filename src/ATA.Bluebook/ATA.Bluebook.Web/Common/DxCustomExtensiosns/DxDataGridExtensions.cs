@@ -1,27 +1,26 @@
 ﻿using ATA.Bluebook.Web.Models.DxConfigs;
-
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Builders.DataSources;
 using DevExtreme.AspNet.Mvc.Factories;
-
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
 {
     public static class DxDataGridExtensions
     {
-        public static DataGridBuilder<T> AddCustomDxDataGrid<T>(this IHtmlHelper htmlHelper, List<DxDataGridColumnConfig> columnConfigs, DxDataGridConfig<T> gridConfigs)
+        public static DataGridBuilder<T> AddCustomDxDataGrid<T>(this IHtmlHelper htmlHelper, List<DxDataGridColumnConfig> columnConfigs, DxDataGridConfig gridConfigs)
         {
             DataGridBuilder<T> builder = htmlHelper.DevExtreme()
                                                                              .DataGrid<T>()
-                                                                             .DataSource(cfg => cfg.SetupDataSource(gridConfigs))
                                                                              .Columns(cfg => cfg.SetupColumns<T>(columnConfigs))
                                                                              .GroupPanel(cfg => cfg.SetupGroupPanel(gridConfigs.ShowGroupPanel))
                                                                              .FilterRow(cfg => cfg.Visible(true))
                                                                              .ColumnHidingEnabled(gridConfigs.AllowColumnHiding)
                                                                              .Pager(SetupDefaultPager)
-                                                                             .StateStoring(SetupStateStoringMethod);
+                                                                             .DataSource(cfg => cfg.SetupDataSource(gridConfigs))
+                                                                             .StateStoring(SetupStateStoringMethod)
+                                                                             .NoDataText("It's Empty here. Please add some data 😊");
 
             if (gridConfigs.GridEditingConfig.EnableGridEdit)
             {
@@ -50,13 +49,9 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
                             pcfg.Height(gridConfigs.GridEditingConfig.PopupHeight.Value);
                         }
                     });
-
-                    //if (gridConfigs.GridEditingConfig.FormBuilder != null)
-                    //{
-                    //    cfg.Form(gridConfigs.GridEditingConfig.FormBuilder);
-                    //}
                 });
             }
+                                                                            
             return builder;
         }
 
@@ -86,7 +81,7 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
             builder.EmptyPanelText("Drag a column here for grouping");
         }
 
-        private static ControllerDataSourceOptionsBuilder SetupDataSource<T>(this DataSourceFactory dataSource, DxDataGridConfig<T> config)
+        private static ControllerDataSourceOptionsBuilder SetupDataSource(this DataSourceFactory dataSource, DxDataGridConfig config)
         {
             var builder = dataSource.Mvc().
                 Controller(config.DataSourceConfig.ControllerName)
@@ -97,17 +92,17 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
                 builder.UpdateAction(config.GridEditingConfig.UpdateActionName);
 
             if (config.GridEditingConfig.AllowDeleteOperation)
-                builder.UpdateAction(config.GridEditingConfig.DeleteActionName);
+                builder.DeleteAction(config.GridEditingConfig.DeleteActionName);
 
             if (config.GridEditingConfig.AllowCreateOperation)
-                builder.UpdateAction(config.GridEditingConfig.InsertActionName);
+                builder.InsertAction(config.GridEditingConfig.InsertActionName);
 
             return builder;
         }
 
         private static Action<DataGridStateStoringBuilder> SetupStateStoringMethod = (builder) => builder.Enabled(true)
                                                                                                                                                                     .Type(StateStoringType.Custom)
-                                                                                                                                                                    .StorageKey($"dx_{Guid.NewGuid}");
+                                                                                                                                                                    .StorageKey("storage");
         #endregion
     }
 }

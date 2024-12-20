@@ -8,7 +8,7 @@
 		new(){ Field = "UserType", DataType= GridColumnDataType.String}
 	};
 
-	DxDataGridConfig<UserModel> gridConfig = new()
+	DxDataGridConfig gridConfig = new()
 			{
 				Id = "dxc_users",
 				DataSourceConfig = new()
@@ -23,8 +23,8 @@
 				{
 					PopupTitle = "User",
 					EnableGridEdit = true,
-					InsertActionName = "Create",
-					PopupHeight = 350,
+					InsertActionName = "Post",
+					PopupHeight = 400,
 					PopupWidth = 800,
 					ContentTemplateName = "create-user-form-template"
 				}
@@ -39,8 +39,10 @@
 		<div class="p-3">
 			@(
 					Html.DevExtreme().Form<UserModel>()
+					.FormData(new UserModel())
 					.Items(items =>
 					{
+						items.AddCustomFormTextBox(x => x.Id);
 						items.AddCustomFormTextBox(x => x.Username);
 						items.AddCustomFormTextBox(x => x.Password);
 					})
