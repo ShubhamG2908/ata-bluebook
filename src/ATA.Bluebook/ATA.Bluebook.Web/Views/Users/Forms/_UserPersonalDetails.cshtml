@@ -24,9 +24,11 @@
 					item.AddCustomFormTextBox(x => x.State);
 					item.AddCustomFormTextBox(x => x.Contact);
 					item.AddCustomFormTextBox(x => x.Email);
-					item.AddCustomFormTextBox(x => x.ClosedCode);
-					item.AddCustomFormTextBox(x => x.CloseDays);
-					item.AddCustomFormTextBox(x => x.WhiteMailCode);
+					if(Model.UserTypeForm.UserType == UserType.Client || !Model.IsEditMode) {
+						item.AddCustomFormTextBox(x => x.ClosedCode);
+						item.AddCustomFormTextBox(x => x.CloseDays);
+						item.AddCustomFormTextBox(x => x.WhiteMailCode);
+					}
 				})
 	)
 </div>

@@ -150,6 +150,10 @@ function onUserMultiviewInitialized(e) {
     userMultiview = e.component;
 }
 
+function onUserMultiviewContentReady(e) {
+    preRenderAllViews(userMultiview);
+}
+
 function onUserTabsInitialized(e) {
     userTabs = e.component;
 }
@@ -192,5 +196,21 @@ function handleUserEditCancel() {
 }
 
 function handleUserEdit() {
+
+    if (personalDetailForm) {
+        const personalDetailValidation = personalDetailForm.validate();
+        if (!personalDetailValidation.isValid) {
+            setUserEditSelection(userEditTabs[0]);
+            return;
+        }
+    }
+
+    if (accountDetailForm) {
+        const accountDetailValidation = accountDetailForm.validate();
+        if (!accountDetailValidation.isValid) {
+            setUserEditSelection(userEditTabs[1]);
+            return;
+        }
+    }
 
 }

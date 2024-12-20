@@ -6,8 +6,9 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns.Configs
     {
         public string ItemTemplate { get; set; } = string.Empty;
         public string ControlId { get; set; } = string.Empty;
-        public string InitializeCallBack { get; set; } = string.Empty;
-        public string SelectionChangedCallBack { get; set; } = string.Empty;
+        public string? InitializeCallBack { get; set; }
+        public string? SelectionChangedCallBack { get; set; }
+        public string? ContentReadyCallBack { get; set; }
         public string? JSDataSourceName { get; set; }
         public string? JSSelectedItem { get; set; }
         public bool Loop { get; set; } = false;

@@ -53,6 +53,10 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
             {
                 multiview.OnSelectionChanged(config.SelectionChangedCallBack);
             }
+            if (!string.IsNullOrEmpty(config.ContentReadyCallBack))
+            {
+                multiview.OnContentReady(config.ContentReadyCallBack);
+            }
 
             return multiview;
         }
