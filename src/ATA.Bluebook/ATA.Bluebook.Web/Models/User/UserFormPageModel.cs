@@ -8,6 +8,7 @@ namespace ATA.Bluebook.Web.Models.User
         public UserPersonalDetailForm PersonalDetailForm { get; set; } = default!;
         public UserAccountDetailForm AccountDetailForm { get; set; } = default!;
         public UserTypeDetailForm UserTypeForm { get; set; } = new UserTypeDetailForm();
+        public bool IsEditMode { get; set; } = false;
     }
 
     public enum UserType
