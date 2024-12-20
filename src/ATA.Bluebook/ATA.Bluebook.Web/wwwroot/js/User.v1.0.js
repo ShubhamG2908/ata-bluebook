@@ -138,3 +138,79 @@ function showControl(formInstance, itemName) {
         formInstance.itemOption(itemName, "visible", true);
     }
 }
+
+
+// ------------------------------------------------------------------------------------
+// User Edit Screen (Tabs & Multiview)
+
+let userMultiview;
+let userTabs;
+
+function onUserMultiviewInitialized(e) {
+    userMultiview = e.component;
+}
+
+function onUserMultiviewContentReady(e) {
+    preRenderAllViews(userMultiview);
+}
+
+function onUserTabsInitialized(e) {
+    userTabs = e.component;
+}
+
+function setUserEditSelection(value) {
+    if (userTabs) {
+        userTabs.option('selectedItem', value);
+    }
+    if (userMultiview) {
+        userMultiview.option('selectedItem', value);
+    }
+}
+
+function userEditSelectionChanged(e) {
+    if (e.selectedItem || e.addedItems?.length) {
+        setUserEditSelection(e.selectedItem || e.addedItems[0])
+    }
+}
+
+const userEditTabs = [
+    {
+        id: 0,
+        text: 'Personal Details',
+        partialViewName: "_UserPersonalDetails"
+    },
+    {
+        id: 1,
+        text: 'Account Details',
+        partialViewName: "_UserAccountDetails"
+    },
+    {
+        id: 2,
+        text: 'Permissions',
+        partialViewName: "_UserFormDone"
+    }
+];
+
+function handleUserEditCancel() {
+    window.location.href = "/Users/Index";
+}
+
+function handleUserEdit() {
+
+    if (personalDetailForm) {
+        const personalDetailValidation = personalDetailForm.validate();
+        if (!personalDetailValidation.isValid) {
+            setUserEditSelection(userEditTabs[0]);
+            return;
+        }
+    }
+
+    if (accountDetailForm) {
+        const accountDetailValidation = accountDetailForm.validate();
+        if (!accountDetailValidation.isValid) {
+            setUserEditSelection(userEditTabs[1]);
+            return;
+        }
+    }
+
+}

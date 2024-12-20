@@ -1,4 +1,5 @@
 ﻿using ATA.Bluebook.Web.Models;
+using ATA.Bluebook.Web.Models.Jobs;
 using ATA.Bluebook.Web.Models.User;
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Data.ResponseModel;
@@ -39,6 +40,13 @@ namespace ATA.Bluebook.Web.Controllers
             // Create User Logic Here
             
             return Json(formPageModel);
+        }
+
+        public IActionResult Edit()
+        {
+            var pageModel = new UserFormPageModel();
+            pageModel.IsEditMode = true;
+            return View(pageModel);
         }
 
         #region Private Methods

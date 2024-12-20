@@ -6,7 +6,7 @@ namespace ATA.Bluebook.Web.Models.Jobs
     public class JobFormPageModel
     {
         public JobDetailsForm JobDetailsForm { get; set; } = default!;
-
+        public bool IsEditMode { get; set; } = false;
     }
 
     public class JobDetailsForm

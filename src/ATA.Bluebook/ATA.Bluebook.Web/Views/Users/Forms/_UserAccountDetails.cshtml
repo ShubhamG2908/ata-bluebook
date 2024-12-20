@@ -31,14 +31,21 @@
 			item.AddCustomFormTextBox(x => x.UserName);
 			item.AddCustomFormPassword(x => x.Password);
 			item.AddCustomFormTextBox(x => x.FullName);
-			item.AddCustomFormTextBox(x => x.ClientId);
-			item.AddCustomFormTextBox(x => x.AgencyId);
-			item.AddCustomFormTagBox(m => m.ClientList, tagConfig);
+			if (Model.UserTypeForm.UserType == UserType.Client || !Model.IsEditMode)
+			{
+				item.AddCustomFormTextBox(x => x.ClientId);
+			}
+			if (Model.UserTypeForm.UserType == UserType.Agency || !Model.IsEditMode)
+			{
+				item.AddCustomFormTextBox(x => x.AgencyId);
+				item.AddCustomFormTagBox(m => m.ClientList, tagConfig);
+			}
 		})
 		)
 </div>
 <div>
-	@(await Html.PartialAsync("_StepperButtons", stepperButton))
+	@if (!Model.IsEditMode)
+	{
+		@(await Html.PartialAsync("_StepperButtons", stepperButton))
+	}
 </div>
-<script>
-</script>

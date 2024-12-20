@@ -41,3 +41,58 @@ function handleJobFilesNext() {
 
     stepper.next();
 }
+
+// ------------------------------------------------------------------------------------
+// Job Edit Screen (Tabs & Multiview)
+
+let jobsMultiview;
+let jobsTabs;
+
+function onJobMultiviewInitialized(e) {
+	jobsMultiview = e.component;
+}
+
+function onJobTabsInitialized(e) {
+	jobsTabs = e.component;
+}
+
+function setJobEditSelection(value) {
+	if (jobsTabs) {
+		jobsTabs.option('selectedItem', value);
+	}
+	if (jobsMultiview) {
+		jobsMultiview.option('selectedItem', value);
+	}
+}
+
+function jobEditSelectionChanged(e) {
+	if (e.selectedItem || e.addedItems?.length) {
+		setJobEditSelection(e.selectedItem || e.addedItems[0])
+	}
+}
+
+const jobEditTabs = [
+	{
+		id: 0,
+		text: 'Job Details',
+		partialViewName: "_JobDetailsForm"
+	},
+	{
+		id: 1,
+		text: 'Job Events',
+		partialViewName: "_JobEventsForm"
+	},
+	{
+		id: 2,
+		text: 'Job Files',
+		partialViewName: "_JobFilesForm"
+	}
+];
+
+function handleJobEditCancel() {
+	window.location.href = "/Jobs/Index";
+}
+
+function handleJobEdit() {
+
+}

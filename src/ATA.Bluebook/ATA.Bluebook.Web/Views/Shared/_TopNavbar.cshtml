@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-expand-md border-bottom sticky-top bg-white main-header-navbar">
+﻿<nav class="navbar navbar-expand-md border-bottom sticky-top main-header-navbar shadow-sm bg-body-tertiary">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -19,19 +19,19 @@
                         <a asp-controller="Jobs" asp-action="Index" class="nav-link @Html.GetActiveRouteClassName("Jobs")">Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Clients" class="nav-link @Html.GetActiveRouteClassName("Clients")">Clients</a>
+                        <a asp-controller="Clients" asp-action="Index" class="nav-link @Html.GetActiveRouteClassName("Clients")">Clients</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Tallies" class="nav-link @Html.GetActiveRouteClassName("Tallies")">Tallies</a>
+                        <a asp-controller="Tallies" asp-action="Index" class="nav-link @Html.GetActiveRouteClassName("Tallies")">Tallies</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="PoAndInvoices" class="nav-link @Html.GetActiveRouteClassName("PoAndInvoices")">PO & Invoices</a>
+                        <a asp-controller="PoAndInvoices" asp-action="Index" class="nav-link @Html.GetActiveRouteClassName("PoAndInvoices")">PO & Invoices</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Components" class="nav-link @Html.GetActiveRouteClassName("Components")">Components</a>
+                        <a asp-controller="Components" asp-action="Index" class="nav-link @Html.GetActiveRouteClassName("Components")">Components</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-controller="Reports" class="nav-link @Html.GetActiveRouteClassName("Reports")">Reports</a>
+                        <a asp-controller="Reports" asp-action="Index" class="nav-link @Html.GetActiveRouteClassName("Reports")">Reports</a>
                     </li>
                     @* <li class="nav-item">
                         <a asp-controller="Settings" class="nav-link @Html.GetActiveRouteClassName("Settings")">Advance Settings</a>
