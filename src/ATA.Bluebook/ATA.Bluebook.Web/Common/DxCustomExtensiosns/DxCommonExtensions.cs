@@ -1,4 +1,5 @@
 ﻿using ATA.Bluebook.Web.Common.DxCustomExtensiosns.Configs;
+using ATA.Bluebook.Web.Models;
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Factories;
@@ -23,7 +24,7 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
             var tabs = factory.Tabs().Width(config.Width)
                                     .ID(config.ControlId)
                                     .DataSource(new JS(config.JSDataSourceName))
-                                    .SelectedItem(new JS(config.JSSelectedItem)) ;
+                                    .SelectedItem(new JS(config.JSSelectedItem));
 
             if (!string.IsNullOrEmpty(config.InitializeCallBack))
             {
@@ -61,6 +62,22 @@ namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
             }
 
             return multiview;
+        }
+
+        public static PopupBuilder AddCustomPopUp<TModel>(this WidgetFactory<TModel> factory, PopupConfig config)
+        {
+            return factory.Popup()
+                    .ID(config.ControlId)
+                    .ShowTitle(config.ShowTitle)
+                    .MaxWidth(config.MaxWidth)
+                    .MaxHeight(config.MaxHeight)
+                    .Position(PositionAlignment.Center)
+                    .Title(config.Title)
+                    .Visible(false)
+                    .DragEnabled(false)
+                    .HideOnOutsideClick(true)
+                    .ShowCloseButton(config.ShowCloseButton)
+                    .ContentTemplate(new TemplateName(config.TemplateName));
         }
 
     }

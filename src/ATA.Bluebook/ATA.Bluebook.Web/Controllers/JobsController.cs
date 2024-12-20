@@ -6,6 +6,7 @@ using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using ATA.Bluebook.Web.Common.Constants;
+using ATA.Bluebook.Web.Common.Helpers;
 
 namespace ATA.Bluebook.Web.Controllers
 {
@@ -56,6 +57,12 @@ namespace ATA.Bluebook.Web.Controllers
         public LoadResult GetCoordinator(DataSourceLoadOptions loadOptions)
         {
             return DataSourceLoader.Load(JobsConstants.Coordinators, loadOptions);
+        }
+
+        [HttpGet]
+        public IActionResult GetJobsData(DataSourceLoadOptions loadOptions)
+        {
+            return Ok(DummyDataHelper.GetDummyJobsData());
         }
 
         #region Private Methods

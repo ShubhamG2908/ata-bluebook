@@ -97,3 +97,16 @@ input[type="password"]::-ms-reveal {
 .tabs-container-auto .dx-tabs-wrapper {
     width: auto !important;
 }
+
+.custom-delete-icon {
+    color: #d13438;
+    font-size: 60px !important;
+}
+
+.custom-delete-popup-container {
+    height: inherit;
+    margin-bottom: -8px;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+}

@@ -2,6 +2,53 @@
 	List<BreadCrumbModel> breadCrumbModel = new() {
 		new BreadCrumbModel("Jobs").SetActive()
 	};
+
+	ViewData["Title"] = "Jobs";
+
+	List<DxDataGridActionColumnConfig> actionColumnConfigs = new() {
+		new() {ButtonName = "Edit", ButtonIcon = "edit", ClickEventCallBack = "onJobEditClick(columnData);"},
+		new() {ButtonName = "Delete", ButtonIcon = "trash", ClickEventCallBack = "onJobDeleteClick(columnData);"}
+	};
+
+	List<DxDataGridColumnConfig> columnConfigs = new() {
+		new(){ Field = "Id", DataType= GridColumnDataType.String, Caption="Action", DataGridActionColumnConfigs = actionColumnConfigs },
+		new(){ Field = "JobId", DataType= GridColumnDataType.String},
+		new(){ Field = "JobType", DataType= GridColumnDataType.String, Caption="Job Type"},
+		new(){ Field = "JobName", DataType= GridColumnDataType.String, Caption = "Job Name"},
+		new(){ Field = "FirstMailDate", DataType= GridColumnDataType.DateTime, Format = Format.ShortDateShortTime},
+		new(){ Field = "EndMailDate", DataType= GridColumnDataType.DateTime, Format = Format.ShortDateShortTime},
+		new(){ Field = "EstimatedQty", DataType= GridColumnDataType.Number, Format = Format.Decimal},
+		new(){ Field = "EstIncPerPiece", DataType= GridColumnDataType.Number, Format = Format.Decimal},
+		new(){ Field = "EstCostPerPiece", DataType= GridColumnDataType.Number, Format = Format.Decimal},
+		new(){ Field = "Issue", DataType= GridColumnDataType.String},
+		new(){ Field = "Technique", DataType= GridColumnDataType.String},
+		new(){ Field = "Copywriter", DataType= GridColumnDataType.String},
+		new(){ Field = "Coordinator", DataType= GridColumnDataType.String},
+		new(){ Field = "PackageSize", DataType= GridColumnDataType.String},
+		new(){ Field = "Status", DataType= GridColumnDataType.String},
+		new(){ Field = "PackageCode", DataType= GridColumnDataType.String},
+		new(){ Field = "Agency", DataType= GridColumnDataType.String},
+		new(){ Field = "CostComplete", DataType= GridColumnDataType.String},
+		new(){ Field = "CostEstimateOk", DataType= GridColumnDataType.String},
+		new(){ Field = "DollarBills", DataType= GridColumnDataType.Boolean},
+		new(){ Field = "NoInvoice", DataType= GridColumnDataType.Boolean},
+		new(){ Field = "FundCode", DataType= GridColumnDataType.String},
+		new(){ Field = "JobDetails", DataType= GridColumnDataType.String},
+		new(){ Field = "Instructions", DataType= GridColumnDataType.String},
+	};
+
+	DxDataGridConfig gridConfig = new()
+			{
+				Id = "dxc_jobs",
+				DataSourceConfig = new()
+				{
+					ControllerName = "Jobs",
+					LoadActionName = "GetJobsData",
+					Key = "Id"
+				},
+				DisplayRowFilters = true,
+				ShowGroupPanel = true
+			};
 }
 
 <div class="container">
@@ -16,10 +63,19 @@
 				</div>
 				<div>
 					<h4>
-						The job listing grid will be here.
+						@(Html.AddCustomDxDataGrid<JobModel>(columnConfigs, gridConfig))
 					</h4>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+@(Html.DevExtreme().AddCustomPopUp(new PopupConfig().DeletePopupConfig("delete-job-popup", "confirm-delete-popup-template")))
+
+@using (Html.DevExtreme().NamedTemplate("confirm-delete-popup-template"))
+{
+	@await Html.PartialAsync("_ConfirmPopup", new ConfirmPopupModel().DeletePopupConfig("deleteJob", "hideJobPopup"))
+}
+
+<script src="~/js/Jobs.v1.1.js"></script>
