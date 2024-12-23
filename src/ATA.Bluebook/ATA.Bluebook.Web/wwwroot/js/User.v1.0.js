@@ -219,10 +219,28 @@ function onUserEditClick(columnData) {
     window.location.href = "/Users/Edit/" + columnData.row.key
 }
 
-function onUserDeleteClick(columnData) {
-    window.location.href = "/Users/Edit/" + columnData.row.key
-}
-
 function onUserAddClick(e) {
     window.location.href = "/Users/New";
+}
+
+let selectedItemForDelete;
+function onUserDeleteClick(columnData) {
+    selectedItemForDelete = columnData.row.key;
+    var popup = $("#delete-user-popup").dxPopup("instance");
+    popup.show();
+}
+
+function hideUserPopup() {
+    const popup = $('#delete-user-popup').dxPopup('instance');
+    popup.hide();
+}
+
+function deleteUser() {
+    if (selectedItemForDelete) {
+
+        // call delete api
+
+        showSuccessToastr("User is deleted successfully.");
+        hideUserPopup();
+    }
 }

@@ -58,4 +58,11 @@
 	</div>
 </div>
 
+@(Html.DevExtreme().AddCustomPopUp(new PopupConfig().DeletePopupConfig("delete-user-popup", "confirm-delete-user-popup-template")))
+
+@using (Html.DevExtreme().NamedTemplate("confirm-delete-user-popup-template"))
+{
+	@await Html.PartialAsync("_ConfirmPopup", new ConfirmPopupModel().DeletePopupConfig("deleteUser", "hideUserPopup"))
+}
+
 <script src="~/js/User.v1.0.js"></script>
