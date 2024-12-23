@@ -47,8 +47,9 @@
 					Key = "Id"
 				},
 				DisplayRowFilters = true,
-				ShowGroupPanel = true
-			};
+				ShowGroupPanel = true,
+				GridMasterDetailConfig = new("job-grid-master-details-template")
+			};	
 }
 
 <div class="container">
@@ -76,6 +77,35 @@
 @using (Html.DevExtreme().NamedTemplate("confirm-delete-popup-template"))
 {
 	@await Html.PartialAsync("_ConfirmPopup", new ConfirmPopupModel().DeletePopupConfig("deleteJob", "hideJobPopup"))
+}
+
+@using (Html.DevExtreme().NamedTemplate("job-grid-master-details-template"))
+{
+	List<DxDataGridColumnConfig> detailGridColumnConfig = new() {
+		new(){ Field = "MailCode", DataType= GridColumnDataType.String},
+		new(){ Field = "ListName", DataType= GridColumnDataType.String, Caption="List Name"},
+		new(){ Field = "MailDate", DataType= GridColumnDataType.DateTime, Format = Format.ShortDateShortTime},
+		new(){ Field = "LastUpdate", DataType= GridColumnDataType.DateTime, Format = Format.ShortDateShortTime},
+		new(){ Field = "Mailed", DataType= GridColumnDataType.Number, Format = Format.Decimal},
+		new(){ Field = "Income", DataType= GridColumnDataType.Number, Format = Format.Decimal},
+		new(){ Field = "Cost", DataType= GridColumnDataType.Number, Format = Format.Decimal}
+	};
+
+	DxDataGridConfig detailGridConfig = new()
+				{
+					Id = "dxc_job_details",
+					DataSourceConfig = new()
+					{
+						ControllerName = "Jobs",
+						LoadActionName = "GetJobsDetailsData",
+						Key = "Id",
+						LoadParams = new { id = new JS("data.Id") }
+					},
+					DisplayRowFilters = true,
+					ShowGroupPanel = true
+				};
+
+	@(Html.AddCustomDxDataGrid<JobDetailModel>(detailGridColumnConfig, detailGridConfig))
 }
 
 <script src="~/js/Jobs.v1.1.js"></script>

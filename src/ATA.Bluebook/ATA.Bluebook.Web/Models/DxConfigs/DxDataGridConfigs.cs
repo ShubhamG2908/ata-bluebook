@@ -56,6 +56,7 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public DxDataGridConfig()
         {
             GridEditingConfig = new();
+            GridMasterDetailConfig = new();
         }
         public required string Id { get; set; }
         public required DxDataGridDataSourceConfig DataSourceConfig { get; set; }
@@ -66,6 +67,7 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public bool AllowColumnHiding { get; set; }
         public bool ShowGroupPanel { get; set; } = false;
         public DxDataGridEditingConfig GridEditingConfig { get; set; }
+        public DxGridMasterDetailConfig GridMasterDetailConfig { get; set; }
     }
 
     public class DxDataGridEditingConfig
@@ -89,5 +91,20 @@ namespace ATA.Bluebook.Web.Models.DxConfigs
         public required string ControllerName { get; set; }
         public required string LoadActionName { get; set; }
         public string Key { get; set; } = "Id";
+        public object LoadParams { get; set; } = new object();
+    }
+
+    public class DxGridMasterDetailConfig
+    {
+        public bool EnableMasterDetails { get; set; } = false;
+        public string TemplateName { get; set; } = string.Empty;
+
+        public DxGridMasterDetailConfig() { }
+
+        public DxGridMasterDetailConfig(string templateName) {
+            TemplateName = templateName;
+            EnableMasterDetails = true;
+        }
+
     }
 }

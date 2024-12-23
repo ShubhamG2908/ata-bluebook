@@ -57,6 +57,15 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
                 });
             }
 
+            if (gridConfigs.GridMasterDetailConfig.EnableMasterDetails)
+            {
+                builder.MasterDetail(m =>
+                {
+                    m.Enabled(gridConfigs.GridMasterDetailConfig.EnableMasterDetails);
+                    m.Template(new TemplateName(gridConfigs.GridMasterDetailConfig.TemplateName));
+                });
+            }
+
             return builder;
         }
 
@@ -122,6 +131,7 @@ namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
             var builder = dataSource.Mvc().
                 Controller(config.DataSourceConfig.ControllerName)
                 .LoadAction(config.DataSourceConfig.LoadActionName)
+                .LoadParams(config.DataSourceConfig.LoadParams)
                 .Key(config.DataSourceConfig.Key);
 
             if (config.GridEditingConfig.AllowUpdateOperation)

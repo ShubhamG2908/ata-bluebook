@@ -65,6 +65,18 @@ namespace ATA.Bluebook.Web.Controllers
             return Ok(DummyDataHelper.GetDummyJobsData());
         }
 
+        [HttpGet]
+        public IActionResult GetJobsDetailsData(DataSourceLoadOptions loadOptions, int Id)
+        {
+            var data = DummyDataHelper.GetDummyJobDetailData();
+
+            if(Id > 0)
+            {
+                data = data.Where(x => x.JobId == Id).ToList();
+            }
+            return Ok(data);
+        }
+
         #region Private Methods
         private StepperPageModel GetStepper(JobFormPageModel model) =>
             new()

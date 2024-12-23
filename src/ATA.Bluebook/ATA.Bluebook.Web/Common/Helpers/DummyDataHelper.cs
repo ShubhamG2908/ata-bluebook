@@ -75,6 +75,30 @@ namespace ATA.Bluebook.Web.Common.Helpers
             return jobModels;
         }
 
+        public static List<JobDetailModel> GetDummyJobDetailData()
+        {
+            List<JobDetailModel> jobDetails = new List<JobDetailModel>();
+
+            jobDetails.Add(new JobDetailModel(1, 1,  "MC01", "ListA", new DateTime(2024, 11, 15), DateTime.Now, 1000, 1000.00M, 50.00M));
+            jobDetails.Add(new JobDetailModel(2, 1, "MC02", "ListB", new DateTime(2024, 11, 20), DateTime.Now, 1500, 1500.00M, 75.00M));
+            jobDetails.Add(new JobDetailModel(3, 1, "MC03", "ListC", new DateTime(2024, 11, 25), DateTime.Now, 800, 800.00M, 40.00M));
+            jobDetails.Add(new JobDetailModel(4, 1, "MC04", "ListD", new DateTime(2024, 11, 18), DateTime.Now, 1200, 1200.00M, 60.00M));
+            jobDetails.Add(new JobDetailModel(5, 1, "MC05", "ListE", new DateTime(2024, 11, 22), DateTime.Now, 950, 950.00M, 45.00M));
+            jobDetails.Add(new JobDetailModel(6, 1, "MC06", "ListF", new DateTime(2024, 11, 17), DateTime.Now, 1100, 1100.00M, 55.00M));
+            jobDetails.Add(new JobDetailModel(7, 1, "MC07", "ListG", new DateTime(2024, 12, 01), DateTime.Now, 1300, 1300.00M, 65.00M));
+            jobDetails.Add(new JobDetailModel(8, 1, "MC08", "ListH", new DateTime(2024, 12, 05), DateTime.Now, 1400, 1400.00M, 70.00M));
+            jobDetails.Add(new JobDetailModel(9, 1, "MC09", "ListI", new DateTime(2024, 12, 10), DateTime.Now, 1500, 1500.00M, 75.00M));
+            jobDetails.Add(new JobDetailModel(10, 1, "MC10", "ListJ", new DateTime(2024, 12, 15), DateTime.Now, 1600, 1600.00M, 80.00M));
+            jobDetails.Add(new JobDetailModel(11, 1, "MC11", "ListK", new DateTime(2024, 12, 20), DateTime.Now, 1700, 1700.00M, 85.00M));
+            jobDetails.Add(new JobDetailModel(12, 1, "MC12", "ListL", new DateTime(2024, 12, 25), DateTime.Now, 1800, 1800.00M, 90.00M));
+            jobDetails.Add(new JobDetailModel(13, 2, "MC13", "ListM", new DateTime(2024, 12, 30), DateTime.Now, 1900, 1900.00M, 95.00M));
+            jobDetails.Add(new JobDetailModel(14, 2, "MC14", "ListN", new DateTime(2025, 01, 05), DateTime.Now, 2000, 2000.00M, 100.00M));
+            jobDetails.Add(new JobDetailModel(15, 2, "MC15", "ListO", new DateTime(2025, 01, 10), DateTime.Now, 2100, 2100.00M, 105.00M));
+            jobDetails.Add(new JobDetailModel(16, 2, "MC16", "ListP", new DateTime(2025, 01, 15), DateTime.Now, 2200, 2200.00M, 110.00M));
+
+            return jobDetails;
+        }
+
 
     }
 

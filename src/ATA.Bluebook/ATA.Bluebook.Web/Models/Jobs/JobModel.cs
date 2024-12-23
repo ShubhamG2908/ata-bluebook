@@ -83,4 +83,31 @@ namespace ATA.Bluebook.Web.Models.Jobs
             Instructions = instructions;
         }
     }
+
+    public class JobDetailModel
+    {
+        public int Id { get; set; }
+        public int JobId { get; set; }
+        public string MailCode { get; set; } = string.Empty;
+        public string ListName { get; set; } = string.Empty;
+        public DateTime MailDate { get; set; }
+        public DateTime LastUpdate { get; set; }
+        public decimal  Mailed { get; set; }
+        public decimal Income {get; set; }
+        public decimal Cost { get; set; }
+
+        public JobDetailModel(int id, int jobId, string mailCode, string listName, DateTime mailDate, DateTime lastUpdate, decimal mailed, decimal income, decimal cost)
+        {
+            Id = id;
+            JobId = jobId;
+            MailCode = mailCode;
+            ListName = listName;
+            MailDate = mailDate;
+            LastUpdate = lastUpdate;
+            Mailed = mailed;
+            Income = income;
+            Cost = cost;
+        }
+    }
+
 }
