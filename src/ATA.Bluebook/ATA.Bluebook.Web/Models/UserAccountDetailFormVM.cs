@@ -1,8 +1,8 @@
-﻿using ATA.Bluebook.Web.Common.Constants;
-using ATA.Bluebook.Web.Models.User;
+﻿using ATA.Web.Common.Constants;
+using ATA.Web.Models.User;
 using System.ComponentModel.DataAnnotations;
 
-namespace ATA.Bluebook.Web.Models
+namespace ATA.Web.Models
 {
     public record UserAccountDetailFormVM
     (

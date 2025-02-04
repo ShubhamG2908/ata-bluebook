@@ -1,4 +1,4 @@
-﻿namespace ATA.Bluebook.Web.Models
+﻿namespace ATA.Web.Models
 {
     public class StepperButtonModel
     {

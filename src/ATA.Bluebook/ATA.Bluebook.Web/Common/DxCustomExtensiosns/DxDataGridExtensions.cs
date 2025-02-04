@@ -1,11 +1,11 @@
-﻿using ATA.Bluebook.Web.Models.DxConfigs;
+﻿using ATA.Web.Models.DxConfigs;
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Builders.DataSources;
 using DevExtreme.AspNet.Mvc.Factories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ATA.Bluebook.Web.Common.DxDataGridExtensions
+namespace ATA.Web.Common.DxDataGridExtensions
 {
     public static class DxDataGridExtensions
     {

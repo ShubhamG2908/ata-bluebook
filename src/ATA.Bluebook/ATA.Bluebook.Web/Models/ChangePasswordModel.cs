@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ATA.Bluebook.Web.Models
+namespace ATA.Web.Models
 {
-	public record ChangePasswordModel
+	public class ChangePasswordModel
 	{
 		[Required]
 		public string Password { get; set; } = default!;

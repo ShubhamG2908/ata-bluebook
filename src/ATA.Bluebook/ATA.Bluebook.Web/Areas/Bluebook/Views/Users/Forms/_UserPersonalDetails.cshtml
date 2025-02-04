@@ -1,0 +1,35 @@
+﻿@model UserFormPageModel
+@{
+	var stepperButton = new StepperButtonModel
+    {
+        PreviousLabel = "Previous",
+        NextLabel = "Next",
+		PreviousBtnClickHandler = "handlePersonalDetailStepPrevious",
+		NextBtnClickHandler = "handlePersonalDetailStepNext"
+    };
+}
+<div>
+	@(
+		Html.DevExtreme()
+			.Form<UserPersonalDetailForm>()
+			.OnInitialized("onPersonalDetailFormInitialized")
+			.ColCount(2)
+			.FormData(Model.PersonalDetailForm)
+			.Items(item =>
+			{
+				item.AddCustomFormTextBox(x => x.Name);
+				item.AddCustomFormTextBox(x => x.Address);
+				item.AddCustomFormTextBox(x => x.City);
+				item.AddCustomFormTextBox(x => x.Zip);
+				item.AddCustomFormTextBox(x => x.State);
+				item.AddCustomFormTextBox(x => x.Contact);
+				item.AddCustomFormTextBox(x => x.Email);
+				item.AddCustomFormTextBox(x => x.ClosedCode);
+				item.AddCustomFormTextBox(x => x.CloseDays);
+				item.AddCustomFormTextBox(x => x.WhiteMailCode);
+			})
+)
+</div>
+<div>
+    @(await Html.PartialAsync("_StepperButtons", stepperButton))
+</div>

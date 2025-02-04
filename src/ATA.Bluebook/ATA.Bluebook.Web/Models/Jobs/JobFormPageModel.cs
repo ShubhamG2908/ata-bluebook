@@ -1,4 +1,4 @@
-﻿namespace ATA.Bluebook.Web.Models.Jobs
+﻿namespace ATA.Web.Models.Jobs
 {
     public class JobFormPageModel
     {

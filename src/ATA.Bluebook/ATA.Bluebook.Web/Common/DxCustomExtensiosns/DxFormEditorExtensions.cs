@@ -1,5 +1,5 @@
-﻿using ATA.Bluebook.Web.Common.DxCustomExtensiosns.Configs;
-using ATA.Bluebook.Web.Models;
+﻿using ATA.Web.Common.DxCustomExtensiosns.Configs;
+using ATA.Web.Models;
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Factories;
@@ -7,7 +7,7 @@ using DevExtreme.AspNet.Mvc.Factories;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 
-namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
+namespace ATA.Web.Common.DxCustomExtensiosns
 {
     public static class DxFormEditorExtensions
     {

@@ -1,8 +1,8 @@
-﻿using ATA.Bluebook.Web.Common.Helpers;
+﻿using ATA.Web.Common.Helpers;
 using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ATA.Bluebook.Web.Controllers.API
+namespace ATA.Web.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ATA.Bluebook.Web.Models
+namespace ATA.Web.Models
 {
     public class ComponentTabModel
     {

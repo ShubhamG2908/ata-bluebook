@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="23.2.6" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Bluebook\Data\" />
+    <Folder Include="Areas\Bluebook\Models\" />
+    <Folder Include="Areas\ListSystem\Controllers\" />
+    <Folder Include="Areas\ListSystem\Data\" />
+    <Folder Include="Areas\ListSystem\Models\" />
+    <Folder Include="Areas\ListSystem\Views\" />
+    <Folder Include="wwwroot\Email Templates\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ATA.Bluebook.Application\ATA.Application.csproj" />
+    <ProjectReference Include="..\ATA.Bluebook.Infrastructure\ATA.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Areas\Bluebook\Views\Home\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Bluebook\Views\Home\Privacy.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

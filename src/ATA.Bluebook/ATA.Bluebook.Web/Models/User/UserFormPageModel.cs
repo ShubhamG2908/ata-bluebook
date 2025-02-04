@@ -1,7 +1,7 @@
-﻿using ATA.Bluebook.Web.Common.Constants;
+﻿using ATA.Web.Common.Constants;
 using System.ComponentModel.DataAnnotations;
 
-namespace ATA.Bluebook.Web.Models.User
+namespace ATA.Web.Models.User
 {
     public class UserFormPageModel
     {

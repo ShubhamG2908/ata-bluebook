@@ -1,7 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ATA.Bluebook.Web.Models
+namespace ATA.Web.Models
 {
-	public record ForgetPasswordModel([Required, Display(Name = "Email Address")] string Username);
+    public class ForgetPasswordModel
+    {
+        [Required, Display(Name = "Email Address")]
+        public string Username { get; set; } = default!;
+    }
 
 }

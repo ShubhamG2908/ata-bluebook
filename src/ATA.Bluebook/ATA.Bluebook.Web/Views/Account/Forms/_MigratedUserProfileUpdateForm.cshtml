@@ -1,0 +1,16 @@
+﻿@using (Html.BeginForm("UpdateMigratedUserProfile", "Account", FormMethod.Post))
+{
+	@(Html.DevExtreme().Form<MigratedUserProfileUpdateModel>()
+																			.OnInitialized("onInitialized")
+																				.Items(item =>
+																				{
+																					item.AddCustomFormTextBox(m => m.Username);
+																					item.AddCustomFormTextBox(m => m.Fullname);
+																					item.AddCustomFormTextBox(m => m.Email);
+																					item.AddCustomFormPassword(m => m.Password);
+																					item.AddCustomFormPassword(m => m.ConfirmPassword, "ConfirmPassword", "hide-show-confirm-password-btn");
+																					item.AddCustomFormButton("Confrim", "100%", canSubmitForm: true);
+																				}).FormData(Model)
+				)
+}
+<script src="~/js/Account.js"></script>

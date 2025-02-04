@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ATA.Bluebook.Web.Common.HtmlExtensions
+namespace ATA.Web.Common.HtmlExtensions
 {
     public static class HtmlExtensions
     {

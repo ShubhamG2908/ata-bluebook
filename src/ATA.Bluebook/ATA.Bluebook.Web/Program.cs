@@ -1,14 +1,13 @@
+using ATA.Web.Config;
+using ATA.Application.Config;
+using ATA.Infrastructure.Config;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-builder.Services.AddSession(session =>
-{
-	session.IdleTimeout = TimeSpan.FromMinutes(30);
-	session.Cookie.HttpOnly = true;
-	session.Cookie.IsEssential = true;
-});
-builder.Services.AddHttpContextAccessor();
+builder.Services.AddWebServices()
+	.AddApplicationService()
+	.AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -21,16 +20,20 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseSession();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Account}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+          name: "areas",
+          pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}" );
 
 app.Run();

@@ -1,7 +1,6 @@
 ﻿using DevExtreme.AspNet.Mvc;
-using DevExtreme.AspNet.Mvc.Builders;
 
-namespace ATA.Bluebook.Web.Models.DxConfigs
+namespace ATA.Web.Models.DxConfigs
 {
     public class DxDataGridColumnConfig
     {

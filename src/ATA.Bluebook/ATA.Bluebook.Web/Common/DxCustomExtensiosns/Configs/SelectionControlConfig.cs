@@ -1,4 +1,4 @@
-﻿namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns.Configs
+﻿namespace ATA.Web.Common.DxCustomExtensiosns.Configs
 {
     public class SelectionControlConfig : SelectionBaseControlConfig
     {

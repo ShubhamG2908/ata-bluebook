@@ -1,4 +1,4 @@
-﻿namespace ATA.Bluebook.Web.Common.Helpers
+﻿namespace ATA.Web.Common.Helpers
 {
     public  class DummyDataHelper
     {

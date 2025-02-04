@@ -1,4 +1,4 @@
-﻿namespace ATA.Bluebook.Domain.Config
+﻿namespace ATA.Domain.Config
 {
 	public class Bootstrap
 	{

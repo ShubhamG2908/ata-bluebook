@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace ATA.Bluebook.Web.Common.Constants
+﻿namespace ATA.Web.Common.Constants
 {
     public class RegexConstants
     {

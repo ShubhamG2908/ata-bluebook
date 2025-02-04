@@ -1,13 +1,14 @@
 ﻿@using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
 	@(Html.DevExtreme()
-			.Form<LoginModelRecord>()
+			.Form<LoginModel>()
 												.OnInitialized("onInitialized")
 													.Items(item =>
 													{
 														item.AddCustomFormTextBox(m => m.Username);
 														item.AddCustomFormPassword(item => item.Password);
-															item.AddCustomFormHyperLink("/Account/ForgetPassword", "Forgotten password?", "text-center");
+														item.AddCustomFormCheckbox(m => m.RememberMe, "Remember me");
+														item.AddCustomFormHyperLink("/Account/ForgetPassword", "Forgotten password?", "text-center");
 														item.AddCustomFormButton("Login", "100%", canSubmitForm: true);
 													}).FormData(Model))
 }

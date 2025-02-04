@@ -2,7 +2,7 @@
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Factories;
 
-namespace ATA.Bluebook.Web.Common.DxCustomExtensiosns
+namespace ATA.Web.Common.DxCustomExtensiosns
 {
     public static class DxCommonExtensions
     {
