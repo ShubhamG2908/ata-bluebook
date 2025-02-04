@@ -21,11 +21,18 @@ namespace ATA.Infrastructure.Persistance.Sql.Repository
         private bool _orderByDescending = false;
         private string? _searchTerm = null;
         private string[]? _searchColumns = null;
+        private bool _noTracking = false;
 
         public GenericRepositoryBuilder(ApplicationContext context)
         {
             _context = context;
             _dbEntity = context.Set<TEntity>();
+        }
+
+        public IGenericRepositoryBuilder<TEntity> WithNoTracking()
+        {
+            _noTracking = true;
+            return this;
         }
 
         private IQueryable<TEntity> ApplyFilter(IQueryable<TEntity> query)
@@ -77,6 +84,9 @@ namespace ATA.Infrastructure.Persistance.Sql.Repository
                     : query.OrderBy(_orderBy);
             }
 
+            if (_noTracking)
+                query.AsNoTracking();
+
             return query;
         }
 
@@ -126,7 +136,7 @@ namespace ATA.Infrastructure.Persistance.Sql.Repository
             query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
 
             List<TResult> items;
-           var projectionExpression = _projection as Expression<Func<TEntity, TResult>>;
+            var projectionExpression = _projection as Expression<Func<TEntity, TResult>>;
 
             if (projectionExpression != null)
                 items = await query.Select(projectionExpression).ToListAsync();

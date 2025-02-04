@@ -8,6 +8,7 @@ namespace ATA.Application.Interface
 {
     public interface IGenericRepositoryBuilder<TEntity> where TEntity : BaseEntity
     {
+        IGenericRepositoryBuilder<TEntity> WithNoTracking();
         IGenericRepositoryBuilder<TEntity> WithSearch(string searchTerm, params string[] columns);
         Task<bool> RemoveAsync(Guid id, Guid userId);
         Task<(List<TResult> Items, int TotalCount)> ExecuteWithPaginationAsync<TResult>(int pageSize = 10, int pageNumber = 1);
