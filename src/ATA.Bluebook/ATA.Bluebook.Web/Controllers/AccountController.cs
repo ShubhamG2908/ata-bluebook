@@ -1,5 +1,4 @@
 ﻿using ATA.Application.Services.Shared.User.Login;
-using ATA.Web.Common.Constants;
 using ATA.Web.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,6 +13,7 @@ using System.Security.Claims;
 using System.Text.RegularExpressions;
 using ATA.Application.Services.Shared.User.UpdateMigrateUserProfile;
 using ATA.Application.Common;
+using ATA.Web.Common;
 
 namespace ATA.Web.Controllers
 {
@@ -113,7 +113,7 @@ namespace ATA.Web.Controllers
 
             HttpContext.Session.Remove(ClaimTypes.NameIdentifier);
             HttpContext.Session.Remove(ClaimConstants.UserId);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { area = "Bluebook"});
         }
 
         public IActionResult ForgetPassword()

@@ -1,4 +1,5 @@
-﻿using ATA.Web.Common.Constants;
+﻿using ATA.Web.Common;
+
 using System.ComponentModel.DataAnnotations;
 
 namespace ATA.Web.Models

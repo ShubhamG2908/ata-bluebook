@@ -1,5 +1,13 @@
 ﻿@model MigratedUserProfileUpdateModel
 
+@{
+	var error = ViewData["ErrorMessage"] as string;
+	var alertModel = new AlertModel
+			{
+				Type = "alert-danger",
+				Message = error
+			};
+}
 
 <div class="justify-content-center login-page px-3">
 	<div class="col-12 col-xl-4 col-lg-6 col-md-9">
@@ -7,9 +15,11 @@
 			<img src="~/images/a_logo.png" class="card-img-top p-3 mx-auto login-page-header-img" alt="">
 			<div class="card-body">
 				<div class="text-center">
+					<partial name="_alert" model="alertModel" />
 					<h3>Profile Update</h3>
+					<span>Looks like you are a migrated user from the existing System. Please update the below fields for the better user security. </span>
 				</div>
-				<partial name="Forms/_MigratedUserProfileUpdateForm"></partial>
+				<partial name="Forms/_MigratedUserProfileUpdateForm" />
 			</div>
 		</div>
 	</div>

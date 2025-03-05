@@ -9,7 +9,7 @@ namespace ATA.Application.Common.Context
     public class CurrentUserContext : ICurrentUserContext
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public CurrentUserContext(IHttpContextAccessor httpContextAccessor, IUserContextService userContextService)
+        public CurrentUserContext(IHttpContextAccessor httpContextAccessor)
         { _httpContextAccessor = httpContextAccessor; }
 
         public Guid TokenId => Guid.Parse(GetClaimValue(ClaimTypes.NameIdentifier));

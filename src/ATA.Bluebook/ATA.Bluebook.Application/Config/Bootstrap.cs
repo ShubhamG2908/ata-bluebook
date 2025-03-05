@@ -16,7 +16,6 @@ namespace ATA.Application.Config
             });
 
             services.AddTransient<ICurrentUserContext, CurrentUserContext>();
-            services.AddTransient<IUserContextService, UserContextService>();
             services.AddTransient<ITenantContext, TenantContext>();
 
             return services;
