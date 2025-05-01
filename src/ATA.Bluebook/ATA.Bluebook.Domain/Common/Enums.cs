@@ -43,18 +43,17 @@ namespace ATA.Domain.Common
         InProgress,
         Done
     }
-    public enum ContactType
+    public enum ContractType
     {
-        New,
-        InProgress,
-        Done
+        DirectBill,
+        NoRisk
     }
     public static class EnumHelper
     {
-        public static List<object> GetEnumList<T>() where T : Enum
+        public static List<object> GetEnumList(Type enumType)
         {
-            return Enum.GetValues(typeof(T))
-                       .Cast<T>()
+            return Enum.GetValues(enumType)
+                       .Cast<Enum>()
                        .Select(e => new { Value = Convert.ToInt32(e), Text = e.ToString() })
                        .ToList<object>();
         }

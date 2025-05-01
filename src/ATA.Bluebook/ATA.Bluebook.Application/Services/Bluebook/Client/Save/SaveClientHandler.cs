@@ -33,7 +33,7 @@ namespace ATA.Application.Services.Bluebook.Client.Save
                     City = request.Client.City,
                     State = request.Client.State,
                     Zip = request.Client.Zip,
-                    ContactType = request.Client.ContactType,
+                    ContractType = request.Client.ContractType,
                     ProgramType = request.Client.ProgramType,
                     ProjectType = request.Client.ProjectType,
                     Status = request.Client.Status,

@@ -25,7 +25,7 @@ namespace ATA.Application.Models.Bluebook
         public string State { get; set; } = default!;
         [Required]
         public string Zip { get; set; } = default!;
-        public ContactType ContactType { get; set; }
+        public ContractType ContractType { get; set; }
         public ProgramType ProgramType { get; set; }
         public ProjectType ProjectType { get; set; }
         public Status Status { get; set; }

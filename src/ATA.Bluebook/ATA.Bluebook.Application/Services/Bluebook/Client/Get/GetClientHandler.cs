@@ -34,7 +34,7 @@ namespace ATA.Application.Services.Bluebook.Client.Get
                                   City = c.City,
                                   State = c.State,
                                   Zip = c.Zip,
-                                  ContactType = c.ContactType,
+                                  ContractType = c.ContractType,
                                   ProgramType = c.ProgramType,
                                   ProjectType = c.ProjectType,
                                   Status = c.Status,
