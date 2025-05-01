@@ -23,7 +23,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Persistance\Sql\DabaseContext\EntityConfigurations\Bluebook\" />
 	  <Folder Include="Persistance\Sql\DabaseContext\EntityConfigurations\ListSystem\" />
 	</ItemGroup>
 

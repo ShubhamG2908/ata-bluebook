@@ -25,4 +25,28 @@ namespace ATA.Domain.Common
         CanUpdate,
         CanDelete
     }
+    public enum Status
+    {
+        New,
+        InProgress,
+        Done
+    }
+    public enum ProjectType
+    {
+        New,
+        InProgress,
+        Done
+    }
+    public enum ProgramType
+    {
+        New,
+        InProgress,
+        Done
+    }
+    public enum ContactType
+    {
+        New,
+        InProgress,
+        Done
+    }
 }

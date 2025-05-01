@@ -22,9 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATA.Bluebook.UnitTestCase", "ATA.Bluebook.UnitTestCase\ATA.Bluebook.UnitTestCase.csproj", "{961FC9DF-9356-4D40-B5D5-80B506F6D707}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52FB54E8-9041-4245-8DF9-B21F6127AD92}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
