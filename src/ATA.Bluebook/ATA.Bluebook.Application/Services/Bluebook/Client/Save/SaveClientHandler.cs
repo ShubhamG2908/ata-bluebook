@@ -38,7 +38,9 @@ namespace ATA.Application.Services.Bluebook.Client.Save
                     ProjectType = request.Client.ProjectType,
                     Status = request.Client.Status,
                     InternalName = request.Client.InternalName,
-                    WMCode = request.Client.WMCode
+                    WMCode = request.Client.WMCode,
+                    FinancialEmailList = request.Client.FinancialEmailList,
+                    MarketingEmailList = request.Client.MarketingEmailList
                 };
 
                 // Save (Upsert) client entity to the database

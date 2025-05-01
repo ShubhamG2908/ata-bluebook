@@ -31,5 +31,7 @@ namespace ATA.Application.Models.Bluebook
         public Status Status { get; set; }
         public string? InternalName { get; set; }
         public string? WMCode { get; set; }
+        public string? FinancialEmailList { get; set; }
+        public string? MarketingEmailList { get; set; }
     }
 }

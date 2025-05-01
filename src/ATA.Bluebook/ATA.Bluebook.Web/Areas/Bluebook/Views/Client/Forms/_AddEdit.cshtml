@@ -27,6 +27,8 @@
                 items.AddCustomFormTextBox(m => m.InternalName);
                 items.AddCustomFormTextBox(m => m.WMCode);
 
+                    items.AddCustomFormTextArea(m => m.FinancialEmailList);
+                    items.AddCustomFormTextArea(m => m.MarketingEmailList);
                 items.AddCustomFormButton("Submit", "100%", canSubmitForm: true);
             })
     )

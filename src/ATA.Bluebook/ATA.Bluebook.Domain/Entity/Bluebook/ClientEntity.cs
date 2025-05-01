@@ -48,5 +48,7 @@ namespace ATA.Domain.Entity.Bluebook
 
         [MaxLength(100)]
         public string? WMCode { get; set; }
+        public string? FinancialEmailList { get; set; }
+        public string? MarketingEmailList { get; set; }
     }
 }

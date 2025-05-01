@@ -35,7 +35,9 @@ namespace ATA.Application.Services.Bluebook.Client.List
                                   ProjectType = c.ProjectType,
                                   Status = c.Status,
                                   InternalName = c.InternalName,
-                                  WMCode = c.WMCode
+                                  WMCode = c.WMCode,
+                                  FinancialEmailList = c.FinancialEmailList,
+                                  MarketingEmailList = c.MarketingEmailList
                               })
                               .ExecuteListAsync<ClientModel>();
         }
