@@ -12,6 +12,9 @@ namespace ATA.Infrastructure.Persistance.Sql.DabaseContext.EntityConfigurations.
         {
             builder.ToTable("UserSeceurityEntity", DbSchema.Shared);
 
+            builder.Property(e => e.Id)
+                 .HasValueGenerator<SequentialGuidValueGenerator>();
+
             builder.HasIndex(u => u.Username).IsUnique();
         }
     }

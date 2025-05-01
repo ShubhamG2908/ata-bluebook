@@ -11,6 +11,9 @@ namespace ATA.Infrastructure.Persistance.Sql.DabaseContext.EntityConfigurations.
         public void Configure(EntityTypeBuilder<RolePolicyEntity> builder)
         {
             builder.ToTable("RolePolicy", DbSchema.Shared);
+
+            builder.Property(e => e.Id)
+              .HasValueGenerator<SequentialGuidValueGenerator>();
         }
     }
 }

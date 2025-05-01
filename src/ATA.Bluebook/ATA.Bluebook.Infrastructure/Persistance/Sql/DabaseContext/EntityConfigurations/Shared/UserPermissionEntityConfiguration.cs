@@ -12,6 +12,9 @@ namespace ATA.Infrastructure.Persistance.Sql.DabaseContext.EntityConfigurations.
         public void Configure(EntityTypeBuilder<UserPermissionEntity> builder)
         {
             builder.ToTable("UserPermission", DbSchema.Shared);
+
+            builder.Property(e => e.Id)
+                  .HasValueGenerator<SequentialGuidValueGenerator>();
         }
     }
 }

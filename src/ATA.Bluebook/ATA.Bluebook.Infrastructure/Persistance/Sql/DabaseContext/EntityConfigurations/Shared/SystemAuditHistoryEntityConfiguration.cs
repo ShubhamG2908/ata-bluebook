@@ -12,6 +12,9 @@ namespace ATA.Infrastructure.Persistance.Sql.DabaseContext.EntityConfigurations.
         public void Configure(EntityTypeBuilder<SystemAuditHistoryEntity> builder)
         {
             builder.ToTable("SystemAuditHistory", DbSchema.Shared);
+
+            builder.Property(e => e.Id)
+              .HasValueGenerator<SequentialGuidValueGenerator>();
         }
     }
 }

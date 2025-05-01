@@ -1,10 +1,8 @@
 ﻿using ATA.Application.Interface;
 using ATA.Domain.Entity;
 using ATA.Infrastructure.Persistance.Sql.DabaseContext;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -17,7 +15,7 @@ namespace ATA.Infrastructure.Persistance.Sql.Repository
         private Expression? _projection = null;
         private Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null;
         private Expression<Func<TEntity, object>>? _orderBy = null;
-        private Expression<Func<TEntity, bool>>? where = null;
+        private Expression<Func<TEntity, bool>>? _where = null;
         private bool _orderByDescending = false;
         private string? _searchTerm = null;
         private string[]? _searchColumns = null;
@@ -38,9 +36,9 @@ namespace ATA.Infrastructure.Persistance.Sql.Repository
         private IQueryable<TEntity> ApplyFilter(IQueryable<TEntity> query)
         {
             // Apply Where
-            if (where != null)
+            if (_where != null)
             {
-                query = query.Where(where);
+                query = query.Where(_where);
             }
 
             // Dynamic Search
@@ -148,7 +146,7 @@ namespace ATA.Infrastructure.Persistance.Sql.Repository
 
         public IGenericRepositoryBuilder<TEntity> WithFilter(Expression<Func<TEntity, bool>> where)
         {
-            this.where = where;
+            this._where = where;
             return this;
         }
 

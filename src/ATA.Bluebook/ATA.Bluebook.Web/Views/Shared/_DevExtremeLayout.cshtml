@@ -67,7 +67,7 @@
 </head>
 
 <body>
-    @if (_accessor.HttpContext.Session.GetString("UserName") != null)
+    @if (_accessor.HttpContext?.Session.GetString("UserName") != null)
     {
         <partial name="_TopNavbar"></partial>
     }

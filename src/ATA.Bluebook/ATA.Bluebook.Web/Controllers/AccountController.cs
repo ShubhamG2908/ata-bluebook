@@ -2,13 +2,9 @@
 using ATA.Web.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
-
 using System.Data;
-
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 using ATA.Application.Services.Shared.User.UpdateMigrateUserProfile;
@@ -118,7 +114,7 @@ namespace ATA.Web.Controllers
 
         public IActionResult ForgetPassword()
         {
-            return View(new ForgotPassword());
+            return View(new ForgetPasswordModel());
         }
 
         [HttpPost]

@@ -12,6 +12,9 @@ namespace ATA.Infrastructure.Persistance.Sql.DabaseContext.EntityConfigurations.
         public void Configure(EntityTypeBuilder<AdressEntity> builder)
         {
             builder.ToTable("Adress", DbSchema.Shared);
+
+            builder.Property(e => e.Id)
+              .HasValueGenerator<SequentialGuidValueGenerator>();
         }
     }
 }

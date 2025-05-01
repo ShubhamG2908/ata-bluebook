@@ -27,10 +27,10 @@
             UserType = userType;
         }
 
-        public int Id {  get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string UserType { get; set; }
+        public int Id { get; set; } = default!;
+        public string Username { get; set; } = default!;
+        public string Password { get; set; } = default!;
+        public string Email { get; set; } = default!;
+        public string UserType { get; set; } = default!;
     }
 }

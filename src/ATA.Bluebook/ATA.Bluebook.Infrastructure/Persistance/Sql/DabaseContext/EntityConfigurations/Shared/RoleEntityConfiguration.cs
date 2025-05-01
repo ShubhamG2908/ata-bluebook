@@ -14,6 +14,9 @@ namespace ATA.Infrastructure.Persistance.Sql.DabaseContext.EntityConfigurations.
             builder.ToTable("Role", DbSchema.Shared)
                 .HasIndex(x => x.Name);
 
+            builder.Property(e => e.Id)
+              .HasValueGenerator<SequentialGuidValueGenerator>();
+
             builder.HasMany(r => r.RolePolices).WithOne(rp => rp.Role).HasForeignKey(rp => rp.RoleId);
         }
     }

@@ -12,6 +12,9 @@ namespace ATA.Infrastructure.Persistance.Sql.DabaseContext.EntityConfigurations.
         {
             builder.ToTable("TenantMaster", DbSchema.Shared).HasIndex(x => x.Name);
 
+            builder.Property(e => e.Id)
+              .HasValueGenerator<SequentialGuidValueGenerator>();
+
             builder.HasMany(t => t.TenantConfigs).WithOne(tc => tc.Tenant).HasForeignKey(tc => tc.TenantId);
 
             builder.HasMany(t => t.Users).WithOne(u => u.Tenant).HasForeignKey(u => u.TenantId);

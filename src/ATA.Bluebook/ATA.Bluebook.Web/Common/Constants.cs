@@ -2,7 +2,7 @@
 {
     public static class RegexConstants
     {
-        public static readonly string Email = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        public const string Email = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     }
 
     public static class AlertTypes
