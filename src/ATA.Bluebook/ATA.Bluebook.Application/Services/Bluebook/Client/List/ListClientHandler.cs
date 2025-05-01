@@ -6,16 +6,16 @@ using MediatR;
 
 namespace ATA.Application.Services.Bluebook.Client.List
 {
-    public class GetAllClientsHandler : IRequestHandler<GetAllClientsQuery, List<ClientModel>>
+    public class ListClientHandler : IRequestHandler<ListClientQuery, List<ClientModel>>
     {
         private readonly IGenericRepositoryBuilder<ClientEntity> _repo;
 
-        public GetAllClientsHandler(IGenericRepositoryBuilder<ClientEntity> repo)
+        public ListClientHandler(IGenericRepositoryBuilder<ClientEntity> repo)
         {
             _repo = repo;
         }
 
-        public async Task<List<ClientModel>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
+        public async Task<List<ClientModel>> Handle(ListClientQuery request, CancellationToken cancellationToken)
         {
             return await _repo.WithFilter(x => x.IsRemoved == false).WithNoTracking()
                               .WithProjection(c => new ClientModel

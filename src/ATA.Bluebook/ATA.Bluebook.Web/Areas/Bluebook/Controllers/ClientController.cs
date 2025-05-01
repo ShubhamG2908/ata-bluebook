@@ -25,7 +25,7 @@ namespace ATA.Web.Areas.Bluebook.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions)
         {
-            var getAll = await _mediator.Send(new GetAllClientsQuery());
+            var getAll = await _mediator.Send(new ListClientQuery());
             return Ok(getAll);
         }
         [HttpGet]
