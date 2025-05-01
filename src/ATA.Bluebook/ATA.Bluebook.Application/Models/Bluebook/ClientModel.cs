@@ -1,24 +1,29 @@
 ﻿using ATA.Domain.Common;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace ATA.Application.Services.Bluebook.Client.Get
+namespace ATA.Application.Models.Bluebook
 {
-    public class ClientResponse
+    public class ClientModel
     {
         public Guid Id { get; set; }
+        [Required]
         public string ClientCode { get; set; } = default!;
+        [Required]
         public string ClientName { get; set; } = default!;
+        [Required]
         public string ContactName { get; set; } = default!;
+        [Required]
         public string ContactEmail { get; set; } = default!;
+        [Required]
         public string ContactPhone { get; set; } = default!;
+        [Required]
         public string Address { get; set; } = default!;
+        [Required]
         public string City { get; set; } = default!;
+        [Required]
         public string State { get; set; } = default!;
+        [Required]
         public string Zip { get; set; } = default!;
         public ContactType ContactType { get; set; }
         public ProgramType ProgramType { get; set; }

@@ -1,0 +1,32 @@
+﻿@using ATA.Web.Common.DxCustomExtensiosns
+@using ATA.Domain.Common
+@using ATA.Application.Models.Bluebook
+@model ClientModel
+
+@using (Html.BeginForm("Save", "Client", FormMethod.Post, new { area = "Bluebook" }))
+{
+    @(
+        Html.DevExtreme()
+            .Form<ATA.Application.Models.Bluebook.ClientModel>()
+            .FormData(Model)
+            .LabelLocation(FormLabelLocation.Top)
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddCustomFormTextBox(m => m.ClientCode);
+                items.AddCustomFormTextBox(m => m.ClientName);
+                items.AddCustomFormTextBox(m => m.ContactName);
+                items.AddCustomFormTextBox(m => m.ContactEmail);
+                items.AddCustomFormTextBox(m => m.ContactPhone);
+                items.AddCustomFormTextArea(m => m.Address);
+                items.AddCustomFormTextBox(m => m.City);
+                items.AddCustomFormTextBox(m => m.State);
+                items.AddCustomFormTextBox(m => m.Zip);
+
+                items.AddCustomFormTextBox(m => m.InternalName);
+                items.AddCustomFormTextBox(m => m.WMCode);
+
+                items.AddCustomFormButton("Submit", "100%", canSubmitForm: true);
+            })
+    )
+}

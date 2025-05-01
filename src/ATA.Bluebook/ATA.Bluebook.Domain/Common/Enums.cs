@@ -49,4 +49,14 @@ namespace ATA.Domain.Common
         InProgress,
         Done
     }
+    public static class EnumHelper
+    {
+        public static List<object> GetEnumList<T>() where T : Enum
+        {
+            return Enum.GetValues(typeof(T))
+                       .Cast<T>()
+                       .Select(e => new { Value = Convert.ToInt32(e), Text = e.ToString() })
+                       .ToList<object>();
+        }
+    }
 }

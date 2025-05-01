@@ -1,11 +1,12 @@
 ﻿using ATA.Application.Interface;
+using ATA.Application.Models.Bluebook;
 using ATA.Domain.Entity.Bluebook;
 
 using MediatR;
 
 namespace ATA.Application.Services.Bluebook.Client.Get
 {
-    public class GetAllClientsHandler : IRequestHandler<GetAllClientsQuery, List<ClientResponse>>
+    public class GetAllClientsHandler : IRequestHandler<GetAllClientsQuery, List<ClientModel>>
     {
         private readonly IGenericRepositoryBuilder<ClientEntity> _repo;
 
@@ -14,10 +15,10 @@ namespace ATA.Application.Services.Bluebook.Client.Get
             _repo = repo;
         }
 
-        public async Task<List<ClientResponse>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
+        public async Task<List<ClientModel>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
         {
             return await _repo.WithFilter(x => x.IsRemoved == false).WithNoTracking()
-                              .WithProjection(c => new ClientResponse
+                              .WithProjection(c => new ClientModel
                               {
                                   Id = c.Id,
                                   ClientCode = c.ClientCode,
@@ -36,7 +37,7 @@ namespace ATA.Application.Services.Bluebook.Client.Get
                                   InternalName = c.InternalName,
                                   WMCode = c.WMCode
                               })
-                              .ExecuteListAsync<ClientResponse>();
+                              .ExecuteListAsync<ClientModel>();
         }
     }
 }

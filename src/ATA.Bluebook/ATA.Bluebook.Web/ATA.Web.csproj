@@ -20,6 +20,7 @@
     <Folder Include="Areas\ListSystem\Data\" />
     <Folder Include="Areas\ListSystem\Models\" />
     <Folder Include="Areas\ListSystem\Views\" />
+    <Folder Include="Models\Bluebook\" />
     <Folder Include="wwwroot\Email Templates\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
