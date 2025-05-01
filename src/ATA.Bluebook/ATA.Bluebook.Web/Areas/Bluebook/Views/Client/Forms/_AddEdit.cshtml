@@ -5,8 +5,9 @@
 
 @using (Html.BeginForm("Save", "Client", FormMethod.Post, new { area = "Bluebook" }))
 {
+    @Html.HiddenFor(m => m.Id);
     @(
-        Html.DevExtreme()
+    Html.DevExtreme()
             .Form<ATA.Application.Models.Bluebook.ClientModel>()
             .FormData(Model)
             .LabelLocation(FormLabelLocation.Top)

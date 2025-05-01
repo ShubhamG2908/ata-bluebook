@@ -1,4 +1,5 @@
 ﻿using ATA.Application.Models.Bluebook;
+using ATA.Application.Services.Bluebook.Client.Get;
 using ATA.Application.Services.Bluebook.Client.List;
 using ATA.Application.Services.Bluebook.Client.Save;
 
@@ -31,17 +32,17 @@ namespace ATA.Web.Areas.Bluebook.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            return View(new ClientModel()); // Pass empty model to the view
+            return View(new ClientModel());
         }
-        //[HttpGet]
-        //public async Task<IActionResult> Edit(Guid id)
-        //{
-        //    var client = await _mediator.Send(new GetClientByIdQuery(id)); // You'll need to implement this query/handler
-        //    if (client == null)
-        //        return NotFound();
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var client = await _mediator.Send(new GetClientQuery(id));
+            if (client == null)
+                return NotFound();
 
-        //    return View("Add", client); // Reuse Add.cshtml for both Add and Edit
-        //}
+            return View("Add", client);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Save(ClientModel model)
