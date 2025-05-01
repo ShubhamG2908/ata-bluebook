@@ -2,7 +2,7 @@
 
 using MediatR;
 
-namespace ATA.Application.Services.Bluebook.Client.Get
+namespace ATA.Application.Services.Bluebook.Client.List
 {
     public record GetAllClientsQuery() : IRequest<List<ClientModel>>;
 }

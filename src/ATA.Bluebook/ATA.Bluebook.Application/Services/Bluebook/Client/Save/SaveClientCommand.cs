@@ -1,5 +1,4 @@
 ﻿using ATA.Application.Models.Bluebook;
-using ATA.Application.Services.Bluebook.Client.Get;
 using MediatR;
 
 namespace ATA.Application.Services.Bluebook.Client.Save

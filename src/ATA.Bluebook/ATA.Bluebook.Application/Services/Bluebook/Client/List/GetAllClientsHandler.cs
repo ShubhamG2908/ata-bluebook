@@ -4,7 +4,7 @@ using ATA.Domain.Entity.Bluebook;
 
 using MediatR;
 
-namespace ATA.Application.Services.Bluebook.Client.Get
+namespace ATA.Application.Services.Bluebook.Client.List
 {
     public class GetAllClientsHandler : IRequestHandler<GetAllClientsQuery, List<ClientModel>>
     {
