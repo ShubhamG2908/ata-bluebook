@@ -189,9 +189,18 @@ namespace ATA.Infrastructure.Persistance.Sql.Repository
             }
             else
             {
+                var entry = _context.Entry(dbRecord);
+                if (entry.State == EntityState.Detached)
+                {
+                    _context.Attach(dbRecord);
+                }
+                else
+                {
+                    _context.Entry(dbRecord).State = EntityState.Detached;
+                }
                 _context.Entry(dbRecord).CurrentValues.SetValues(entity);
                 entity.UpdatedAt = DateTime.UtcNow;
-                _context.Update(entity);
+                _context.Update(dbRecord);
             }
             await _context.SaveChangesAsync();
             return true;
