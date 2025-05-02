@@ -27,21 +27,19 @@ namespace ATA.Domain.Common
     }
     public enum Status
     {
-        New,
-        InProgress,
-        Done
+        Active,
+        InActive,
+        Idle
     }
     public enum ProjectType
     {
-        New,
-        InProgress,
-        Done
+        Charitable,
+        Ideological
     }
     public enum ProgramType
     {
-        New,
-        InProgress,
-        Done
+        Conventional,
+        Sweeps
     }
     public enum ContractType
     {
