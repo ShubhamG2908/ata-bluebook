@@ -23,21 +23,20 @@
                 items.AddCustomFormTextBox(m => m.City);
                 items.AddCustomFormTextBox(m => m.State);
                 items.AddCustomFormTextBox(m => m.Zip);
-                    items.AddCustomFormEnumBox(m => m.ContractType, new SelectionControlConfig
+                    items.AddCustomFormRadioGroup(m => m.ProgramType, new SelectionControlConfig
                 {
-                    DbSourceController = "Enum",
-                    DBSourceAction = "GetContactTypes",
+                    DBSourceAction = "GetProgramType", // okay
+                    DbSourceController = "Common",     // Must match controller route
                     KeyField = "Value",
                     DisplayField = "Text",
                     LoadMode = DataSourceLoadMode.Raw,
-                    SeachEnabled = true,
-                    ValueChangeCallBack = "UserTypeSelectionChanged"
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
                 });
-
-                    items.AddCustomFormEnumBox(m => m.ProgramType, new SelectionControlConfig
+@*                     items.AddCustomFormEnumBox(m => m.ProgramType, new SelectionControlConfig
                 {
                     DbSourceController = "Enum",
-                    DBSourceAction = "GetProgramTypes",
+                    DBSourceAction = "GetProgramType",
                     KeyField = "Value",
                     DisplayField = "Text",
                     LoadMode = DataSourceLoadMode.Raw,
@@ -48,7 +47,7 @@
                     items.AddCustomFormEnumBox(m => m.ProjectType, new SelectionControlConfig
                 {
                     DbSourceController = "Enum",
-                    DBSourceAction = "GetProjectTypes",
+                    DBSourceAction = "GetProjectType",
                     KeyField = "Value",
                     DisplayField = "Text",
                     LoadMode = DataSourceLoadMode.Raw,
@@ -59,13 +58,13 @@
                     items.AddCustomFormEnumBox(m => m.Status, new SelectionControlConfig
                 {
                     DbSourceController = "Enum",
-                    DBSourceAction = "GetStatuses",
+                    DBSourceAction = "GetStatuse",
                     KeyField = "Value",
                     DisplayField = "Text",
                     LoadMode = DataSourceLoadMode.Raw,
                     SeachEnabled = true,
                     ValueChangeCallBack = "UserTypeSelectionChanged"
-                });
+                }); *@
                 items.AddCustomFormTextBox(m => m.InternalName);
                 items.AddCustomFormTextBox(m => m.WMCode);
 

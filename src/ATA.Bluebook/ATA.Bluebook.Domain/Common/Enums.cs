@@ -50,12 +50,22 @@ namespace ATA.Domain.Common
     }
     public static class EnumHelper
     {
-        public static List<object> GetEnumList(Type enumType)
+        public static List<EnumItem> GetEnumList(Type enumType)
         {
             return Enum.GetValues(enumType)
                        .Cast<Enum>()
-                       .Select(e => new { Value = Convert.ToInt32(e), Text = e.ToString() })
-                       .ToList<object>();
+                       .Select(e => new EnumItem
+                       {
+                           Value = Convert.ToInt32(e),
+                           Text = e.ToString()
+                       })
+                       .ToList();
+        }
+
+        public class EnumItem
+        {
+            public int Value { get; set; }
+            public string Text { get; set; }
         }
     }
 }

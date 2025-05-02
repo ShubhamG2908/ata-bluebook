@@ -1,6 +1,7 @@
 ﻿using ATA.Domain.Common;
 using ATA.Web.Common.DxCustomExtensiosns.Configs;
 using ATA.Web.Models;
+
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.AspNet.Mvc.Builders;
 using DevExtreme.AspNet.Mvc.Factories;
@@ -9,6 +10,7 @@ using Newtonsoft.Json.Linq;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using System.Reflection;
 
 using static System.Net.Mime.MediaTypeNames;
 
@@ -106,38 +108,6 @@ namespace ATA.Web.Common.DxCustomExtensiosns
                                 .SearchEnabled(config.SeachEnabled)
                 );
         }
-        public static void AddCustomFormEnumBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, SelectionControlConfig config)
-        {
-            // Dynamically call EnumHelper to get the correct enum list based on the DBSourceAction
-            //var enumType = config.DBSourceAction switch
-            //{
-            //    "GetContactTypes" => typeof(ContactType),
-            //    "GetProgramTypes" => typeof(ProgramType),
-            //    "GetProjectTypes" => typeof(ProjectType),
-            //    "GetStatuses" => typeof(Status),
-            //    _ => null
-            //};
-
-            //if (enumType != null)
-            //{
-            var enumList = new[] {
-    new { Value = 0, Text = "New" },
-    new { Value = 1, Text = "In Progress" },
-    new { Value = 2, Text = "Completed" }
-};
-            factory.AddSimpleFor(expression)
-                        .Editor(e => e.SelectBox()
-                                        .ValueExpr(config.KeyField)
-                                        .DataSource(enumList)
-                                        .Height(40)
-                                        .DisplayExpr(config.DisplayField)
-                                        .OnValueChanged(config.ValueChangeCallBack)
-                                        .ValidationMessageMode(ValidationMessageMode.Always)
-                                        .ValidationMessagePosition(Position.Bottom)
-                                        .SearchEnabled(config.SeachEnabled)
-                        );
-                //}
-        }
         public static void AddCustomFormTagBox<TFormData, TProperty>(this FormItemsFactory<TFormData> factory, Expression<Func<TFormData, TProperty>> expression, TagControlConfig config)
         {
             factory.AddSimpleFor(expression)
@@ -196,6 +166,25 @@ namespace ATA.Web.Common.DxCustomExtensiosns
                                     .ValidationMessageMode(ValidationMessageMode.Always)
                                     .ValidationMessagePosition(Position.Bottom)).CssClass($"my-2 {cssClass}");
         }
-
+        public static void AddCustomFormRadioGroup<TFormData, TProperty>(
+    this FormItemsFactory<TFormData> factory,
+    Expression<Func<TFormData, TProperty>> expression,
+    SelectionControlConfig config)
+        {
+            var ab = factory.AddSimpleFor(expression)
+                .Editor(e => e.RadioGroup()
+                    .DataSource(d => d.Mvc()
+                        .Controller(config.DbSourceController)
+                        .LoadAction(config.DBSourceAction)
+                        .LoadMode(config.LoadMode)
+                        .Key(config.KeyField))
+                    .ValueExpr(config.KeyField)
+                    .DisplayExpr(config.DisplayField)
+                    .OnValueChanged(config.ValueChangeCallBack)
+                    .Layout(Orientation.Horizontal)
+                    .ValidationMessageMode(ValidationMessageMode.Always)
+                    .ValidationMessagePosition(Position.Bottom)
+                ).CssClass("my-2");
+        }
     }
 }
