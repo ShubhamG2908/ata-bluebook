@@ -23,9 +23,10 @@
                 items.AddCustomFormTextBox(m => m.City);
                 items.AddCustomFormTextBox(m => m.State);
                 items.AddCustomFormTextBox(m => m.Zip);
-                    items.AddCustomFormRadioGroup(m => m.ProgramType, new SelectionControlConfig
+
+                    items.AddCustomFormRadioGroup(m => m.ContractType, new SelectionControlConfig
                 {
-                    DBSourceAction = "GetProgramType", // okay
+                    DBSourceAction = "ContractType", // okay
                     DbSourceController = "Common",     // Must match controller route
                     KeyField = "Value",
                     DisplayField = "Text",
@@ -33,38 +34,36 @@
                     SeachEnabled = false,
                     ValueChangeCallBack = "onRadioSelectionChanged"
                 });
-@*                     items.AddCustomFormEnumBox(m => m.ProgramType, new SelectionControlConfig
+                items.AddCustomFormRadioGroup(m => m.ProgramType, new SelectionControlConfig
                 {
-                    DbSourceController = "Enum",
-                    DBSourceAction = "GetProgramType",
+                    DBSourceAction = "ProgramType", // okay
+                    DbSourceController = "Common",     // Must match controller route
                     KeyField = "Value",
                     DisplayField = "Text",
                     LoadMode = DataSourceLoadMode.Raw,
-                    SeachEnabled = true,
-                    ValueChangeCallBack = "UserTypeSelectionChanged"
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
                 });
-
-                    items.AddCustomFormEnumBox(m => m.ProjectType, new SelectionControlConfig
+                    items.AddCustomFormRadioGroup(m => m.ProjectType, new SelectionControlConfig
                 {
-                    DbSourceController = "Enum",
-                    DBSourceAction = "GetProjectType",
+                    DBSourceAction = "ProjectType", // okay
+                    DbSourceController = "Common",     // Must match controller route
                     KeyField = "Value",
                     DisplayField = "Text",
                     LoadMode = DataSourceLoadMode.Raw,
-                    SeachEnabled = true,
-                    ValueChangeCallBack = "UserTypeSelectionChanged"
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
                 });
-
-                    items.AddCustomFormEnumBox(m => m.Status, new SelectionControlConfig
+                    items.AddCustomFormRadioGroup(m => m.Status, new SelectionControlConfig
                 {
-                    DbSourceController = "Enum",
-                    DBSourceAction = "GetStatuse",
+                    DBSourceAction = "Status", // okay
+                    DbSourceController = "Common",     // Must match controller route
                     KeyField = "Value",
                     DisplayField = "Text",
                     LoadMode = DataSourceLoadMode.Raw,
-                    SeachEnabled = true,
-                    ValueChangeCallBack = "UserTypeSelectionChanged"
-                }); *@
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
+                });
                 items.AddCustomFormTextBox(m => m.InternalName);
                 items.AddCustomFormTextBox(m => m.WMCode);
 
