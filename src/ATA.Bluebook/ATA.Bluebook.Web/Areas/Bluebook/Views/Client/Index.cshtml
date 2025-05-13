@@ -1,0 +1,33 @@
+﻿@using ATA.Application.Models.Bluebook
+@using ATA.Application.Services.Bluebook.Client.List
+@{
+	ViewData["Title"] = "Client";
+
+	List<DxDataGridColumnConfig> columnConfigs = new() {
+		new(){Caption = "Client Code", Field = "ClientCode", DataType= GridColumnDataType.String},
+		new(){Caption = "Client Name", Field = "ClientName", DataType= GridColumnDataType.String},
+		new(){Caption = "Contact Name", Field = "ContactName", DataType= GridColumnDataType.String},
+		new(){Caption = "Contact Email", Field = "ContactEmail", DataType= GridColumnDataType.String}
+	};
+
+	DxDataGridConfig gridConfig = new()
+			{
+				Id = "dxc_users",
+				DataSourceConfig = new()
+				{
+					ControllerName = "Client",
+					LoadActionName = "Get",
+					Key = "Id"
+				},
+				DisplayRowFilters = true,
+				ShowGroupPanel = true
+			};
+}
+<div class="mb-3">
+	<a class="btn btn-primary" href="@Url.Action("Add", "Client", new { area = "Bluebook" })">
+		<i class="fas fa-plus"></i> Add Client
+	</a>
+</div>
+<div>
+	@(Html.AddCustomDxDataGrid<ClientModel>(columnConfigs, gridConfig))
+</div>

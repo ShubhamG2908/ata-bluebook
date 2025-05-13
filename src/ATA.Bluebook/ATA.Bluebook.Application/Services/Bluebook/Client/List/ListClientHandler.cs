@@ -1,0 +1,45 @@
+﻿using ATA.Application.Interface;
+using ATA.Application.Models.Bluebook;
+using ATA.Domain.Entity.Bluebook;
+
+using MediatR;
+
+namespace ATA.Application.Services.Bluebook.Client.List
+{
+    public class ListClientHandler : IRequestHandler<ListClientQuery, List<ClientModel>>
+    {
+        private readonly IGenericRepositoryBuilder<ClientEntity> _repo;
+
+        public ListClientHandler(IGenericRepositoryBuilder<ClientEntity> repo)
+        {
+            _repo = repo;
+        }
+
+        public async Task<List<ClientModel>> Handle(ListClientQuery request, CancellationToken cancellationToken)
+        {
+            return await _repo.WithFilter(x => x.IsRemoved == false).WithNoTracking()
+                              .WithProjection(c => new ClientModel
+                              {
+                                  Id = c.Id,
+                                  ClientCode = c.ClientCode,
+                                  ClientName = c.ClientName,
+                                  ContactName = c.ContactName,
+                                  ContactEmail = c.ContactEmail,
+                                  ContactPhone = c.ContactPhone,
+                                  Address = c.Address,
+                                  City = c.City,
+                                  State = c.State,
+                                  Zip = c.Zip,
+                                  ContractType = c.ContractType,
+                                  ProgramType = c.ProgramType,
+                                  ProjectType = c.ProjectType,
+                                  Status = c.Status,
+                                  InternalName = c.InternalName,
+                                  WMCode = c.WMCode,
+                                  FinancialEmailList = c.FinancialEmailList,
+                                  MarketingEmailList = c.MarketingEmailList
+                              })
+                              .ExecuteListAsync<ClientModel>();
+        }
+    }
+}

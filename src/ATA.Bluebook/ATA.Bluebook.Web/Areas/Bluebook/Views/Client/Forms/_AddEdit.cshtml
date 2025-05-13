@@ -1,0 +1,76 @@
+﻿@using ATA.Web.Common.DxCustomExtensiosns
+@using ATA.Domain.Common
+@using ATA.Application.Models.Bluebook
+@model ClientModel
+
+@using (Html.BeginForm("Save", "Client", FormMethod.Post, new { area = "Bluebook" }))
+{
+    @Html.HiddenFor(m => m.Id);
+    @(
+    Html.DevExtreme()
+            .Form<ATA.Application.Models.Bluebook.ClientModel>()
+            .FormData(Model)
+            .LabelLocation(FormLabelLocation.Top)
+            .ColCount(2)
+            .Items(items =>
+            {
+                items.AddCustomFormTextBox(m => m.ClientCode);
+                items.AddCustomFormTextBox(m => m.ClientName);
+                items.AddCustomFormTextBox(m => m.ContactName);
+                items.AddCustomFormTextBox(m => m.ContactEmail);
+                items.AddCustomFormTextBox(m => m.ContactPhone);
+                items.AddCustomFormTextArea(m => m.Address);
+                items.AddCustomFormTextBox(m => m.City);
+                items.AddCustomFormTextBox(m => m.State);
+                items.AddCustomFormTextBox(m => m.Zip);
+
+                    items.AddCustomFormRadioGroup(m => m.ContractType, new SelectionControlConfig
+                {
+                    DBSourceAction = "ContractType", // okay
+                    DbSourceController = "Common",     // Must match controller route
+                    KeyField = "Value",
+                    DisplayField = "Text",
+                    LoadMode = DataSourceLoadMode.Raw,
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
+                });
+                items.AddCustomFormRadioGroup(m => m.ProgramType, new SelectionControlConfig
+                {
+                    DBSourceAction = "ProgramType", // okay
+                    DbSourceController = "Common",     // Must match controller route
+                    KeyField = "Value",
+                    DisplayField = "Text",
+                    LoadMode = DataSourceLoadMode.Raw,
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
+                });
+                    items.AddCustomFormRadioGroup(m => m.ProjectType, new SelectionControlConfig
+                {
+                    DBSourceAction = "ProjectType", // okay
+                    DbSourceController = "Common",     // Must match controller route
+                    KeyField = "Value",
+                    DisplayField = "Text",
+                    LoadMode = DataSourceLoadMode.Raw,
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
+                });
+                    items.AddCustomFormRadioGroup(m => m.Status, new SelectionControlConfig
+                {
+                    DBSourceAction = "Status", // okay
+                    DbSourceController = "Common",     // Must match controller route
+                    KeyField = "Value",
+                    DisplayField = "Text",
+                    LoadMode = DataSourceLoadMode.Raw,
+                    SeachEnabled = false,
+                    ValueChangeCallBack = "onRadioSelectionChanged"
+                });
+                items.AddCustomFormTextBox(m => m.InternalName);
+                items.AddCustomFormTextBox(m => m.WMCode);
+
+                    items.AddCustomFormTextArea(m => m.FinancialEmailList);
+                    items.AddCustomFormTextArea(m => m.MarketingEmailList);
+                items.AddCustomFormButton("Submit", "100%", canSubmitForm: true);
+            })
+    )
+}
+<script src="~/js/common.js"></script>
